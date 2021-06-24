@@ -10,7 +10,10 @@
     <color name="blue">#2E21EA</color>
     <color name="abc">#084304</color>
     <color name="lightblue">#D5ECEE</color>
-    <color name="red">#ff0000</color>
+    <color name="red">#C9C80B0B</color>
     <color name="gray">#707070</color>
     <color name="name">#8D09DF9A</color>
+    <color name="background">#191927</color>
+    <color name="button">#c8d049</color>
+    <color name="green">#08DC11</color>
 </resources>
