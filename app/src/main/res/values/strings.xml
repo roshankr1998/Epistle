@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Epistle</string>
+    <string name="_91">+91-</string>
+    <string name="title_activity_home1">home1</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="open">the drawer is open</string>
+    <string name="close">the drawer is closed</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="Spinner_item">
+
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+
+
+    </string-array>
+    <string name="mail"><a href="mailto:roshan.kumar.rk109@gmail.com">roshan.kumar.rk109@gmail.com</a></string>
+    <string name="ig"><a href="https://instagram.com/roshan_kumar_singhh?utm_medium=copy_link">roshan_kumar_singhh</a></string>
+    <string name="in"><a href="https://www.linkedin.com/in/roshan-kumar-a56240206">Roshan Kumar</a></string>
+    <string name="git"><a href="https://github.com/roshankr1998">roshankr1998</a></string>
+</resources>
