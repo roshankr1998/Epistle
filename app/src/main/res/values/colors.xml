@@ -16,5 +16,7 @@
     <color name="background">#191927</color>
     <color name="button">#c8d049</color>
     <color name="green">#08DC11</color>
+    <color name="fadegreen">#BC08DC11</color>
     <color name="fadeblack">#C4000000</color>
+    <color name="fadeabc">#D3084304</color>
 </resources>

@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/otpback"
     tools:context=".otp">
 
 
@@ -14,6 +15,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
+
         app:layout_constraintBottom_toTopOf="@+id/signin1"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.29"
@@ -24,6 +26,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/_91"
+            android:background="@color/fadeabc"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -32,8 +35,8 @@
             android:id="@+id/password1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
             android:hint="1234567890"
+            android:background="@color/fadeabc"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:inputType="number"
@@ -51,14 +54,14 @@
         android:layout_height="28dp"
         android:text="Otp Verification"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="52px"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintVertical_bias="0.305" />
 
     <TextView
         android:id="@+id/textView1"
@@ -69,7 +72,8 @@
         android:layout_marginEnd="50dp"
         android:gravity="center"
         android:text="We will send you an One Time Password on this mobile number"
-        android:textColor="@color/gray"
+        android:textColor="@color/white"
+        android:background="@color/fadeblack"
         android:textSize="42px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +111,7 @@
         app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/group" />
+        android:src="@drawable/return1" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -118,7 +122,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.27"
+        app:layout_constraintVertical_bias="0.155"
         app:srcCompat="@drawable/cyber" />
 
     <FrameLayout
