@@ -4,90 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/wallback"
     tools:context=".forgot">
 
 
-
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="42dp"
-            android:layout_height="34dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.01"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25"
-            app:srcCompat="@drawable/group" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="25dp"
-        android:text="Enter your registered Email-id"
-        android:textColor="@color/black"
-        android:textSize="72px"
-
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="20dp"
+        android:src="@drawable/return1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
+
+    <EditText
+        android:id="@+id/emailres"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="43dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custinp"
+        android:drawableLeft="@drawable/email"
+        android:drawablePadding="15dp"
+        android:ems="10"
+        android:hint="Someone@xyz.com"
+        android:paddingLeft="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <EditText
-            android:id="@+id/emailres"
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:drawableLeft="@drawable/email"
-            android:hint="Someone@xyz.com"
-            android:drawablePadding="15dp"
-            android:textColorHint="@color/gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.43" />
+    <Button
+        android:id="@+id/respass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@color/red"
+        android:text="reset"
+        android:textSize="52px"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailres"
+        app:layout_constraintVertical_bias="0.119" />
 
-        <Button
-            android:id="@+id/respass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button"
-            android:text="reset"
-            android:textSize="52px"
-            app:backgroundTint="@color/abc"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password1"
-            app:layout_constraintVertical_bias="0.155" />
-
-        <ProgressBar
+    <ProgressBar
             android:id="@+id/progbar2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:visibility="gone" />
-    </LinearLayout>
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailres"
+            app:layout_constraintVertical_bias="0.155"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter your registered Email-id"
+        android:textColor="@color/white"
+        android:textSize="72px"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="70dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9"
+        tools:layout_editor_absoluteX="16dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
