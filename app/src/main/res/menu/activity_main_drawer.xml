@@ -17,6 +17,14 @@
             android:icon="@drawable/dash"
             android:title="Dashboard" />
         <item
+            android:id="@+id/nav_upload"
+            android:icon="@drawable/upload"
+            android:title="Upload PDF" />
+        <item
+            android:id="@+id/nav_download"
+            android:icon="@drawable/download"
+            android:title="Download PDF" />
+        <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/profile"
             android:title="Profile" />
