@@ -37,10 +37,10 @@ import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     Button button6,button2;
-    ImageButton imageButton,imageButton1;
+    ImageButton imageButton;
     EditText bookname,author,publication,donorname,donoradress,donormob;
     TextView textView;
-    ImageView image;
+    ImageView image,imageButton1;
     DatabaseReference mfire,data1;
     ProgressBar progdon;
     Users users;

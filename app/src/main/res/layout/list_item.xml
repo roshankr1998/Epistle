@@ -9,19 +9,20 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center|center_horizontal|center_vertical"
+        android:layout_height="500dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/input"
         android:layout_marginBottom="6dp"
+        android:background="@drawable/serlist"
+        android:gravity="center|center_horizontal|center_vertical"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageView10"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:textColor="@color/black"
-            android:src="@drawable/book" />
+            android:src="@drawable/book"
+            android:textColor="@color/black" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,6 +48,7 @@
                 android:textSize="16dp"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,21 +64,23 @@
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
-        <TextView
-            android:id="@+id/txt_listteam"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="8dp"
-            android:text="Hero Team"
-            android:textColor="@color/white"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_listteam"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:text="Hero Team"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
 
                 android:layout_width="wrap_content"
@@ -91,8 +95,8 @@
                 android:id="@+id/txt_listname1"
                 android:layout_width="170dp"
                 android:layout_height="40dp"
-                android:text="Hero name"
                 android:layout_marginLeft="8dp"
+                android:text="Hero name"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -105,13 +109,14 @@
 
             <TextView
 
-                 android:layout_width="wrap_content"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="Donor Name:"
                 android:layout_marginLeft="20dp"
+                android:text="Donor Name:"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/txt_listteam1"
                 android:layout_width="match_parent"
@@ -127,12 +132,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
 
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="Donor Adress:"
                 android:layout_marginLeft="20dp"
+                android:text="Donor Adress:"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -162,6 +168,7 @@
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/txt_listteam2"
                 android:layout_width="match_parent"
@@ -172,16 +179,17 @@
                 android:textSize="16dp"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <Button
+            android:id="@+id/getbook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:id="@+id/getbook"
+            android:backgroundTint="@color/white"
             android:text="Get Book"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:backgroundTint="@color/white"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 

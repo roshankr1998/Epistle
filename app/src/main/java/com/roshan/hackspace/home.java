@@ -63,6 +63,7 @@ public class home extends AppCompatActivity {
         navigationView=findViewById(R.id.nav_view);
         updateusernav();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame,new DashboardFragment()).commit();
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
