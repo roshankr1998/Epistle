@@ -99,6 +99,16 @@ public class home extends AppCompatActivity {
                         loadFragment(fragment);
                         break;
 
+                    case R.id.nav_upload:
+                        fragment=new UploadFragment();
+                        loadFragment(fragment);
+                        break;
+
+                    case R.id.nav_download:
+                        fragment=new DownloadFragment();
+                        loadFragment(fragment);
+                        break;
+
 
 
                     case R.id.nav_logout:

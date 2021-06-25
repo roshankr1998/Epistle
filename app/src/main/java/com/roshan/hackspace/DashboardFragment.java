@@ -19,7 +19,7 @@ import android.widget.ImageView;
 
 
 public class DashboardFragment extends Fragment  {
-    ImageView imageView,imageView1,imageView2,imageView3;
+    ImageView imageView,imageView1,imageView2,imageView3,imageView4,imageView5;
 
 
     @Nullable
@@ -30,6 +30,8 @@ public class DashboardFragment extends Fragment  {
         imageView1=root.findViewById(R.id.abimage);
         imageView2=root.findViewById(R.id.proimage);
         imageView3=root.findViewById(R.id.seimage);
+        imageView4=root.findViewById(R.id.uploadpdf);
+        imageView5=root.findViewById(R.id.downpdf);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +71,26 @@ public class DashboardFragment extends Fragment  {
                 FragmentManager fr= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
                 fragmentTransaction.replace(R.id.frame,new SerErFragment()).commit();
+
+
+            }
+        })  ;
+        imageView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fr= getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fr.beginTransaction();
+                fragmentTransaction.replace(R.id.frame,new UploadFragment()).commit();
+
+
+            }
+        })  ;
+        imageView5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fr= getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fr.beginTransaction();
+                fragmentTransaction.replace(R.id.frame,new DownloadFragment()).commit();
 
 
             }
