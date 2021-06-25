@@ -5,9 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/otpback"
     tools:context=".otpver">
-
-
 
 
     <TextView
@@ -16,31 +15,33 @@
         android:layout_height="28dp"
         android:text="Otp Verification"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="52px"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintVertical_bias="0.294" />
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="50dp"
         android:gravity="center"
         android:text="Enter the  One Time Password sent to "
-        android:textColor="@color/gray"
+        android:textColor="@color/white"
+        android:background="@color/fadeblack"
         android:textSize="42px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.0" />
+
 
     <ImageView
         android:id="@+id/imageView3"
@@ -51,9 +52,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.27"
+        app:layout_constraintVertical_bias="0.142"
         app:srcCompat="@drawable/otp" />
-
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -75,7 +75,9 @@
             android:importantForAutofill="no"
             android:inputType="number"
             android:maxLength="1"
-            android:textColor="@color/black"
+            android:background="@color/fadeabc"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -87,8 +89,10 @@
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="number"
+            android:background="@color/fadeabc"
             android:maxLength="1"
-            android:textColor="@color/black"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -100,8 +104,10 @@
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="number"
+            android:background="@color/fadeabc"
             android:maxLength="1"
-            android:textColor="@color/black"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -113,8 +119,10 @@
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="number"
+            android:background="@color/fadeabc"
             android:maxLength="1"
-            android:textColor="@color/black"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -127,7 +135,9 @@
             android:importantForAutofill="no"
             android:inputType="number"
             android:maxLength="1"
-            android:textColor="@color/black"
+            android:layout_marginRight="5dp"
+            android:background="@color/fadeabc"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -136,27 +146,16 @@
             android:layout_width="40dp"
             android:layout_height="45dp"
             android:gravity="center"
+            android:background="@color/fadeabc"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="number"
             android:maxLength="1"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Didn't recieve the OTP?"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.345"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
     <TextView
@@ -165,24 +164,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="RESEND OTP"
-        android:textColor="@color/red"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:background="@color/red"
+        android:textColor="@color/white"
+        android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintRight_toRightOf="@+id/textView7"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.376" />
 
     <TextView
         android:id="@+id/textMob"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textColor="@color/black"
+        android:background="@color/fadeblack"
         android:gravity="center"
+        android:textColor="@color/white"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -194,8 +196,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="108dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="0dp">
 
         <ProgressBar
