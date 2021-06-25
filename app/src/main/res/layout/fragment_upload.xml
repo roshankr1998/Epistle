@@ -1,14 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:alpha="35"
+    android:background="@drawable/uploadback"
     tools:context=".UploadFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Upload Freagment" />
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="397dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="56dp"
+            android:src="@drawable/upload"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/fadeblack" />
+
+        <Button
+            android:id="@+id/uploadbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="116dp"
+            android:backgroundTint="@color/red"
+            android:text="Upload Pdf"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.387"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="0.367"
+            tools:layout_editor_absoluteX="0dp">
+
+            <TextView
+                android:id="@+id/filename"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/custinp"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+                app:layout_constraintEnd_toStartOf="@+id/upload_imagebtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                tools:ignore="RtlCompat" />
+
+            <ImageButton
+                android:id="@+id/upload_imagebtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundbutt"
+                android:src="@drawable/upload"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/filename"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                app:tint="@color/black" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/file_name"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/custinp"
+            android:ems="10"
+            android:hint="Enter File Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <EditText
+            android:id="@+id/file_publication"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custinp"
+            android:ems="10"
+            android:hint="Enter Publication Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/uploadbtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/file_author"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/file_author"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/custinp"
+            android:ems="10"
+            android:hint="Enter Author Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/file_name" />
+
+        <ImageView
+            android:id="@+id/returnview"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="4dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="30dp"
+            android:src="@drawable/return1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
