@@ -52,11 +52,11 @@
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:background="@drawable/dashicon"
+            android:layout_marginTop="20dp"
             android:clickable="true"
             android:contentDescription="roshan"
             android:scaleType="fitCenter"
             android:src="@drawable/info"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/proimage"
             tools:layout_editor_absoluteX="0dp" />
 
@@ -82,7 +82,7 @@
             android:id="@+id/proimage"
             android:layout_width="match_parent"
             android:layout_height="140dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/dashicon"
             android:clickable="true"
             android:contentDescription="roshan"

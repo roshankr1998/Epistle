@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +40,7 @@ public class ProfileFragment extends Fragment {
     EditText number,password,repassword,name,emailid;
     Button signup1;
     TextView textView;
-    ImageButton imageButton1;
+    ImageView imageButton1;
     ProgressBar progress;
     ProgressDialog progressDialog;
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
