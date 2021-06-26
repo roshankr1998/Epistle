@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
     android:orientation="vertical"
-
-    android:layout_height="wrap_content">
-
+    android:backgroundTint="@color/fadeblack"
+    android:background="@drawable/serlist">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginBottom="6dp"
-        android:background="@drawable/serlist"
+        android:layout_marginBottom="12dp"
         android:gravity="center|center_horizontal|center_vertical"
         android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imageView10"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/book"
-            android:textColor="@color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,7 +34,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_listname"
+                android:id="@+id/pdfbookname"
                 android:layout_width="170dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
@@ -67,7 +61,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_listteam"
+                android:id="@+id/pdfbookauth"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
@@ -93,7 +87,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_listname1"
+                android:id="@+id/pdfbookpubl"
                 android:layout_width="170dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
@@ -113,15 +107,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
-                android:text="Donor Name:"
+                android:text="Download Link:"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_listteam1"
+                android:id="@+id/bookdownload"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="Hero Team"
                 android:textColor="@color/white"
@@ -129,69 +123,22 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <TextView
 
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
-                android:text="Donor Adress:"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txt_listname2"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginLeft="8dp"
-                android:text="Hero name"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
-                android:text="Donor Mobile:"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txt_listteam2"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="8dp"
-                android:text="Hero Team"
-                android:textColor="@color/white"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-        </LinearLayout>
 
         <Button
-            android:id="@+id/getbook"
+            android:id="@+id/btn_downloadpdf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:backgroundTint="@color/white"
-            android:text="Get Book"
+            android:text="Download Book"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
     </LinearLayout>
+
+
 
 </LinearLayout>

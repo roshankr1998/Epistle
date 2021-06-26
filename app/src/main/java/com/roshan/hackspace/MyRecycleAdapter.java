@@ -54,7 +54,8 @@ public class MyRecycleAdapter extends RecyclerView.Adapter<MyRecycleAdapter.MyVi
         holder.txt_listteam.setText(hero.getAuthor());
         holder.txt_listname1.setText(hero.getPublication());
         holder.txt_listteam1.setText(hero.getDonorname());
-        holder.txt_listname2.setText(hero.getDonoradress()); holder.txt_listteam2.setText(hero.getDonormobile());
+        holder.txt_listname2.setText(hero.getDonoradress());
+        holder.txt_listteam2.setText(hero.getDonormobile());
        //String key= list.get(position).getKey();
         holder.getbook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +110,7 @@ public class MyRecycleAdapter extends RecyclerView.Adapter<MyRecycleAdapter.MyVi
         return list.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    protected static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView txt_listname2,txt_listname1,txt_listname,txt_listteam,txt_listteam1,txt_listteam2;
         Button getbook;
         public MyViewHolder(@NonNull @NotNull View itemView) {
