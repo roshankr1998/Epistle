@@ -36,6 +36,22 @@
             android:textColor="#ffa500"
             app:layout_constraintTop_toBottomOf="@+id/returnimage"
             tools:layout_editor_absoluteX="0dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:textStyle="bold"
+            android:id="@+id/search2"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/search1"
+            android:drawableTint="@color/black"
+            android:paddingLeft="15dp"
+            android:hint="Enter book name"
+            android:drawablePadding="15dp"
+            android:textColor="@color/black"
+            android:background="@drawable/custinp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listview1"
             android:layout_width="match_parent"

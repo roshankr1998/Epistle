@@ -11,9 +11,12 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -40,6 +43,24 @@ public class DownloadFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_download, container, false);
         returnimage=root.findViewById(R.id.returnimage);
+        EditText search2=root.findViewById(R.id.search2);
+        search2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter1(s.toString());
+
+            }
+        });
         returnimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,4 +107,16 @@ public class DownloadFragment extends Fragment {
 
 
         return root;
-    }}
+    }
+    private void filter1(String text) {
+        ArrayList<Uploadpdf> filterlist1=new ArrayList<>();
+        for(Uploadpdf uploadpdf:list1){
+            if(uploadpdf.getPdfbookname().toLowerCase().contains(text.toLowerCase())){
+                filterlist1.add(uploadpdf);
+            }
+        }
+        myAdapter.filterList1(filterlist1);
+
+
+    }
+}

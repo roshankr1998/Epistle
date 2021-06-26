@@ -64,4 +64,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             bookdownload=itemView.findViewById(R.id.bookdownload);
             btn_downloadpdf=itemView.findViewById(R.id.btn_downloadpdf);
     }}
+    public void filterList1(ArrayList<Uploadpdf> filterlist1){
+        list1=filterlist1;
+        notifyDataSetChanged();
+    }
 }
