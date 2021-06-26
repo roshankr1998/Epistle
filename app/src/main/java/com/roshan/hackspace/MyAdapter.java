@@ -1,6 +1,8 @@
 package com.roshan.hackspace;
 
+import android.app.DownloadManager;
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+
+import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
@@ -41,10 +45,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.pdfbookauth.setText(uploadpdf.getPdfauthor());
         holder.pdfbookpubl.setText(uploadpdf.getPdfpublication());
         holder.bookdownload.setText(uploadpdf.getUrl());
+        holder.btn_downloadpdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                downloadFile(holder.pdfbookname.getContext(),list1.get(position).getPdfbookname(),".pdf",DIRECTORY_DOWNLOADS,list1.get(position).getUrl());
+            }
+        });
 
 
 
+    }
 
+    private void downloadFile(Context context, String pdfbookname, String fileExtension, String directoryDownloads, String url) {
+        DownloadManager downloadManager=(DownloadManager)context.getSystemService(Context.DOWNLOAD_SERVICE);
+        Uri uri=Uri.parse(url);
+        DownloadManager.Request request=new DownloadManager.Request(uri);
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setDestinationInExternalFilesDir(context,directoryDownloads,pdfbookname+fileExtension);
+
+        downloadManager.enqueue(request);
     }
 
     @Override
