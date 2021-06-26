@@ -20,11 +20,12 @@
         android:background="@color/white"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:backgroundTint="#171009"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/activity_main_drawer"
-        app:itemIconTint="@color/black"
+        app:itemIconTint="@color/white"
         app:itemHorizontalPadding="30dp"
-        app:itemTextColor="@color/black"/>
+        app:itemTextColor="@color/white"/>
 
     
 </androidx.drawerlayout.widget.DrawerLayout>
