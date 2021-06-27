@@ -21,12 +21,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hackspace">
         <activity android:name=".forgot"></activity>
-        <activity android:name=".otpver" />
-        <activity android:name=".home" />
-        <activity android:name=".otp" />
-        <activity android:name=".signup" />
-        <activity android:name=".login" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".otpver"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".home"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".otp"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".signup"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".login"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

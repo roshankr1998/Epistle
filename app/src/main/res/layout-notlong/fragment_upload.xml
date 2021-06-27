@@ -17,13 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="36dp"
             android:layout_marginRight="40dp"
+            android:layout_marginBottom="116dp"
             android:backgroundTint="@color/red"
             android:text="Upload Pdf"
+            app:layout_constraintTop_toBottomOf="@id/file_publication"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/file_publication" />
+            app:layout_constraintHorizontal_bias="0.387"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -32,7 +33,7 @@
             android:layout_marginTop="56dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@id/textView12"
             tools:layout_editor_absoluteX="0dp">
 
             <TextView
@@ -96,6 +97,7 @@
             android:layout_marginLeft="60dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="60dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/custinp"
             android:ems="10"
             android:hint="Enter Publication Name"
@@ -103,9 +105,11 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/uploadbtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/file_author" />
+            app:layout_constraintTop_toBottomOf="@+id/file_author"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/file_author"

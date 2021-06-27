@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/serback"
+    tools:context=".SerErFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@null"
+        android:paddingLeft="15dp"
+        android:background="@drawable/roundbutt"
+        android:src="@drawable/returnwhite" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fadeblack"
+        android:layout_marginBottom="24dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:text="Search your book"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:textStyle="bold"
+        android:id="@+id/search1"
+        android:drawableLeft="@drawable/search1"
+        android:drawableTint="@color/black"
+        android:paddingLeft="15dp"
+        android:hint="Enter book name"
+        android:drawablePadding="15dp"
+        android:textColor="@color/black"
+        android:background="@drawable/custinp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <!--<ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/contact_items"
+        android:divider="@color/black"
+        android:dividerHeight="1dp"
+        />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp" />
+
+</LinearLayout>

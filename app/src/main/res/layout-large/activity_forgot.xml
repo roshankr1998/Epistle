@@ -50,7 +50,7 @@
         android:layout_marginEnd="25dp"
         android:background="@color/red"
         android:text="reset"
-        android:textSize="52px"
+        android:textSize="25px"
         app:backgroundTint="@android:color/holo_red_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +79,8 @@
         android:layout_height="wrap_content"
         android:text="Enter your registered Email-id"
         android:textColor="@color/white"
-        android:textSize="72px"
+        android:textSize="25px"
+
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginTop="70dp"

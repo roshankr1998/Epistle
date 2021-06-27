@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/imageButton2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginTop="4dp"
             android:paddingLeft="10dp"
             android:backgroundTint="@color/white"
@@ -34,7 +34,7 @@
             android:gravity="center_horizontal"
             android:text="About Us"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="50dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
@@ -98,12 +98,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:text="Contact On:-"
+                android:layout_marginTop="30dp"
                 android:textColor="@color/white"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
+                android:textSize="30dp"
+                android:textStyle="bold"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
