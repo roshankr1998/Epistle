@@ -2,6 +2,7 @@ package com.roshan.hackspace;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,7 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     protected static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView pdfbookname,pdfbookauth,pdfbookpubl,bookdownload;
-        Button btn_downloadpdf;
+        Button btn_downloadpdf,btn_viewpdf;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             pdfbookname=itemView.findViewById(R.id.pdfbookname);
@@ -82,6 +83,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             pdfbookpubl=itemView.findViewById(R.id.pdfbookpubl);
             bookdownload=itemView.findViewById(R.id.bookdownload);
             btn_downloadpdf=itemView.findViewById(R.id.btn_downloadpdf);
+
     }}
     public void filterList1(ArrayList<Uploadpdf> filterlist1){
         list1=filterlist1;
