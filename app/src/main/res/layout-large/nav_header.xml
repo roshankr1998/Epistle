@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
-    android:background="@drawable/navpiccc"
+    android:layout_height="350dp"
+    android:background="@drawable/serback"
     android:paddingLeft="16dp"
-    android:layout_marginTop="15dp"
-    android:paddingRight="16dp">
+    android:paddingTop="15dp"
+    android:paddingRight="16dp"
+    android:layout_marginBottom="-40dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="1dp"
         android:src="@drawable/user"
-        android:layout_marginTop="25dp"
-        />
+        android:layout_centerVertical="true"
+        android:id="@+id/imageView"/>
 
     <TextView
 
