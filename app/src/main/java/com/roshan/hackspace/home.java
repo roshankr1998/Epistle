@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,8 +33,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
 
 import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class home extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -47,7 +55,7 @@ public class home extends AppCompatActivity {
     String n,e,p,no;
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference post=firebaseDatabase.getReference().child("Users");
-
+    DatabaseReference post1=firebaseDatabase.getReference().child("profile");
 
 
     @Override
@@ -217,6 +225,7 @@ public class home extends AppCompatActivity {
         View headerview=navigationView.getHeaderView(0);
         TextView email=headerview.findViewById(R.id.email);
         TextView name=headerview.findViewById(R.id.name);
+        ImageView proimage=headerview.findViewById(R.id.proimage);
         email.setText(user.getEmail());
         post.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -224,6 +233,18 @@ public class home extends AppCompatActivity {
 
                 String username = snapshot.child("fullname").getValue(String.class);
                 name.setText(username);
+            }@Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), "Failed to load Profile ", Toast.LENGTH_SHORT).show();
+            }});
+        post1.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+
+                String profile = snapshot.child("url").getValue(String.class);
+
+
+
             }@Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "Failed to load Profile ", Toast.LENGTH_SHORT).show();

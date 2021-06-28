@@ -1,10 +1,15 @@
 package com.roshan.hackspace;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -17,10 +22,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -28,10 +41,14 @@ import java.util.Objects;
 
 public class signup extends AppCompatActivity {
     EditText password,repassword,name,emailid,username;
-    Button  signup;
-    ImageView imageView;
+    Button  signup,browse;
+    ImageView imageView,proimage;
     private FirebaseAuth mAuth;
     ProgressDialog progressDialog3;
+    Uri pdfuri=null;
+    String filepathname;
+    StorageReference storageReference;
+    DatabaseReference databaseReference;
 
 
     @Override
@@ -48,7 +65,17 @@ public class signup extends AppCompatActivity {
         name=findViewById(R.id.name);
         CheckBox checkBox=(CheckBox) findViewById(R.id.checkBox);
         signup=(Button) findViewById(R.id.signup);
-        signup.setEnabled(false);
+        browse=(Button) findViewById(R.id.browse);
+        proimage=findViewById(R.id.proimage);
+    signup.setEnabled(false);
+
+
+                browse.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mGetContent.launch("image/*");
+                    }
+                });
        checkBox.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -140,6 +167,7 @@ public class signup extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
+                                uploadpdf();
                                 User user= new User(name1,mobile,email,pass);
                                 FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -170,4 +198,63 @@ public class signup extends AppCompatActivity {
 
 
     }
+
+    private void uploadpdf() {
+        long timestamp=System.currentTimeMillis();
+        filepathname="uploads/"+timestamp;
+        storageReference = FirebaseStorage.getInstance().getReference(filepathname);
+
+        storageReference.putFile(pdfuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(signup.this, "pic upload Successfull ", Toast.LENGTH_SHORT).show();
+                Task<Uri> uriTask=taskSnapshot.getStorage().getDownloadUrl();
+                while (!uriTask.isSuccessful());
+                String uploadedpdfUrl=""+uriTask.getResult();
+                uploadpdftodb(uploadedpdfUrl);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Toast.makeText(signup.this, "Pdf upload failed due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
+
+    private void uploadpdftodb(String uploadedpdfUrl) {
+        Userprofile user= new Userprofile(uploadedpdfUrl);
+        databaseReference=FirebaseDatabase.getInstance().getReference("profile");
+        databaseReference.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        if(task.isSuccessful()){
+
+                            Toast.makeText(signup.this, "Image Upload Successfull", Toast.LENGTH_SHORT).show();
+
+                        }else
+                        {
+                            Toast.makeText(signup.this, "Image upload Failed", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+    }
+
+
+    ActivityResultLauncher<String> mGetContent= registerForActivityResult(new ActivityResultContracts.GetContent(),
+            new ActivityResultCallback<Uri>() {
+                @Override
+                public void onActivityResult(Uri result) {
+                    if(result!=null){
+                        pdfuri=result;
+                        proimage.setImageURI(result);
+                        Toast.makeText(signup.this, "Image Selected Succesfully", Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        Toast.makeText(signup.this, "Image selection Cancelled", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });}
