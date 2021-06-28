@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +26,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,12 +35,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
+
 
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -53,6 +56,7 @@ public class home extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
     String n,e,p,no;
+    String profile;
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference post=firebaseDatabase.getReference().child("Users");
     DatabaseReference post1=firebaseDatabase.getReference().child("profile");
@@ -225,7 +229,7 @@ public class home extends AppCompatActivity {
         View headerview=navigationView.getHeaderView(0);
         TextView email=headerview.findViewById(R.id.email);
         TextView name=headerview.findViewById(R.id.name);
-        ImageView proimage=headerview.findViewById(R.id.proimage);
+        ImageView pro_image=headerview.findViewById(R.id.user_image);
         email.setText(user.getEmail());
         post.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -241,14 +245,15 @@ public class home extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
 
-                String profile = snapshot.child("url").getValue(String.class);
-
+                 profile = snapshot.child("url").getValue(String.class);
+                Glide.with(getApplicationContext()).load(snapshot.child("url").getValue(String.class)).into(pro_image);
 
 
             }@Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "Failed to load Profile ", Toast.LENGTH_SHORT).show();
             }});
+
     }
 
 
