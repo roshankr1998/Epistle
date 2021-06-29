@@ -17,19 +17,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="36dp"
             android:layout_marginRight="40dp"
             android:backgroundTint="@color/red"
             android:text="Upload Pdf"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/file_publication" />
+            app:layout_constraintTop_toBottomOf="@+id/file_sub" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="84dp"
+            android:layout_marginTop="56dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/textView12"
@@ -106,6 +106,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/file_author" />
+        <EditText
+            android:id="@+id/file_sub"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/custinp"
+            android:ems="10"
+            android:hint="Enter Subject Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/file_publication" />
 
         <EditText
             android:id="@+id/file_author"
@@ -145,7 +162,7 @@
             android:text="Upload PDF"
             android:textSize="45dp"
             android:textColor="@color/black"
-android:layout_marginLeft="10dp"
+            android:layout_marginLeft="10dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

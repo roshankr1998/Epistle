@@ -27,6 +27,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -61,6 +62,7 @@ public class SerErFragment extends Fragment {
     ImageButton imageButton2;
     ProgressDialog progressDialog;
     Spinner spinner;
+    TextView txt_head;
     Button select_sub;
     ValueEventListener listener;
     ArrayList<String> stringArrayList;
@@ -76,6 +78,7 @@ public class SerErFragment extends Fragment {
         imageButton2=root.findViewById(R.id.imageButton2);
         EditText search1=root.findViewById(R.id.search1);
         progressDialog =new ProgressDialog(getContext());
+        txt_head=root.findViewById(R.id.serbook);
         spinner=root.findViewById(R.id.spinner);
         select_sub=root.findViewById(R.id.select_sub);
 
@@ -101,6 +104,7 @@ public class SerErFragment extends Fragment {
         //databaseReference= FirebaseDatabase.getInstance().getReference("bookinfo");
         databaseReference= FirebaseDatabase.getInstance();
         recyclerView.setHasFixedSize(true);
+        txt_head.setText("Select Subject");
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         stringArrayList=new ArrayList<String>();
         arrayAdapter=new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item,stringArrayList);
@@ -117,6 +121,7 @@ public class SerErFragment extends Fragment {
                 state=spinner.getSelectedItem().toString();
                 Toast.makeText(getContext(), state, Toast.LENGTH_SHORT).show();
                 select_sub.setVisibility(View.INVISIBLE);
+                txt_head.setText("Search your book");
                 spinner.setVisibility(View.INVISIBLE);
                 recyclerView.setVisibility(View.VISIBLE);
                 search1.setVisibility(View.VISIBLE);

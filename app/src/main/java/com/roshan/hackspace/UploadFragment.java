@@ -49,7 +49,7 @@ import java.util.Objects;
 
 public class UploadFragment extends Fragment {
 TextView select;
-EditText pdfbook,pdfauth,pdfpubl;
+EditText pdfbook,pdfauth,pdfpubl,pdf_subject;
 Button selectfile;
 Button btnupload;
 ImageView returnimage;
@@ -68,7 +68,7 @@ String filepathname;
         pro1=new ProgressDialog(getContext());
         pro1.setTitle("Please Wait...");
         pro1.setCanceledOnTouchOutside(false);
-
+        pdf_subject=root.findViewById(R.id.file_sub);
         select = root.findViewById(R.id.filename);
         pdfbook = root.findViewById(R.id.file_name);
         pdfauth = root.findViewById(R.id.file_author);
@@ -82,6 +82,7 @@ pdfbook.setVisibility(View.INVISIBLE);
 pdfpubl.setVisibility(View.INVISIBLE);
 pdfauth.setVisibility(View.INVISIBLE);
 btnupload.setVisibility(View.INVISIBLE);
+pdf_subject.setVisibility(View.INVISIBLE);
 
         returnimage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +121,12 @@ btnupload.setVisibility(View.INVISIBLE);
                     pdfpubl.setError("Bookname is required");
                     pdfpubl.requestFocus();
                     return;}
+                if(pdf_subject.getText().toString().isEmpty())
+                {
+                  pdf_subject.setError("Subject is required");
+                  pdf_subject.requestFocus();
+                  return;
+                }
                 uploadpdf();
 
             }
@@ -168,21 +175,24 @@ btnupload.setVisibility(View.INVISIBLE);
     private void uploadpdftodb(String uploadedpdfUrl) {
         pro1.setMessage("Uploading Details to our database hang on....");
         Uploadpdf user= new Uploadpdf(pdfbook.getText().toString(),pdfauth.getText().toString(),pdfpubl.getText().toString(),uploadedpdfUrl);
-        databaseReference.child(pdfbook.getText().toString()).setValue(user)
+        databaseReference.child(pdf_subject.getText().toString().toLowerCase().replaceAll(" ","")).child(pdfbook.getText().toString()).setValue(user)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if(task.isSuccessful()){
+                            uploadspinner();
                             if(pro1.isShowing())
                                 pro1.dismiss();
                             pdfbook.setVisibility(View.INVISIBLE);
                             pdfpubl.setVisibility(View.INVISIBLE);
                             pdfauth.setVisibility(View.INVISIBLE);
                             btnupload.setVisibility(View.INVISIBLE);
+                            pdf_subject.setVisibility(View.INVISIBLE);
                             pdfbook.setText(null);
                             pdfauth.setText(null);
                             pdfpubl.setText(null);
                             select.setText(null);
+                            pdf_subject.setText(null);
                             Toast.makeText(getContext(), "Book Upload Successfull", Toast.LENGTH_SHORT).show();
 
                         }else
@@ -194,13 +204,24 @@ btnupload.setVisibility(View.INVISIBLE);
                             pdfpubl.setVisibility(View.INVISIBLE);
                             pdfauth.setVisibility(View.INVISIBLE);
                             btnupload.setVisibility(View.INVISIBLE);
+                            pdf_subject.setVisibility(View.INVISIBLE);
                             pdfbook.setText(null);
+                            pdf_subject.setText(null);
                             pdfauth.setText(null);
                             pdfpubl.setText(null);
                             select.setText(null);
                         }
                     }
                 });
+    }
+
+    private void uploadspinner() {
+        FirebaseDatabase.getInstance().getReference("spinnerdata1").push().setValue(pdf_subject.getText().toString().toLowerCase().replaceAll(" ","")).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<Void> task) {
+                Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -214,14 +235,15 @@ btnupload.setVisibility(View.INVISIBLE);
                             pdfpubl.setVisibility(View.VISIBLE);
                             pdfauth.setVisibility(View.VISIBLE);
                             btnupload.setVisibility(View.VISIBLE);
+                            pdf_subject.setVisibility(View.VISIBLE);
 
                             btnupload.setEnabled(true);
                             select.setText(result.toString());
                             Snackbar.make(getActivity().findViewById(android.R.id.content),
-                                    "File uploaded Successfully", Snackbar.LENGTH_SHORT).show();
+                                    "File Selected Successfully", Snackbar.LENGTH_SHORT).show();
                         }else{
                             Snackbar.make(getActivity().findViewById(android.R.id.content),
-                                    "File upload Cancelled", Snackbar.LENGTH_SHORT).show();
+                                    "File Select Cancelled", Snackbar.LENGTH_SHORT).show();
                         }
                     }
                 });
