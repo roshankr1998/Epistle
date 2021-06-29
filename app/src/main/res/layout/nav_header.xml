@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="350dp"
-    android:background="@drawable/backpro"
+    android:background="@drawable/dashback"
     android:paddingLeft="16dp"
     android:paddingTop="15dp"
     android:paddingRight="16dp"
@@ -14,11 +14,12 @@
         android:layout_marginTop="80dp"
         android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/user_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-
+android:background="@drawable/input_propic1"
+            android:padding="10dp"
             android:layout_marginLeft="1dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/user" />
@@ -46,7 +47,7 @@
             android:layout_marginTop="5dp"
             android:text="emailid"
             android:textColor="@color/white"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:textStyle="bold" />
     </LinearLayout>
 

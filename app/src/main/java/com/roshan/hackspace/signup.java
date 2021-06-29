@@ -49,6 +49,7 @@ public class signup extends AppCompatActivity {
     String filepathname;
     StorageReference storageReference;
     DatabaseReference databaseReference;
+    String mobile,name1,pass,repass,email;
 
 
     @Override
@@ -103,11 +104,11 @@ public class signup extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mobile=username.getText().toString().trim();
-                String pass=password.getText().toString().trim();
-                String repass=repassword.getText().toString().trim();
-                String name1=name.getText().toString().trim();
-                String email=emailid.getText().toString().trim();
+                mobile=username.getText().toString().trim();
+                pass=password.getText().toString().trim();
+                 repass=repassword.getText().toString().trim();
+                name1=name.getText().toString().trim();
+                email=emailid.getText().toString().trim();
 
 
                 if(name1.isEmpty()){
@@ -161,30 +162,14 @@ public class signup extends AppCompatActivity {
                 }
                 progressDialog3 =new ProgressDialog(signup.this);
                 progressDialog3.setCancelable(false);
-                progressDialog3.setMessage("Creating a Account");
+                progressDialog3.setMessage("Creating a Account....");
                 progressDialog3.show();
                     mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 uploadpdf();
-                                User user= new User(name1,mobile,email,pass);
-                                FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull @NotNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(signup.this, "User registration Successfull", Toast.LENGTH_SHORT).show();
-                                        Intent intent=new Intent(signup.this,home.class);
-                                        startActivity(intent);
-                                    }else
-                                    {
-                                        Toast.makeText(signup.this, "User registration Failed", Toast.LENGTH_SHORT).show();
-                                        if(progressDialog3.isShowing())
-                                            progressDialog3.dismiss();
-                                    }
-                                }
-                            });
+
                             }else{
                                 Toast.makeText(signup.this, "User registration Failed", Toast.LENGTH_SHORT).show();
                                 if(progressDialog3.isShowing())
@@ -199,7 +184,31 @@ public class signup extends AppCompatActivity {
 
     }
 
+    private void uploaduser() {
+        progressDialog3.setMessage("Organising things for you...");
+        User user= new User(name1,mobile,email,pass);
+        FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(signup.this, "User registration Successfull", Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(signup.this,home.class);
+                            startActivity(intent);
+                            if(progressDialog3.isShowing())
+                                progressDialog3.dismiss();
+                        }else
+                        {
+                            Toast.makeText(signup.this, "User registration Failed", Toast.LENGTH_SHORT).show();
+                            if(progressDialog3.isShowing())
+                                progressDialog3.dismiss();
+                        }
+                    }
+                });
+    }
+
     private void uploadpdf() {
+        progressDialog3.setMessage("Setting things up for you....");
         long timestamp=System.currentTimeMillis();
         filepathname="uploads/"+timestamp;
         storageReference = FirebaseStorage.getInstance().getReference(filepathname);
@@ -224,6 +233,7 @@ public class signup extends AppCompatActivity {
     }
 
     private void uploadpdftodb(String uploadedpdfUrl) {
+        progressDialog3.setMessage("Upoading profile.....");
         Userprofile user= new Userprofile(uploadedpdfUrl);
         databaseReference=FirebaseDatabase.getInstance().getReference("profile");
         databaseReference.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)
@@ -231,7 +241,7 @@ public class signup extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if(task.isSuccessful()){
-
+                            uploaduser();
                             Toast.makeText(signup.this, "Image Upload Successfull", Toast.LENGTH_SHORT).show();
 
                         }else

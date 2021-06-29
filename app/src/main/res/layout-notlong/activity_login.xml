@@ -19,6 +19,7 @@
         android:drawableLeft="@drawable/email"
         android:drawablePadding="15dp"
         android:ems="10"
+        android:textSize="15sp"
         android:hint="Someone@xyz.com"
         android:maxLines="1"
         android:paddingStart="10dp"
