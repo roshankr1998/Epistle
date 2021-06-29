@@ -177,7 +177,7 @@ public class UploadFragment extends Fragment {
     private void uploadpdftodb(String uploadedpdfUrl) {
         pro1.setMessage("Uploading Details to our database hang on....");
         Uploadpdf user= new Uploadpdf(pdfbook.getText().toString(),pdfauth.getText().toString(),pdfpubl.getText().toString(),uploadedpdfUrl);
-        databaseReference.child(pdfbook.getText().toString()).setValue(user)
+        databaseReference.child(pdf_subject.getText().toString().trim().toLowerCase().replaceAll(" ","")).child(pdfbook.getText().toString()).setValue(user)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
