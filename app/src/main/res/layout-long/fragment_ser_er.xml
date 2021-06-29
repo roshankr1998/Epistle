@@ -1,61 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/serback"
     tools:context=".SerErFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:backgroundTint="@null"
-        android:paddingLeft="15dp"
-        android:background="@drawable/roundbutt"
-        android:src="@drawable/returnwhite" />
 
-    <TextView
+
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/fadeblack"
-        android:layout_marginBottom="24dp"
-        android:paddingBottom="10dp"
-        android:gravity="center"
-        android:text="Search your book"
-        android:textColor="@color/white"
-        android:textSize="40dp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:textStyle="bold"
-        android:id="@+id/search1"
-        android:drawableLeft="@drawable/search1"
-        android:drawableTint="@color/black"
-        android:paddingLeft="15dp"
-        android:hint="Enter book name"
-        android:drawablePadding="15dp"
-        android:textColor="@color/black"
         android:background="@drawable/custinp"
-        android:layout_marginBottom="20dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        android:layout_marginRight="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
-    <!--<ListView
+    <Button
+        android:id="@+id/select_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Search"
+        android:backgroundTint="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:layout_marginTop="10dp">
+        <!-- TODO: Update blank fragment layout -->
+
+
+        <!--<ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/contact_items"
         android:divider="@color/black"
         android:dividerHeight="1dp"
         />-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp" />
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/roundbutt"
+            android:backgroundTint="@null"
+            android:paddingLeft="15dp"
+            android:src="@drawable/returnwhite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/serbook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/fadeblack"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:text="Search your book"
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+            tools:layout_editor_absoluteX="0dp" />
+        <EditText
+            android:id="@+id/search1"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/custinp"
+            android:drawableLeft="@drawable/search1"
+            android:drawablePadding="15dp"
+            android:drawableTint="@color/black"
+            android:hint="Enter book name"
+            android:paddingLeft="15dp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

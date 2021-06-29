@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -59,6 +60,12 @@ public class SerErFragment extends Fragment {
     ArrayList<Hero> list;
     ImageButton imageButton2;
     ProgressDialog progressDialog;
+    Spinner spinner;
+    Button select_sub;
+    ValueEventListener listener;
+    ArrayList<String> stringArrayList;
+    ArrayAdapter<String> arrayAdapter;
+    String state;
     //String myKey;
    // Button btnupdate;
     //String[] festivals = { "Diwali", "Holi", "Christmas", "Eid", "Baisakhi", "Halloween" ,"Lohri"};
@@ -69,9 +76,9 @@ public class SerErFragment extends Fragment {
         imageButton2=root.findViewById(R.id.imageButton2);
         EditText search1=root.findViewById(R.id.search1);
         progressDialog =new ProgressDialog(getContext());
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("processing");
-        progressDialog.show();
+        spinner=root.findViewById(R.id.spinner);
+        select_sub=root.findViewById(R.id.select_sub);
+
         search1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -95,31 +102,29 @@ public class SerErFragment extends Fragment {
         databaseReference= FirebaseDatabase.getInstance();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        list=new ArrayList<>();
-        myRecycleAdapter=new MyRecycleAdapter(getContext(),list);
-        recyclerView.setAdapter(myRecycleAdapter);
-
-        databaseReference.getReference("bookinfo").addListenerForSingleValueEvent(new ValueEventListener() {
+        stringArrayList=new ArrayList<String>();
+        arrayAdapter=new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item,stringArrayList);
+        spinner.setAdapter(arrayAdapter);
+        recyclerView.setVisibility(View.INVISIBLE);
+        search1.setVisibility(View.INVISIBLE);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("processing");
+        progressDialog.show();
+        fetchdata();
+        select_sub.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                list.clear();
-                if(progressDialog.isShowing())
-                    progressDialog.dismiss();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Hero hero = dataSnapshot.getValue(Hero.class);
-                    list.add(hero);
-                }
-                myRecycleAdapter.notifyDataSetChanged();
-                if(progressDialog.isShowing())
-                    progressDialog.dismiss();
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
+            public void onClick(View v) {
+                state=spinner.getSelectedItem().toString();
+                Toast.makeText(getContext(), state, Toast.LENGTH_SHORT).show();
+                select_sub.setVisibility(View.INVISIBLE);
+                spinner.setVisibility(View.INVISIBLE);
+                recyclerView.setVisibility(View.VISIBLE);
+                search1.setVisibility(View.VISIBLE);
+                progressDialog.show();
+                feed_Recycler();
             }
         });
+
             /*@Override
             public void onEvent(@Nullable @org.jetbrains.annotations.Nullable QuerySnapshot value, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException error) {
                 if(progressDialog.isShowing())
@@ -178,6 +183,54 @@ public class SerErFragment extends Fragment {
 
 
         return root;
+    }
+
+    private void feed_Recycler() {
+
+        list=new ArrayList<>();
+        myRecycleAdapter=new MyRecycleAdapter(getContext(),list);
+        recyclerView.setAdapter(myRecycleAdapter);
+
+        databaseReference.getReference("bookinfo").child(state).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                list.clear();
+                if(progressDialog.isShowing())
+                    progressDialog.dismiss();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Hero hero = dataSnapshot.getValue(Hero.class);
+                    list.add(hero);
+                }
+                myRecycleAdapter.notifyDataSetChanged();
+                if(progressDialog.isShowing())
+                    progressDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void fetchdata() {
+        listener= (ValueEventListener) databaseReference.getReference("spinnerdata").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if(progressDialog.isShowing())
+                    progressDialog.dismiss();
+                for(DataSnapshot mydata:snapshot.getChildren()){
+                    stringArrayList.add(mydata.getValue().toString());
+                    arrayAdapter.notifyDataSetChanged();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void filter(String text) {
