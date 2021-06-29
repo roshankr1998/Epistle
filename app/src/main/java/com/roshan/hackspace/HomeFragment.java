@@ -53,210 +53,210 @@ public class HomeFragment extends Fragment {
 
 
 
-@Nullable
+    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View root =inflater.inflate(R.layout.fragment_home,container,false);
         mfire= FirebaseDatabase.getInstance().getReference().child("bookinfo");
         users=new Users();
-    mAuth1 = FirebaseAuth.getInstance();
-    uid=mAuth1.getUid();
-    bookname =root.findViewById(R.id.bookname);
-    author =root.findViewById(R.id.author);
-    publication =root.findViewById(R.id.publication);
-    imageButton=root.findViewById(R.id.imageButton3);
-    imageButton1=root.findViewById(R.id.imageButton2);
-    textView=root.findViewById(R.id.textView4);
-    button2=root.findViewById(R.id.button2);
-    image=root.findViewById(R.id.imageView2);
-    subname=root.findViewById(R.id.subname);
-    donoradress=root.findViewById(R.id.donoradress);
-    donorname=root.findViewById(R.id.donorname);
-    donormob=root.findViewById(R.id.donormob);
-    button6=root.findViewById(R.id.button6);
-    button6.setVisibility(View.INVISIBLE);
-    donormob.setVisibility(View.INVISIBLE);
-    donorname.setVisibility(View.INVISIBLE);
-    donoradress.setVisibility(View.INVISIBLE);
-    progdon=root.findViewById(R.id.progdon);
-    bookname.setVisibility(View.INVISIBLE);
-    author.setVisibility(View.INVISIBLE);
-    publication.setVisibility(View.INVISIBLE);
-    imageButton.setVisibility(View.INVISIBLE);
-    textView.setVisibility(View.INVISIBLE);
-    button2.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            subject=subname.getText().toString().trim().toLowerCase().replaceAll(" ","");
-            if(subject.isEmpty()){
-                subname.setError("Subject is required");
-                subname.requestFocus();
-                return;
+        mAuth1 = FirebaseAuth.getInstance();
+        uid=mAuth1.getUid();
+        bookname =root.findViewById(R.id.bookname);
+        author =root.findViewById(R.id.author);
+        publication =root.findViewById(R.id.publication);
+        imageButton=root.findViewById(R.id.imageButton3);
+        imageButton1=root.findViewById(R.id.imageButton2);
+        textView=root.findViewById(R.id.textView4);
+        button2=root.findViewById(R.id.button2);
+        image=root.findViewById(R.id.imageView2);
+        subname=root.findViewById(R.id.subname);
+        donoradress=root.findViewById(R.id.donoradress);
+        donorname=root.findViewById(R.id.donorname);
+        donormob=root.findViewById(R.id.donormob);
+        button6=root.findViewById(R.id.button6);
+        button6.setVisibility(View.INVISIBLE);
+        donormob.setVisibility(View.INVISIBLE);
+        donorname.setVisibility(View.INVISIBLE);
+        donoradress.setVisibility(View.INVISIBLE);
+        progdon=root.findViewById(R.id.progdon);
+        bookname.setVisibility(View.INVISIBLE);
+        author.setVisibility(View.INVISIBLE);
+        publication.setVisibility(View.INVISIBLE);
+        imageButton.setVisibility(View.INVISIBLE);
+        textView.setVisibility(View.INVISIBLE);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                subject=subname.getText().toString().trim().toLowerCase().replaceAll(" ","");
+                if(subject.isEmpty()){
+                    subname.setError("Subject is required");
+                    subname.requestFocus();
+                    return;
+                }
+                subname.setVisibility(View.INVISIBLE);
+                bookname.setVisibility(View.VISIBLE);
+                author.setVisibility(View.VISIBLE);
+                publication.setVisibility(View.VISIBLE);
+                imageButton.setVisibility(View.VISIBLE);
+                button2.setVisibility(View.INVISIBLE);
+                textView.setVisibility(View.VISIBLE);
+                image.setVisibility(View.INVISIBLE);
             }
-            subname.setVisibility(View.INVISIBLE);
-            bookname.setVisibility(View.VISIBLE);
-            author.setVisibility(View.VISIBLE);
-            publication.setVisibility(View.VISIBLE);
-            imageButton.setVisibility(View.VISIBLE);
-            button2.setVisibility(View.INVISIBLE);
-            textView.setVisibility(View.VISIBLE);
-            image.setVisibility(View.INVISIBLE);
-        }
-    });
+        });
 
 
 
 
-    imageButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
+        imageButton.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View view) {
 
-                    String book= bookname.getText().toString().trim().toLowerCase();
-                    String auth=author.getText().toString().trim().toLowerCase();
-                    String publ=publication.getText().toString().trim().toLowerCase();
+                                               String book= bookname.getText().toString().trim().toLowerCase();
+                                               String auth=author.getText().toString().trim().toLowerCase();
+                                               String publ=publication.getText().toString().trim().toLowerCase();
 
-            if(book.isEmpty()) {
-                bookname.setError("Bookname is required");
-                bookname.requestFocus();
-                return;
+                                               if(book.isEmpty()) {
+                                                   bookname.setError("Bookname is required");
+                                                   bookname.requestFocus();
+                                                   return;
+                                               }
+                                               if(auth.isEmpty()) {
+                                                   author.setError("Author is required");
+                                                   author.requestFocus();
+                                                   return;
+                                               }
+                                               if(publ.isEmpty()) {
+                                                   publication.setError("Publication is required");
+                                                   publication.requestFocus();
+                                                   return;
+                                               }
+
+                                               bookname.setVisibility(View.INVISIBLE);
+                                               author.setVisibility(View.INVISIBLE);
+                                               publication.setVisibility(View.INVISIBLE);
+                                               imageButton.setVisibility(View.INVISIBLE);
+                                               textView.setVisibility(View.INVISIBLE);
+                                               button6.setVisibility(View.VISIBLE);
+                                               donormob.setVisibility(View.VISIBLE);
+                                               donorname.setVisibility(View.VISIBLE);
+                                               donoradress.setVisibility(View.VISIBLE);
+                                               button6.setOnClickListener(new View.OnClickListener() {
+                                                   @Override
+                                                   public void onClick(View view) {
+
+                                                       String dname = donorname.getText().toString().trim().toLowerCase();
+                                                       String daddress = donoradress.getText().toString().trim().toLowerCase();
+                                                       String dmob = donormob.getText().toString().trim().toLowerCase();
+
+                                                       if (dname.isEmpty()) {
+                                                           donorname.setError("Donor name is required");
+                                                           donorname.requestFocus();
+                                                           return;
+                                                       }
+                                                       if (daddress.isEmpty()) {
+                                                           donoradress.setError("Donor adress is required");
+                                                           donoradress.requestFocus();
+                                                           return;
+                                                       }
+                                                       if (dmob.isEmpty()) {
+                                                           donormob.setError("Donor mobile number is required");
+                                                           donormob.requestFocus();
+                                                           return;
+                                                       }
+                                                       progdon.setVisibility(View.VISIBLE);
+                                                       button6.setVisibility(View.INVISIBLE);
+
+                                                       Map<String,String> usermap= new HashMap<>();
+                                                       usermap.put("bookname",book);
+                                                       usermap.put("author",auth);
+                                                       usermap.put("publication",publ);
+                                                       usermap.put("donorname",dname);
+                                                       usermap.put("donoradress",daddress);
+                                                       usermap.put("donormobile",dmob);
+
+
+                                                       fire.child(subject).child(book).setValue(usermap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                           @Override
+                                                           public void onSuccess(Void unused) {
+                                                               Toast.makeText(getActivity(), "book donation successfull", Toast.LENGTH_SHORT).show();
+
+                                                               FirebaseDatabase.getInstance().getReference("spinnerdata").push().setValue(subject).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                   @Override
+                                                                   public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                                                       Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                                                                   }
+                                                               });
+                                                               bookname.setVisibility(View.INVISIBLE);
+                                                               author.setVisibility(View.INVISIBLE);
+                                                               publication.setVisibility(View.INVISIBLE);
+                                                               imageButton.setVisibility(View.INVISIBLE);
+                                                               textView.setVisibility(View.INVISIBLE);
+                                                               button6.setVisibility(View.INVISIBLE);
+                                                               donormob.setVisibility(View.INVISIBLE);
+                                                               donorname.setVisibility(View.INVISIBLE);
+                                                               donoradress.setVisibility(View.INVISIBLE);
+                                                               progdon.setVisibility(View.INVISIBLE);
+                                                               image.setVisibility(View.VISIBLE);
+                                                               button2.setVisibility(View.VISIBLE);
+                                                               subname.setVisibility(View.VISIBLE);
+                                                               bookname.setText(null);
+                                                               author.setText(null);
+                                                               publication.setText(null);
+                                                               donoradress.setText(null);
+                                                               donorname.setText(null);
+                                                               donormob.setText(null);
+                                                               subname.setText(null);
+
+                                                           }
+                                                       }).addOnFailureListener(new OnFailureListener() {
+                                                           @Override
+                                                           public void onFailure(@NonNull @NotNull Exception e) {
+
+                                                               String excep = e.getMessage();
+                                                               Toast.makeText(getActivity(), excep, Toast.LENGTH_SHORT).show();
+                                                               bookname.setVisibility(View.INVISIBLE);
+                                                               author.setVisibility(View.INVISIBLE);
+                                                               publication.setVisibility(View.INVISIBLE);
+                                                               imageButton.setVisibility(View.INVISIBLE);
+                                                               textView.setVisibility(View.INVISIBLE);
+                                                               button6.setVisibility(View.INVISIBLE);
+                                                               donormob.setVisibility(View.INVISIBLE);
+                                                               donorname.setVisibility(View.INVISIBLE);
+                                                               donoradress.setVisibility(View.INVISIBLE);
+                                                               subname.setVisibility(View.VISIBLE);
+                                                               image.setVisibility(View.VISIBLE);
+                                                               button2.setVisibility(View.VISIBLE);
+                                                               bookname.setText(null);
+                                                               author.setText(null);
+                                                               publication.setText(null);
+                                                               donoradress.setText(null);
+                                                               donorname.setText(null);
+                                                               donormob.setText(null);
+                                                               subname.setText(null);
+                                                           }
+                                                       });
+
+
+                                                   } });
+
+
+
+                                           }
+                                       }
+
+
+        );
+
+        imageButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fr= getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fr.beginTransaction();
+                fragmentTransaction.replace(R.id.frame,new DashboardFragment()).commit();
+
+
             }
-            if(auth.isEmpty()) {
-                author.setError("Author is required");
-                author.requestFocus();
-                return;
-            }
-            if(publ.isEmpty()) {
-                publication.setError("Publication is required");
-                publication.requestFocus();
-                return;
-            }
+        });
 
-                    bookname.setVisibility(View.INVISIBLE);
-                    author.setVisibility(View.INVISIBLE);
-                    publication.setVisibility(View.INVISIBLE);
-                    imageButton.setVisibility(View.INVISIBLE);
-                    textView.setVisibility(View.INVISIBLE);
-                    button6.setVisibility(View.VISIBLE);
-                    donormob.setVisibility(View.VISIBLE);
-                    donorname.setVisibility(View.VISIBLE);
-                    donoradress.setVisibility(View.VISIBLE);
-                    button6.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                            String dname = donorname.getText().toString().trim().toLowerCase();
-                            String daddress = donoradress.getText().toString().trim().toLowerCase();
-                            String dmob = donormob.getText().toString().trim().toLowerCase();
-
-                            if (dname.isEmpty()) {
-                                donorname.setError("Donor name is required");
-                                donorname.requestFocus();
-                                return;
-                            }
-                            if (daddress.isEmpty()) {
-                                donoradress.setError("Donor adress is required");
-                                donoradress.requestFocus();
-                                return;
-                            }
-                            if (dmob.isEmpty()) {
-                                donormob.setError("Donor mobile number is required");
-                                donormob.requestFocus();
-                                return;
-                            }
-                            progdon.setVisibility(View.VISIBLE);
-                            button6.setVisibility(View.INVISIBLE);
-
-                            Map<String,String> usermap= new HashMap<>();
-                            usermap.put("bookname",book);
-                            usermap.put("author",auth);
-                            usermap.put("publication",publ);
-                            usermap.put("donorname",dname);
-                            usermap.put("donoradress",daddress);
-                            usermap.put("donormobile",dmob);
-
-
-                            fire.child(subject).child(book).setValue(usermap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Toast.makeText(getActivity(), "book donation successfull", Toast.LENGTH_SHORT).show();
-
-                                    FirebaseDatabase.getInstance().getReference("spinnerdata").push().setValue(subject).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull @NotNull Task<Void> task) {
-                                            Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                    bookname.setVisibility(View.INVISIBLE);
-                                    author.setVisibility(View.INVISIBLE);
-                                    publication.setVisibility(View.INVISIBLE);
-                                    imageButton.setVisibility(View.INVISIBLE);
-                                    textView.setVisibility(View.INVISIBLE);
-                                    button6.setVisibility(View.INVISIBLE);
-                                    donormob.setVisibility(View.INVISIBLE);
-                                    donorname.setVisibility(View.INVISIBLE);
-                                    donoradress.setVisibility(View.INVISIBLE);
-                                    progdon.setVisibility(View.INVISIBLE);
-                                    image.setVisibility(View.VISIBLE);
-                                    button2.setVisibility(View.VISIBLE);
-                                    subname.setVisibility(View.VISIBLE);
-                                    bookname.setText(null);
-                                    author.setText(null);
-                                    publication.setText(null);
-                                    donoradress.setText(null);
-                                    donorname.setText(null);
-                                    donormob.setText(null);
-                                    subname.setText(null);
-
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull @NotNull Exception e) {
-
-                                    String excep = e.getMessage();
-                                    Toast.makeText(getActivity(), excep, Toast.LENGTH_SHORT).show();
-                                    bookname.setVisibility(View.INVISIBLE);
-                                    author.setVisibility(View.INVISIBLE);
-                                    publication.setVisibility(View.INVISIBLE);
-                                    imageButton.setVisibility(View.INVISIBLE);
-                                    textView.setVisibility(View.INVISIBLE);
-                                    button6.setVisibility(View.INVISIBLE);
-                                    donormob.setVisibility(View.INVISIBLE);
-                                    donorname.setVisibility(View.INVISIBLE);
-                                    donoradress.setVisibility(View.INVISIBLE);
-                                    subname.setVisibility(View.VISIBLE);
-                                    image.setVisibility(View.VISIBLE);
-                                    button2.setVisibility(View.VISIBLE);
-                                    bookname.setText(null);
-                                    author.setText(null);
-                                    publication.setText(null);
-                                    donoradress.setText(null);
-                                    donorname.setText(null);
-                                    donormob.setText(null);
-                                    subname.setText(null);
-                                }
-                            });
-
-
-                        } });
-
-
-
-            }
-        }
-
-
-    );
-
-    imageButton1.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            FragmentManager fr= getParentFragmentManager();
-            FragmentTransaction fragmentTransaction = fr.beginTransaction();
-            fragmentTransaction.replace(R.id.frame,new DashboardFragment()).commit();
-
-
-        }
-    });
-
-    return root;
-}}
+        return root;
+    }}

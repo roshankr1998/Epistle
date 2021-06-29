@@ -65,7 +65,7 @@ public class SerErFragment extends Fragment {
     TextView txt_head;
     Button select_sub;
     ValueEventListener listener;
-    ArrayList<String> stringArrayList;
+    ArrayList<String> stringArrayList,newlist;
     ArrayAdapter<String> arrayAdapter;
     String state;
     //String myKey;
@@ -107,7 +107,8 @@ public class SerErFragment extends Fragment {
         txt_head.setText("Select Subject");
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         stringArrayList=new ArrayList<String>();
-        arrayAdapter=new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item,stringArrayList);
+        newlist=new ArrayList<String>();
+        arrayAdapter=new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item,newlist);
         spinner.setAdapter(arrayAdapter);
         recyclerView.setVisibility(View.INVISIBLE);
         search1.setVisibility(View.INVISIBLE);
@@ -226,6 +227,11 @@ public class SerErFragment extends Fragment {
                     progressDialog.dismiss();
                 for(DataSnapshot mydata:snapshot.getChildren()){
                     stringArrayList.add(mydata.getValue().toString());
+                    for(String element:stringArrayList){
+                        if(!newlist.contains(element)){
+                            newlist.add(element);
+                        }
+                    }
                     arrayAdapter.notifyDataSetChanged();
                 }
 

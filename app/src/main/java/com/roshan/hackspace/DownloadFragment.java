@@ -1,33 +1,40 @@
-package com.roshan.hackspace;
 
-import android.app.ProgressDialog;
-import android.os.Bundle;
+        package com.roshan.hackspace;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+        import android.app.ProgressDialog;
+        import android.os.Bundle;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+        import androidx.annotation.NonNull;
+        import androidx.annotation.Nullable;
+        import androidx.fragment.app.Fragment;
+        import androidx.fragment.app.FragmentManager;
+        import androidx.fragment.app.FragmentTransaction;
+        import androidx.recyclerview.widget.LinearLayoutManager;
+        import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+        import android.text.Editable;
+        import android.text.TextWatcher;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.ArrayAdapter;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.ImageButton;
+        import android.widget.ImageView;
+        import android.widget.Spinner;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
-import org.jetbrains.annotations.NotNull;
+        import com.google.firebase.database.DataSnapshot;
+        import com.google.firebase.database.DatabaseError;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
+        import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
+        import org.jetbrains.annotations.NotNull;
+
+        import java.util.ArrayList;
 
 
 public class DownloadFragment extends Fragment {
@@ -38,13 +45,30 @@ public class DownloadFragment extends Fragment {
     ArrayList<Uploadpdf> list1;
     ProgressDialog progressDialog1;
     ImageView returnimage;
+    Spinner spin_sub;
+    Button btn_search;
+    DatabaseReference dbref;
+    ValueEventListener eventListener;
+    ArrayList<String> arrayList,newlist1;
+    ArrayAdapter<String> arrayAdapter;
+    TextView ser_head;
+    EditText sear;
+    String state;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_download, container, false);
         returnimage=root.findViewById(R.id.returnimage);
-        EditText search2=root.findViewById(R.id.search2);
-        search2.addTextChangedListener(new TextWatcher() {
+         sear=root.findViewById(R.id.search2);
+        spin_sub=root.findViewById(R.id.spinnerr);
+        btn_search=root.findViewById(R.id.select_subj);
+        //recyclerView1.setVisibility(View.INVISIBLE);
+       // search2.setVisibility(View.INVISIBLE);
+        ser_head=root.findViewById(R.id.ser_head);
+        ser_head.setText("Select Subject");
+        dbref=FirebaseDatabase.getInstance().getReference("spinnerdata1");
+        sear.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -70,6 +94,13 @@ public class DownloadFragment extends Fragment {
             }
         });
 
+        arrayList=new ArrayList<String>();
+        newlist1=new ArrayList<String>();
+        arrayAdapter=new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,newlist1);
+        spin_sub.setAdapter(arrayAdapter);
+        fetchdata();
+
+
         progressDialog1 =new ProgressDialog(getContext());
         progressDialog1.setCancelable(false);
         progressDialog1.setMessage("processing");
@@ -78,12 +109,35 @@ public class DownloadFragment extends Fragment {
         db= FirebaseDatabase.getInstance();
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
-
+recyclerView1.setVisibility(View.INVISIBLE);
+sear.setVisibility(View.INVISIBLE);
         list1=new ArrayList<>();
         myAdapter=new MyAdapter(getContext(),list1);
         recyclerView1.setAdapter(myAdapter);
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               state=spin_sub.getSelectedItem().toString();
+                Toast.makeText(getContext(), state, Toast.LENGTH_SHORT).show();
+                btn_search.setVisibility(View.INVISIBLE);
+                ser_head.setText("Search your book");
+                spin_sub.setVisibility(View.INVISIBLE);
+                recyclerView1.setVisibility(View.VISIBLE);
+                sear.setVisibility(View.VISIBLE);
+                progressDialog1.show();
+                feed_Recycler();
+            }
+        });
 
-        db.getReference("pdfbook").addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+
+
+        return root;
+    }
+
+    private void feed_Recycler() {
+        db.getReference("pdfbook").child(state).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 list1.clear();
@@ -103,11 +157,32 @@ public class DownloadFragment extends Fragment {
 
             }
         });
-
-
-
-        return root;
     }
+
+    private void fetchdata() {
+        eventListener= dbref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if(progressDialog1.isShowing())
+                    progressDialog1.dismiss();
+                for(DataSnapshot mydata: snapshot.getChildren()){
+                    arrayList.add(mydata.getValue().toString());
+                    for(String element:arrayList){
+                        if(!newlist1.contains(element)){
+                            newlist1.add(element);
+                        }
+                    }
+                    arrayAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
     private void filter1(String text) {
         ArrayList<Uploadpdf> filterlist1=new ArrayList<>();
         for(Uploadpdf uploadpdf:list1){

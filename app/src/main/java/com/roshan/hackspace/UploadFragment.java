@@ -48,16 +48,17 @@ import java.util.Objects;
 
 
 public class UploadFragment extends Fragment {
-TextView select;
-EditText pdfbook,pdfauth,pdfpubl,pdf_subject;
-Button selectfile;
-Button btnupload;
-ImageView returnimage;
-StorageReference storageReference;
-DatabaseReference databaseReference;
-ProgressDialog pro1;
-Uri pdfuri=null;
-String filepathname;
+    TextView select;
+    EditText pdfbook,pdfauth,pdfpubl;
+    EditText pdf_subject;
+    Button selectfile;
+    Button btnupload;
+    ImageView returnimage;
+    StorageReference storageReference;
+    DatabaseReference databaseReference;
+    ProgressDialog pro1;
+    Uri pdfuri=null;
+    String filepathname;
 
 
     @Nullable
@@ -68,6 +69,7 @@ String filepathname;
         pro1=new ProgressDialog(getContext());
         pro1.setTitle("Please Wait...");
         pro1.setCanceledOnTouchOutside(false);
+
         pdf_subject=root.findViewById(R.id.file_sub);
         select = root.findViewById(R.id.filename);
         pdfbook = root.findViewById(R.id.file_name);
@@ -78,11 +80,11 @@ String filepathname;
         returnimage = root.findViewById(R.id.returnview);
         databaseReference = FirebaseDatabase.getInstance().getReference("pdfbook");
 
-pdfbook.setVisibility(View.INVISIBLE);
-pdfpubl.setVisibility(View.INVISIBLE);
-pdfauth.setVisibility(View.INVISIBLE);
-btnupload.setVisibility(View.INVISIBLE);
-pdf_subject.setVisibility(View.INVISIBLE);
+        pdfbook.setVisibility(View.INVISIBLE);
+        pdfpubl.setVisibility(View.INVISIBLE);
+        pdfauth.setVisibility(View.INVISIBLE);
+        btnupload.setVisibility(View.INVISIBLE);
+        pdf_subject.setVisibility(View.INVISIBLE);
 
         returnimage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,9 +125,9 @@ pdf_subject.setVisibility(View.INVISIBLE);
                     return;}
                 if(pdf_subject.getText().toString().isEmpty())
                 {
-                  pdf_subject.setError("Subject is required");
-                  pdf_subject.requestFocus();
-                  return;
+                    pdf_subject.setError("Subject is required");
+                    pdf_subject.requestFocus();
+                    return;
                 }
                 uploadpdf();
 
@@ -175,7 +177,7 @@ pdf_subject.setVisibility(View.INVISIBLE);
     private void uploadpdftodb(String uploadedpdfUrl) {
         pro1.setMessage("Uploading Details to our database hang on....");
         Uploadpdf user= new Uploadpdf(pdfbook.getText().toString(),pdfauth.getText().toString(),pdfpubl.getText().toString(),uploadedpdfUrl);
-        databaseReference.child(pdf_subject.getText().toString().toLowerCase().replaceAll(" ","")).child(pdfbook.getText().toString()).setValue(user)
+        databaseReference.child(pdfbook.getText().toString()).setValue(user)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
@@ -226,26 +228,26 @@ pdf_subject.setVisibility(View.INVISIBLE);
 
 
     ActivityResultLauncher<String> mGetContent= registerForActivityResult(new ActivityResultContracts.GetContent(),
-                new ActivityResultCallback<Uri>() {
-                    @Override
-                    public void onActivityResult(Uri result) {
-                        if(result!=null){
-                            pdfuri=result;
-                            pdfbook.setVisibility(View.VISIBLE);
-                            pdfpubl.setVisibility(View.VISIBLE);
-                            pdfauth.setVisibility(View.VISIBLE);
-                            btnupload.setVisibility(View.VISIBLE);
-                            pdf_subject.setVisibility(View.VISIBLE);
+            new ActivityResultCallback<Uri>() {
+                @Override
+                public void onActivityResult(Uri result) {
+                    if(result!=null){
+                        pdfuri=result;
+                        pdfbook.setVisibility(View.VISIBLE);
+                        pdfpubl.setVisibility(View.VISIBLE);
+                        pdfauth.setVisibility(View.VISIBLE);
+                        btnupload.setVisibility(View.VISIBLE);
+                        pdf_subject.setVisibility(View.VISIBLE);
 
-                            btnupload.setEnabled(true);
-                            select.setText(result.toString());
-                            Snackbar.make(getActivity().findViewById(android.R.id.content),
-                                    "File Selected Successfully", Snackbar.LENGTH_SHORT).show();
-                        }else{
-                            Snackbar.make(getActivity().findViewById(android.R.id.content),
-                                    "File Select Cancelled", Snackbar.LENGTH_SHORT).show();
-                        }
+                        btnupload.setEnabled(true);
+                        select.setText(result.toString());
+                        Snackbar.make(getActivity().findViewById(android.R.id.content),
+                        "File Selected Successfully", Snackbar.LENGTH_SHORT).show();
+                    }else{
+                        Snackbar.make(getActivity().findViewById(android.R.id.content),
+                        "File Select Cancelled", Snackbar.LENGTH_SHORT).show();
                     }
-                });
+                }
+            });
 
 }
