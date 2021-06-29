@@ -48,6 +48,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Book name"
+            android:background="@drawable/custinp"
             android:inputType="textPersonName"
             android:textColorHint="@color/gray"
             android:textSize="18sp"
@@ -70,6 +71,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Author name"
+            android:background="@drawable/custinp"
             android:inputType="textPersonName"
             android:textColorHint="@color/gray"
             android:textSize="18sp"
@@ -91,6 +93,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Publication name"
+            android:background="@drawable/custinp"
             android:inputType="textPersonName"
             android:textColorHint="@color/gray"
             android:textSize="18sp"
@@ -130,8 +133,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.808" />
+            app:layout_constraintTop_toBottomOf="@+id/publication"
+            app:layout_constraintVertical_bias="0.285" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -159,6 +162,28 @@
             app:layout_constraintTop_toBottomOf="@+id/publication"
             app:layout_constraintVertical_bias="0.285" />
 
+
+        <EditText
+            android:id="@+id/subname"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="25dp"
+            android:ems="10"
+            android:gravity="center"
+            android:background="@drawable/custinp"
+            android:hint="enter Subject name"
+            android:inputType="textPersonName"
+            android:textColorHint="@color/gray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/publication"
+            app:layout_constraintVertical_bias="0.318" />
+
         <EditText
             android:id="@+id/donorname"
             android:layout_width="match_parent"
@@ -168,6 +193,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="enter your name"
+            android:background="@drawable/custinp"
             android:inputType="textPersonName"
             android:textColorHint="@color/gray"
             android:textSize="18sp"
@@ -186,6 +212,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="24dp"
             android:layout_marginRight="25dp"
+            android:background="@drawable/custinp"
             android:layout_marginBottom="24dp"
             android:ems="10"
             android:gravity="center"
@@ -211,6 +238,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="enter mob no"
+            android:background="@drawable/custinp"
             android:inputType="number"
             android:maxLength="10"
             android:textColorHint="@color/gray"
@@ -219,8 +247,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/author"
-            app:layout_constraintVertical_bias="0.24" />
+            app:layout_constraintTop_toBottomOf="@+id/author" />
 
         <ProgressBar
             android:id="@+id/progdon"

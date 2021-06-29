@@ -38,7 +38,7 @@ import java.util.Objects;
 public class HomeFragment extends Fragment {
     Button button6,button2;
     ImageButton imageButton;
-    EditText bookname,author,publication,donorname,donoradress,donormob;
+    EditText bookname,author,publication,donorname,donoradress,donormob,subname;
     TextView textView;
     ImageView image,imageButton1;
     DatabaseReference mfire,data1;
@@ -46,7 +46,8 @@ public class HomeFragment extends Fragment {
     Users users;
     FirebaseAuth mAuth1;
     String uid;
-    FirebaseDatabase fire=FirebaseDatabase.getInstance() ;
+    DatabaseReference fire=FirebaseDatabase.getInstance().getReference("bookinfo");
+    String subject;
 
 
 
@@ -66,6 +67,7 @@ public class HomeFragment extends Fragment {
     textView=root.findViewById(R.id.textView4);
     button2=root.findViewById(R.id.button2);
     image=root.findViewById(R.id.imageView2);
+    subname=root.findViewById(R.id.subname);
     donoradress=root.findViewById(R.id.donoradress);
     donorname=root.findViewById(R.id.donorname);
     donormob=root.findViewById(R.id.donormob);
@@ -83,6 +85,13 @@ public class HomeFragment extends Fragment {
     button2.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            subject=subname.getText().toString().trim().toLowerCase().replaceAll(" ","");
+            if(subject.isEmpty()){
+                subname.setError("Subject is required");
+                subname.requestFocus();
+                return;
+            }
+            subname.setVisibility(View.INVISIBLE);
             bookname.setVisibility(View.VISIBLE);
             author.setVisibility(View.VISIBLE);
             publication.setVisibility(View.VISIBLE);
@@ -164,7 +173,7 @@ public class HomeFragment extends Fragment {
                             usermap.put("donormobile",dmob);
 
 
-                            fire.getReference("bookinfo").child(book).setValue(usermap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            fire.child(subject).child(book).setValue(usermap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Toast.makeText(getActivity(), "book donation successfull", Toast.LENGTH_SHORT).show();
@@ -180,12 +189,14 @@ public class HomeFragment extends Fragment {
                                     progdon.setVisibility(View.INVISIBLE);
                                     image.setVisibility(View.VISIBLE);
                                     button2.setVisibility(View.VISIBLE);
+                                    subname.setVisibility(View.VISIBLE);
                                     bookname.setText(null);
                                     author.setText(null);
                                     publication.setText(null);
                                     donoradress.setText(null);
                                     donorname.setText(null);
                                     donormob.setText(null);
+                                    subname.setText(null);
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -203,6 +214,7 @@ public class HomeFragment extends Fragment {
                                     donormob.setVisibility(View.INVISIBLE);
                                     donorname.setVisibility(View.INVISIBLE);
                                     donoradress.setVisibility(View.INVISIBLE);
+                                    subname.setVisibility(View.VISIBLE);
                                     image.setVisibility(View.VISIBLE);
                                     button2.setVisibility(View.VISIBLE);
                                     bookname.setText(null);
@@ -211,7 +223,7 @@ public class HomeFragment extends Fragment {
                                     donoradress.setText(null);
                                     donorname.setText(null);
                                     donormob.setText(null);
-
+                                    subname.setText(null);
                                 }
                             });
 
