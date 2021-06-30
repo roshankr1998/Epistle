@@ -59,7 +59,7 @@ public class signup extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         username= findViewById(R.id.username);
-        username.setEnabled(false);
+
         password=(EditText) findViewById(R.id.password);
         repassword=(EditText) findViewById(R.id.repassword);
         emailid=findViewById(R.id.emailid);
