@@ -92,40 +92,47 @@ public class home extends AppCompatActivity {
 
                 switch(id){
                     case R.id.nav_search:
-                        fragment=new SearchFragment();
+                        fragment=new SerErFragment();
                         loadFragment(fragment);
+                       //toolbar.setTitle("Search and get book");
                         break;
 
                     case R.id.nav_home:
                         fragment=new HomeFragment();
                         loadFragment(fragment);
+                      //  toolbar.setTitle("Donate Book");
                         break;
 
                     case R.id.nav_dash:
                         fragment=new DashboardFragment();
                         loadFragment(fragment);
+                      //  toolbar.setTitle("Dashboard");
                         break;
 
 
                     case R.id.nav_profile:
                         fragment=new ProfileFragment();
                         loadFragment(fragment);
+                      //  toolbar.setTitle("Update Profile");
                         break;
 
 
                     case R.id.nav_aboutus:
                         fragment=new AboutFragment();
                         loadFragment(fragment);
+                       // toolbar.setTitle("About Us");
                         break;
 
                     case R.id.nav_upload:
                         fragment=new UploadFragment();
                         loadFragment(fragment);
+                      // toolbar.setTitle("Upload PDF");
                         break;
 
                     case R.id.nav_download:
                         fragment=new DownloadFragment();
                         loadFragment(fragment);
+                       // toolbar.setTitle("Download PDF");
                         break;
 
 
@@ -143,12 +150,15 @@ public class home extends AppCompatActivity {
                         return true;
 
                 }
+                drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
         });
 
 
     }
+
+
 
     private void exit(NavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener) {
 
@@ -217,12 +227,16 @@ public class home extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+
+        }else{
         counter++;
         if(counter==1)
             Toast.makeText(this, "Press once more to exit", Toast.LENGTH_SHORT).show();
         if(counter==2)
             super.onBackPressed();
-    }
+    }}
 
     public void updateusernav(){
         NavigationView navigationView=(NavigationView)findViewById(R.id.nav_view);

@@ -1,266 +1,392 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dashback"
+    android:background="@color/black"
     tools:context=".DashboardFragment">
-
-    <ScrollView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbarSize="0dp"
-        android:layout_marginBottom="60dp">
+        android:layout_height="0dp"
+        android:src="#191927"
+        app:layout_constraintHeight_percent=".5"
+        android:scaleType="centerCrop"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/logdraw"
+        android:backgroundTint="#ffc0cb"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1">
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:scrollbarSize="0dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/donimage"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:background="@drawable/serlist"
-                    android:clickable="true"
-                    android:contentDescription="roshan"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/home"
-                    android:tooltipText="Donate Book"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="0dp" />
+                    android:layout_height="144dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginBottom="104dp"
-                    android:fontFamily="serif"
-                    android:text="Donate Book"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/donimage"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.053"
-                    app:layout_constraintStart_toStartOf="@+id/donimage"
-                    app:layout_constraintTop_toTopOf="@+id/donimage"
-                    app:layout_constraintVertical_bias="1.0" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/donimage"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:background="@drawable/serlist"
+                        android:backgroundTint="#800000"
+                        android:clickable="true"
+                        android:padding="15dp"
+                        android:contentDescription="roshan"
+                        android:tooltipText="Donate Book"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="30dp" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp">
+                    <TextView
+                        android:layout_width="234dp"
+                        android:layout_height="73dp"
+                        android:layout_alignEnd="@+id/donimage"
+                        android:layout_alignRight="@+id/donimage"
+                        android:layout_alignBottom="@+id/donimage"
+                        android:layout_gravity="bottom"
+                        android:layout_marginEnd="61dp"
+                        android:layout_marginRight="61dp"
+                        android:layout_marginBottom="45dp"
+                        android:fontFamily="@font/dashfont"
+                        android:text="Donate            Book"
+                        android:textColor="@color/white"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/donimage"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.144"
+                        app:layout_constraintStart_toStartOf="@+id/donimage"
+                        app:layout_constraintTop_toTopOf="@+id/donimage" />
 
-                <ImageView
-                    android:id="@+id/seimage"
+                    <ImageView
+                        android:id="@+id/imageView12"
+                        android:layout_width="144dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignTop="@+id/donimage"
+                        android:layout_alignEnd="@+id/donimage"
+                        android:layout_alignRight="@+id/donimage"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="-12dp"
+                        android:layout_marginRight="-12dp"
+                        android:src="@drawable/bookicon" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:background="@drawable/serlist"
-                    android:clickable="true"
-                    android:contentDescription="roshan"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/search"
-                    android:tooltipText="Search Book"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="-16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginBottom="104dp"
-                    android:fontFamily="serif"
-                    android:text="Search Book"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/seimage"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.053"
-                    app:layout_constraintStart_toStartOf="@+id/seimage"
-                    app:layout_constraintTop_toTopOf="@+id/seimage"
-                    app:layout_constraintVertical_bias="1.0" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp">
+                    <ImageView
+                        android:id="@+id/seimage"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:background="@drawable/serlist"
+                        android:backgroundTint="#000080"
+                        android:clickable="true"
+                        android:contentDescription="roshan"
+                        android:scaleType="fitCenter"
+                        android:tooltipText="Search Book"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="-16dp" />
 
-                <ImageView
-                    android:id="@+id/uploadpdf"
+                    <TextView
+                        android:layout_width="234dp"
+                        android:layout_height="73dp"
+                        android:layout_alignEnd="@+id/seimage"
+                        android:layout_alignRight="@+id/seimage"
+                        android:layout_alignBottom="@+id/seimage"
+                        android:layout_gravity="bottom"
+                        android:layout_marginEnd="-34dp"
+                        android:layout_marginRight="-34dp"
+                        android:layout_marginBottom="-17dp"
+                        android:fontFamily="@font/dashfont"
+                        android:text="Search Book"
+                        android:textColor="@color/white"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/seimage"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.144"
+                        app:layout_constraintStart_toStartOf="@+id/seimage"
+                        app:layout_constraintTop_toTopOf="@+id/seimage" />
+
+                    <ImageView
+                        android:id="@+id/imageView13"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_alignTop="@+id/seimage"
+                        android:layout_alignEnd="@+id/seimage"
+                        android:layout_alignRight="@+id/seimage"
+                        android:layout_marginTop="-26dp"
+                        android:layout_marginEnd="194dp"
+                        android:layout_marginRight="194dp"
+                        android:src="@drawable/serchbook" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:background="@drawable/serlist"
-                    android:clickable="true"
-                    android:contentDescription="roshan"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/upload"
-                    android:tooltipText="Upload PDF"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="-16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginBottom="104dp"
-                    android:fontFamily="serif"
-                    android:text="Upload PDF"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/uploadpdf"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.053"
-                    app:layout_constraintStart_toStartOf="@+id/uploadpdf"
-                    app:layout_constraintTop_toTopOf="@+id/uploadpdf"
-                    app:layout_constraintVertical_bias="1.0" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp">
+                    <ImageView
+                        android:id="@+id/uploadpdf"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:background="@drawable/serlist"
+                        android:backgroundTint="#006400"
+                        android:clickable="true"
+                        android:contentDescription="roshan"
+                        android:scaleType="fitCenter"
+                        android:tooltipText="Upload PDF"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="-16dp" />
 
-                <ImageView
-                    android:id="@+id/downpdf"
+                    <TextView
+                        android:layout_width="234dp"
+                        android:layout_height="73dp"
+                        android:layout_alignEnd="@+id/uploadpdf"
+                        android:layout_alignRight="@+id/uploadpdf"
+                        android:layout_alignBottom="@+id/uploadpdf"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="bottom"
+                        android:layout_marginStart="62dp"
+                        android:layout_marginLeft="62dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginEnd="67dp"
+                        android:layout_marginRight="67dp"
+                        android:layout_marginBottom="50dp"
+                        android:fontFamily="@font/dashfont"
+                        android:text="Upload      E-book"
+                        android:textColor="@color/white"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/uploadpdf"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.144"
+                        app:layout_constraintStart_toStartOf="@+id/uploadpdf"
+                        app:layout_constraintTop_toTopOf="@+id/uploadpdf" />
+
+                    <ImageView
+                        android:id="@+id/imageView14"
+                        android:layout_width="144dp"
+                        android:layout_height="144dp"
+                        android:layout_alignTop="@+id/uploadpdf"
+                        android:layout_alignEnd="@+id/uploadpdf"
+                        android:layout_alignRight="@+id/uploadpdf"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="-12dp"
+                        android:layout_marginRight="-12dp"
+                        android:src="@drawable/uppdf" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:background="@drawable/serlist"
-                    android:clickable="true"
-                    android:contentDescription="roshan"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/download"
-                    android:tooltipText="Download PDF"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="-16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginBottom="104dp"
-                    android:fontFamily="serif"
-                    android:text="PDF Download"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/downpdf"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.053"
-                    app:layout_constraintStart_toStartOf="@+id/downpdf"
-                    app:layout_constraintTop_toTopOf="@+id/downpdf"
-                    app:layout_constraintVertical_bias="1.0" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/downpdf"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:background="@drawable/serlist"
+                        android:backgroundTint="#8b4513"
+                        android:clickable="true"
+                        android:contentDescription="roshan"
+                        android:scaleType="fitCenter"
+                        android:tooltipText="Download PDF"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="-16dp" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp">
+                    <TextView
+                        android:layout_width="234dp"
+                        android:layout_height="73dp"
+                        android:layout_alignEnd="@+id/downpdf"
+                        android:layout_alignRight="@+id/downpdf"
+                        android:layout_alignBottom="@+id/downpdf"
+                        android:layout_gravity="bottom"
+                        android:layout_marginEnd="-41dp"
+                        android:layout_marginRight="-41dp"
+                        android:layout_marginBottom="19dp"
+                        android:fontFamily="@font/dashfont"
+                        android:text="Download E-book"
+                        android:textColor="@color/white"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/downpdf"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.144"
+                        app:layout_constraintStart_toStartOf="@+id/downpdf"
+                        app:layout_constraintTop_toTopOf="@+id/downpdf" />
 
-                <ImageView
-                    android:id="@+id/abimage"
+                    <ImageView
+                        android:id="@+id/imageView15"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_alignTop="@+id/downpdf"
+                        android:layout_alignEnd="@+id/downpdf"
+                        android:layout_alignRight="@+id/downpdf"
+                        android:layout_marginTop="-14dp"
+                        android:layout_marginEnd="195dp"
+                        android:layout_marginRight="195dp"
+                        android:src="@drawable/ebook" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:background="@drawable/serlist"
-                    android:clickable="true"
-                    android:contentDescription="roshan"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/info"
-                    android:tooltipText="About"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="0dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginBottom="104dp"
-                    android:fontFamily="serif"
-                    android:text="About"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/abimage"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.053"
-                    app:layout_constraintStart_toStartOf="@+id/abimage"
-                    app:layout_constraintTop_toTopOf="@+id/abimage"
-                    app:layout_constraintVertical_bias="1.0" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp">
+                    <ImageView
+                        android:id="@+id/abimage"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:background="@drawable/serlist"
+                        android:backgroundTint="#556b2f"
+                        android:clickable="true"
+                        android:contentDescription="roshan"
+                        android:scaleType="fitCenter"
+                        android:tooltipText="About"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="0dp" />
 
-                <ImageView
-                    android:id="@+id/proimage"
+                    <TextView
+                        android:layout_width="234dp"
+                        android:layout_height="73dp"
+                        android:layout_alignEnd="@+id/abimage"
+                        android:layout_alignRight="@+id/abimage"
+                        android:layout_alignBottom="@+id/abimage"
+                        android:layout_gravity="bottom"
+                        android:layout_marginEnd="63dp"
+                        android:layout_marginRight="63dp"
+                        android:layout_marginBottom="45dp"
+                        android:fontFamily="@font/dashfont"
+                        android:text="About US"
+                        android:textColor="@color/white"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/abimage"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.144"
+                        app:layout_constraintStart_toStartOf="@+id/abimage"
+                        app:layout_constraintTop_toTopOf="@+id/abimage" />
+
+                    <ImageView
+                        android:id="@+id/imageView16"
+                        android:layout_width="144dp"
+                        android:layout_height="144dp"
+                        android:layout_alignTop="@+id/abimage"
+                        android:layout_alignEnd="@+id/abimage"
+                        android:layout_alignRight="@+id/abimage"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="-12dp"
+                        android:layout_marginRight="-12dp"
+                        android:src="@drawable/deve" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:background="@drawable/serlist"
-                    android:clickable="true"
-                    android:contentDescription="roshan"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/profile"
-                    android:tooltipText="Update Profile"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="0dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginTop="13dp"
-                    android:layout_marginBottom="104dp"
-                    android:fontFamily="serif"
-                    android:text="Profile"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/proimage"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.053"
-                    app:layout_constraintStart_toStartOf="@+id/proimage"
-                    app:layout_constraintTop_toTopOf="@+id/proimage"
-                    app:layout_constraintVertical_bias="1.0" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp">
+
+                    <ImageView
+                        android:id="@+id/proimage"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:background="@drawable/serlist"
+                        android:backgroundTint="#b3c100"
+                        android:clickable="true"
+                        android:contentDescription="roshan"
+                        android:scaleType="fitCenter"
+                        android:tooltipText="Update Profile"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="0dp" />
+
+                    <TextView
+                        android:layout_width="243dp"
+                        android:layout_height="73dp"
+                        android:layout_alignEnd="@+id/proimage"
+                        android:layout_alignRight="@+id/proimage"
+                        android:layout_alignBottom="@+id/proimage"
+                        android:layout_gravity="bottom"
+                        android:layout_marginEnd="-80dp"
+                        android:layout_marginRight="-80dp"
+                        android:layout_marginBottom="29dp"
+                        android:fontFamily="@font/dashfont"
+                        android:text="Update      Profile"
+                        android:textColor="@color/white"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/proimage"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.144"
+                        app:layout_constraintStart_toStartOf="@+id/proimage"
+                        app:layout_constraintTop_toTopOf="@+id/proimage" />
+
+                    <ImageView
+                        android:id="@+id/imageView17"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_alignTop="@+id/proimage"
+                        android:layout_alignEnd="@+id/proimage"
+                        android:layout_alignRight="@+id/proimage"
+                        android:layout_marginTop="-14dp"
+                        android:layout_marginEnd="195dp"
+                        android:layout_marginRight="195dp"
+                        android:src="@drawable/profileup" />
+                </RelativeLayout>
 
 
-        </LinearLayout>
-    </ScrollView>
-</FrameLayout>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
