@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 <item android:state_enabled="true" android:state_focused="true">
     <shape android:shape="rectangle">
-        <solid android:color="@color/white"></solid>
+        <solid android:color="#36517B96"></solid>
         <corners android:radius="10dp"/>
         <stroke android:color="#ec965e" android:width="2dp"/>
     </shape>
@@ -12,7 +12,7 @@
 
     <item android:state_enabled="true" >
         <shape android:shape="rectangle">
-            <solid android:color="@color/white"></solid>
+            <solid android:color="#36517B96"></solid>
             <corners android:radius="10dp"/>
             <stroke android:color="@color/cardview_dark_background" android:width="2dp"/>
         </shape>
