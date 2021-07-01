@@ -21,11 +21,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hackspace">
         <activity android:name=".about"></activity>
-        <activity android:name=".editprofile" />
-        <activity android:name=".downloadebook" />
-        <activity android:name=".uploadebook" />
-        <activity android:name=".serdonbook" />
-        <activity android:name=".donbook" />
+        <activity android:name=".editprofile" android:screenOrientation="portrait" />
+        <activity android:name=".downloadebook" android:screenOrientation="portrait"  />
+        <activity android:name=".uploadebook" android:screenOrientation="portrait" />
+        <activity android:name=".serdonbook" android:screenOrientation="portrait" />
+        <activity android:name=".donbook" android:screenOrientation="portrait" />
         <activity
             android:name=".splash_screen"
             android:screenOrientation="portrait">

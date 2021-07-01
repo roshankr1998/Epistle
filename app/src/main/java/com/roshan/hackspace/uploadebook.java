@@ -85,7 +85,7 @@ public class uploadebook extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mGetContent.launch("application/pdf");
+                mGetContent.launch("application/*");
 
 
             }
