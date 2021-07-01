@@ -2,12 +2,14 @@ package com.roshan.hackspace;
 
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
@@ -50,7 +53,7 @@ public class home extends AppCompatActivity {
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
     NavigationView navigationView;
-    ImageView imageView4;
+    ImageView imageView4,user_image;
     int counter=0;
     Fragment fragment=null;
     FirebaseAuth auth;
@@ -60,6 +63,7 @@ public class home extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference post=firebaseDatabase.getReference().child("Users");
     DatabaseReference post1=firebaseDatabase.getReference().child("profile");
+    TextView userdata;
 
 
     @Override
@@ -73,6 +77,41 @@ public class home extends AppCompatActivity {
         e=getIntent().getStringExtra("email");
         p=getIntent().getStringExtra("pass");
         no=getIntent().getStringExtra("mobile");
+        userdata=findViewById(R.id.userdata);
+        user_image=findViewById(R.id.user_image);
+
+        post.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+
+                String username1 = snapshot.child("fullname").getValue(String.class);
+                userdata.setText(username1);
+            }@Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), "Failed to load Profile ", Toast.LENGTH_SHORT).show();
+            }});
+
+        post1.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+
+                profile = snapshot.child("url").getValue(String.class);
+                Glide.with(getApplicationContext()).load(snapshot.child("url").getValue(String.class)).into(user_image);
+
+
+            }@Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), "Failed to load Profile ", Toast.LENGTH_SHORT).show();
+            }});
+        user_image.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),editprofile.class);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                startActivity(intent,b);
+            }
+        });
 
         auth=FirebaseAuth.getInstance();
         user= auth.getCurrentUser();
@@ -252,6 +291,7 @@ public class home extends AppCompatActivity {
         NavigationView navigationView=(NavigationView)findViewById(R.id.nav_view);
         View headerview=navigationView.getHeaderView(0);
         TextView email=headerview.findViewById(R.id.email);
+        TextView userdata=headerview.findViewById(R.id.userdata);
         TextView name=headerview.findViewById(R.id.name);
         ImageView pro_image=headerview.findViewById(R.id.user_image);
         email.setText(user.getEmail());

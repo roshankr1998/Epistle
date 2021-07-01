@@ -61,8 +61,8 @@ public class DashboardFragment extends Fragment  {
         dashanim4= AnimationUtils.loadAnimation(getContext(),R.anim.dash_anim5);
         dashanim5= AnimationUtils.loadAnimation(getContext(),R.anim.dash_anim6);
         imageView.setAnimation(dashanim);
-        imageView1.setAnimation(dashanim4);
-        imageView2.setAnimation(dashanim5);
+        imageView1.setAnimation(dashanim5);
+        imageView2.setAnimation(dashanim4);
         imageView3.setAnimation(dashanim1);
         imageView4.setAnimation(dashanim2);
         imageView5.setAnimation(dashanim3);
@@ -70,14 +70,14 @@ public class DashboardFragment extends Fragment  {
         im2.setAnimation(dashanim1);
         im3.setAnimation(dashanim2);
         im4.setAnimation(dashanim3);
-        im5.setAnimation(dashanim4);
-        im6.setAnimation(dashanim5);
+        im5.setAnimation(dashanim5);
+        im6.setAnimation(dashanim4);
         tx1.setAnimation(dashanim);
         tx2.setAnimation(dashanim1);
         tx3.setAnimation(dashanim2);
         tx4.setAnimation(dashanim3);
-        tx5.setAnimation(dashanim4);
-        tx6.setAnimation(dashanim5);
+        tx5.setAnimation(dashanim5);
+        tx6.setAnimation(dashanim4);
         imageView.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override

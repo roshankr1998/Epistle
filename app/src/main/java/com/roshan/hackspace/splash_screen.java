@@ -40,8 +40,7 @@ public class splash_screen extends AppCompatActivity {
         @Override
         public void run() {
             Intent intent=new Intent(splash_screen.this,MainActivity.class);
-            Bundle b= ActivityOptions.makeSceneTransitionAnimation(splash_screen.this).toBundle();
-            startActivity(intent,b);
+            startActivity(intent);
             finish();
 
         }

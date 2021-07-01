@@ -24,8 +24,8 @@ public class about extends AppCompatActivity {
         setContentView(R.layout.activity_about);
         textView6=findViewById(R.id.textView6);
         textView6.setMovementMethod(LinkMovementMethod.getInstance());
-        textView8=findViewById(R.id.textView8);
-        textView8.setMovementMethod(LinkMovementMethod.getInstance());
+       // textView8=findViewById(R.id.textView8);
+       // textView8.setMovementMethod(LinkMovementMethod.getInstance());
         textView9=findViewById(R.id.textView9);
         textView9.setMovementMethod(LinkMovementMethod.getInstance());
         textView10=findViewById(R.id.textView10);
