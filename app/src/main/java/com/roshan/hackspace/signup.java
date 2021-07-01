@@ -4,12 +4,16 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -94,10 +98,12 @@ public class signup extends AppCompatActivity {
         username.setText(String.format("%s", getIntent().getStringExtra("mobile")));
 
         imageView.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(signup.this,MainActivity.class);
-                startActivity(intent);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(signup.this).toBundle();
+                startActivity(intent,b);
             }
         });
 
@@ -189,12 +195,14 @@ public class signup extends AppCompatActivity {
         User user= new User(name1,mobile,email,pass);
         FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(signup.this, "User registration Successfull", Toast.LENGTH_SHORT).show();
                             Intent intent=new Intent(signup.this,home.class);
-                            startActivity(intent);
+                            Bundle b= ActivityOptions.makeSceneTransitionAnimation(signup.this).toBundle();
+                            startActivity(intent,b);
                             if(progressDialog3.isShowing())
                                 progressDialog3.dismiss();
                         }else

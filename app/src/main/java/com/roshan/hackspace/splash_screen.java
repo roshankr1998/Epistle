@@ -1,8 +1,12 @@
 package com.roshan.hackspace;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -32,10 +36,12 @@ public class splash_screen extends AppCompatActivity {
     textView11.setAnimation(topanim);
 
     new Handler().postDelayed(new Runnable() {
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void run() {
             Intent intent=new Intent(splash_screen.this,MainActivity.class);
-            startActivity(intent);
+            Bundle b= ActivityOptions.makeSceneTransitionAnimation(splash_screen.this).toBundle();
+            startActivity(intent,b);
             finish();
 
         }

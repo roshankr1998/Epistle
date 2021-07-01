@@ -1,11 +1,15 @@
 package com.roshan.hackspace;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompatSideChannelService;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,10 +34,12 @@ public class otp extends AppCompatActivity {
         ImageView imageView=findViewById(R.id.imageView);
 
         imageView.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(otp.this,MainActivity.class);
-                startActivity(intent);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(otp.this).toBundle();
+                startActivity(intent,b);
             }
         });
 
@@ -81,6 +87,7 @@ public class otp extends AppCompatActivity {
 
                                 }
 
+                                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                                 @Override
                                 public void onCodeSent(@NonNull String Verid, @NonNull  PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                     if(progressDialog1.isShowing())
@@ -88,7 +95,8 @@ public class otp extends AppCompatActivity {
                                     Intent intent= new Intent(getApplicationContext(),otpver.class);
                                     intent.putExtra("mobile",password1.getText().toString());
                                     intent.putExtra("Verid",Verid);
-                                    startActivity(intent);
+                                    Bundle b= ActivityOptions.makeSceneTransitionAnimation(otp.this).toBundle();
+                                    startActivity(intent,b);
                                 }
                             }
                     );

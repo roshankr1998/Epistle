@@ -4,13 +4,17 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -71,13 +75,15 @@ public class uploadebook extends AppCompatActivity {
         pdf_subject.setVisibility(View.INVISIBLE);
 
         returnimage.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                 /*FragmentManager fr = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
                 fragmentTransaction.replace(R.id.frame, new DashboardFragment()).commit();*/
                 Intent intent= new Intent(uploadebook.this,home.class);
-                startActivity(intent);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(uploadebook.this).toBundle();
+                startActivity(intent,b);
             }
         });
 

@@ -1,9 +1,13 @@
 package com.roshan.hackspace;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -36,10 +40,12 @@ public class forgot extends AppCompatActivity {
         auth=FirebaseAuth.getInstance();
         progbar2=findViewById(R.id.progbar2);
         imageView.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(forgot.this,login.class);
-                startActivity(intent);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(forgot.this).toBundle();
+                startActivity(intent,b);
             }
         });
         respass.setOnClickListener(new View.OnClickListener() {

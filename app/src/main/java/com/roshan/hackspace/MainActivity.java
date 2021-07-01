@@ -1,9 +1,12 @@
 package com.roshan.hackspace;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -30,19 +33,23 @@ public class MainActivity extends AppCompatActivity {
 
 
         loginbutton.setOnClickListener(new View.OnClickListener() {
+                                           @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                                            @Override
                                            public void onClick(View v) {
 
                                                Intent intent= new Intent(MainActivity.this,login.class);
-                                               startActivity(intent);
+                                              Bundle b= ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle();
+                                               startActivity(intent,b);
                                            }
                                        }
         );
         loginbutton1.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(MainActivity.this,otp.class);
-                startActivity(intent);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle();
+                startActivity(intent,b);
             }
         });
     }

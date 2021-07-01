@@ -1,10 +1,13 @@
 package com.roshan.hackspace;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -50,25 +53,32 @@ public class login extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
 
         imageView.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(login.this,MainActivity.class);
-                startActivity(intent);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(login.this).toBundle();
+                startActivity(intent,b);
+
             }
         });
 
         newuser.setOnClickListener(new View.OnClickListener() {
             @Override
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             public void onClick(View v) {
                 Intent intent = new Intent(login.this,otp.class);
-                startActivity(intent);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(login.this).toBundle();
+                startActivity(intent,b);
             }
         });
         forgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             public void onClick(View v) {
                 Intent intent = new Intent(login.this,forgot.class);
-                startActivity(intent);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(login.this).toBundle();
+                startActivity(intent,b);
 
             }
         });
@@ -108,12 +118,14 @@ public class login extends AppCompatActivity {
                 progressDialog2.show();
                 mAuth.signInWithEmailAndPassword(user,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             if(progressDialog2.isShowing())
                                 progressDialog2.dismiss();
                             Intent intent=new Intent(login.this,home.class);
-                            startActivity(intent);
+                            Bundle b= ActivityOptions.makeSceneTransitionAnimation(login.this).toBundle();
+                            startActivity(intent,b);
                         }else{
                             if(progressDialog2.isShowing())
                                 progressDialog2.dismiss();
@@ -133,6 +145,7 @@ public class login extends AppCompatActivity {
         );
 
         }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBackPressed() {
         counter++;
@@ -140,7 +153,8 @@ public class login extends AppCompatActivity {
             Toast.makeText(this, "Press once more to exit", Toast.LENGTH_SHORT).show();
         if(counter==2) {
             Intent intent = new Intent(login.this, MainActivity.class);
-            startActivity(intent);
+            Bundle b= ActivityOptions.makeSceneTransitionAnimation(login.this).toBundle();
+            startActivity(intent,b);
         }
 
 

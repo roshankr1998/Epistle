@@ -3,6 +3,7 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
+<item name="android:windowActivityTransitions">true</item>
     </style>
     <style name="AppTheme.popUpOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
@@ -26,6 +27,7 @@
         <item name="android:listPreferredItemPaddingRight">0dp</item>
         <item name="listPreferredItemPaddingRight">0dp</item>
     </style>
+
 
 
 

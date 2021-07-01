@@ -49,6 +49,7 @@
                 android:layout_marginBottom="15dp">
 
                 <RelativeLayout
+                    android:id="@+id/rl1"
                     android:layout_width="match_parent"
                     android:layout_height="144dp"
                     android:layout_marginLeft="15dp"
@@ -71,6 +72,7 @@
                         tools:layout_editor_absoluteX="30dp" />
 
                     <TextView
+                        android:id="@+id/tx1"
                         android:layout_width="234dp"
                         android:layout_height="73dp"
                         android:layout_alignEnd="@+id/donimage"
@@ -92,7 +94,7 @@
                         app:layout_constraintTop_toTopOf="@+id/donimage" />
 
                     <ImageView
-                        android:id="@+id/imageView12"
+                        android:id="@+id/im1"
                         android:layout_width="144dp"
                         android:layout_height="match_parent"
                         android:layout_alignTop="@+id/donimage"
@@ -105,6 +107,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rl2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -126,6 +129,7 @@
                         tools:layout_editor_absoluteX="-16dp" />
 
                     <TextView
+                        android:id="@+id/tx2"
                         android:layout_width="234dp"
                         android:layout_height="73dp"
                         android:layout_alignEnd="@+id/seimage"
@@ -147,7 +151,7 @@
                         app:layout_constraintTop_toTopOf="@+id/seimage" />
 
                     <ImageView
-                        android:id="@+id/imageView13"
+                        android:id="@+id/im2"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_alignTop="@+id/seimage"
@@ -160,6 +164,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rl3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -181,6 +186,7 @@
                         tools:layout_editor_absoluteX="-16dp" />
 
                     <TextView
+                        android:id="@+id/tx3"
                         android:layout_width="234dp"
                         android:layout_height="73dp"
                         android:layout_alignEnd="@+id/uploadpdf"
@@ -208,7 +214,7 @@
                         app:layout_constraintTop_toTopOf="@+id/uploadpdf" />
 
                     <ImageView
-                        android:id="@+id/imageView14"
+                        android:id="@+id/im3"
                         android:layout_width="176dp"
                         android:layout_height="164dp"
                         android:layout_alignTop="@+id/uploadpdf"
@@ -223,6 +229,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rl4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -244,6 +251,7 @@
                         tools:layout_editor_absoluteX="-16dp" />
 
                     <TextView
+                        android:id="@+id/tx4"
                         android:layout_width="234dp"
                         android:layout_height="73dp"
                         android:layout_alignEnd="@+id/downpdf"
@@ -265,7 +273,7 @@
                         app:layout_constraintTop_toTopOf="@+id/downpdf" />
 
                     <ImageView
-                        android:id="@+id/imageView15"
+                        android:id="@+id/im4"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_alignTop="@+id/downpdf"
@@ -279,6 +287,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rl5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -300,6 +309,7 @@
                         tools:layout_editor_absoluteX="0dp" />
 
                     <TextView
+                        android:id="@+id/tx5"
                         android:layout_width="234dp"
                         android:layout_height="73dp"
                         android:layout_alignEnd="@+id/abimage"
@@ -321,7 +331,7 @@
                         app:layout_constraintTop_toTopOf="@+id/abimage" />
 
                     <ImageView
-                        android:id="@+id/imageView16"
+                        android:id="@+id/im5"
                         android:layout_width="144dp"
                         android:layout_height="144dp"
                         android:layout_alignTop="@+id/abimage"
@@ -334,6 +344,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rl6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -355,6 +366,7 @@
                         tools:layout_editor_absoluteX="0dp" />
 
                     <TextView
+                        android:id="@+id/tx6"
                         android:layout_width="243dp"
                         android:layout_height="73dp"
                         android:layout_alignEnd="@+id/proimage"
@@ -376,7 +388,7 @@
                         app:layout_constraintTop_toTopOf="@+id/proimage" />
 
                     <ImageView
-                        android:id="@+id/imageView17"
+                        android:id="@+id/im6"
                         android:layout_width="180dp"
                         android:layout_height="180dp"
                         android:layout_alignTop="@+id/proimage"

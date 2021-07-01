@@ -1,10 +1,13 @@
 package com.roshan.hackspace;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
@@ -29,13 +32,15 @@ public class about extends AppCompatActivity {
         textView10.setMovementMethod(LinkMovementMethod.getInstance());
         imageButton2=findViewById(R.id.imageButton2);
         imageButton2.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                 /*FragmentManager fr= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
                 fragmentTransaction.replace(R.id.frame,new DashboardFragment()).commit();*/
                 Intent intent= new Intent(about.this,home.class);
-                startActivity(intent);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(about.this).toBundle();
+                startActivity(intent,b);
             }
         });
 

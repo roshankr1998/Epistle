@@ -1,9 +1,13 @@
 package com.roshan.hackspace;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -108,6 +112,7 @@ public class otpver extends AppCompatActivity {
                             code
                     );
                     FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progbar1.setVisibility(View.VISIBLE);
@@ -116,7 +121,8 @@ public class otpver extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), signup.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent.putExtra("mobile", textMob.getText().toString());
-                                startActivity(intent);
+                                Bundle b= ActivityOptions.makeSceneTransitionAnimation(otpver.this).toBundle();
+                                startActivity(intent,b);
                             } else {
                                 Toast.makeText(otpver.this, "the code entered is invalid", Toast.LENGTH_SHORT).show();
                                 progbar1.setVisibility(View.INVISIBLE);

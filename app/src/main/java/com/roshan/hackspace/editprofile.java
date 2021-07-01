@@ -1,12 +1,16 @@
 package com.roshan.hackspace;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -144,6 +148,7 @@ public class editprofile extends AppCompatActivity {
                 User user= new User(name.getText().toString(),number.getText().toString(),emailid.getText().toString(),password.getText().toString());
                 FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                             @Override
                             public void onComplete(@NonNull @NotNull Task<Void> task) {
                                 if(task.isSuccessful()){
@@ -151,14 +156,16 @@ public class editprofile extends AppCompatActivity {
                                     progress.setVisibility(View.GONE);
                                     signup1.setVisibility(View.VISIBLE);
                                     Intent intent=new Intent(editprofile.this,home.class);
-                                    startActivity(intent);
+                                    Bundle b= ActivityOptions.makeSceneTransitionAnimation(editprofile.this).toBundle();
+                                    startActivity(intent,b);
                                 }else
                                 {
                                     Toast.makeText(editprofile.this, "User Updation Failed", Toast.LENGTH_SHORT).show();
                                     progress.setVisibility(View.GONE);
                                     signup1.setVisibility(View.VISIBLE);
                                     Intent intent=new Intent(editprofile.this,home.class);
-                                    startActivity(intent);
+                                    Bundle b= ActivityOptions.makeSceneTransitionAnimation(editprofile.this).toBundle();
+                                    startActivity(intent,b);
                                 }}});
 
 
