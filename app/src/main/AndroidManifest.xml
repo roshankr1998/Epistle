@@ -20,7 +20,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hackspace">
-        <activity android:name=".uploadebook"></activity>
+        <activity android:name=".about"></activity>
+        <activity android:name=".editprofile" />
+        <activity android:name=".downloadebook" />
+        <activity android:name=".uploadebook" />
         <activity android:name=".serdonbook" />
         <activity android:name=".donbook" />
         <activity

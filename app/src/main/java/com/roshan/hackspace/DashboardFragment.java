@@ -51,7 +51,7 @@ public class DashboardFragment extends Fragment  {
                 /*FragmentManager fr= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
                 fragmentTransaction.replace(R.id.frame,new AboutFragment()).commit();*/
-                Intent intent= new Intent(getContext(),forgot.class);
+                Intent intent= new Intent(getContext(),about.class);
                 startActivity(intent);
 
 
@@ -61,10 +61,11 @@ public class DashboardFragment extends Fragment  {
         imageView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fr= getParentFragmentManager();
+                /*FragmentManager fr= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
                 fragmentTransaction.replace(R.id.frame,new ProfileFragment()).commit();
-
+*/Intent intent= new Intent(getContext(),editprofile.class);
+                startActivity(intent);
 
             }
         })  ;
@@ -84,9 +85,11 @@ public class DashboardFragment extends Fragment  {
         imageView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fr= getParentFragmentManager();
+                /*FragmentManager fr= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,new UploadFragment()).commit();
+                fragmentTransaction.replace(R.id.frame,new UploadFragment()).commit();*/
+                Intent intent=new Intent(getContext(),uploadebook.class);
+                startActivity(intent);
 
 
             }
@@ -94,9 +97,11 @@ public class DashboardFragment extends Fragment  {
         imageView5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fr= getParentFragmentManager();
+                /*FragmentManager fr= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,new DownloadFragment()).commit();
+                fragmentTransaction.replace(R.id.frame,new DownloadFragment()).commit();*/
+                Intent intent= new Intent(getContext(),downloadebook.class);
+                startActivity(intent);
 
 
             }

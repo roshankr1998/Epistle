@@ -113,28 +113,36 @@ public class home extends AppCompatActivity {
 
 
                     case R.id.nav_profile:
-                        fragment=new ProfileFragment();
+                        /*fragment=new ProfileFragment();
                         loadFragment(fragment);
-                      //  toolbar.setTitle("Update Profile");
+                      //  toolbar.setTitle("Update Profile");*/
+                        Intent intent6= new Intent(getApplicationContext(),editprofile.class);
+                        startActivity(intent6);
                         break;
 
 
                     case R.id.nav_aboutus:
-                        fragment=new AboutFragment();
+                       /* fragment=new AboutFragment();
                         loadFragment(fragment);
-                       // toolbar.setTitle("About Us");
+                       // toolbar.setTitle("About Us");*/
+                        Intent intent5= new Intent(getApplicationContext(),about.class);
+                        startActivity(intent5);
                         break;
 
                     case R.id.nav_upload:
-                        fragment=new UploadFragment();
+                        /*fragment=new UploadFragment();
                         loadFragment(fragment);
-                      // toolbar.setTitle("Upload PDF");
+                      // toolbar.setTitle("Upload PDF");*/
+                        Intent intent3= new Intent(getApplicationContext(),uploadebook.class);
+                        startActivity(intent3);
                         break;
 
                     case R.id.nav_download:
-                        fragment=new DownloadFragment();
+                        /*fragment=new DownloadFragment();
                         loadFragment(fragment);
-                       // toolbar.setTitle("Download PDF");
+                       // toolbar.setTitle("Download PDF");*/
+                        Intent intent4= new Intent(getApplicationContext(),downloadebook.class);
+                        startActivity(intent4);
                         break;
 
 
