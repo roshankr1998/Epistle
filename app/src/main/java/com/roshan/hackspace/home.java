@@ -92,14 +92,16 @@ public class home extends AppCompatActivity {
 
                 switch(id){
                     case R.id.nav_search:
-                        fragment=new SerErFragment();
+                        /*fragment=new SerErFragment();
                         loadFragment(fragment);
-                       //toolbar.setTitle("Search and get book");
+                       //toolbar.setTitle("Search and get book");*/
+                        Intent intent1=new Intent(getApplicationContext(),serdonbook.class);
+                        startActivity(intent1);
                         break;
 
                     case R.id.nav_home:
-                        fragment=new HomeFragment();
-                        loadFragment(fragment);
+                        Intent intent=new Intent(getApplicationContext(),donbook.class);
+                        startActivity(intent);
                       //  toolbar.setTitle("Donate Book");
                         break;
 

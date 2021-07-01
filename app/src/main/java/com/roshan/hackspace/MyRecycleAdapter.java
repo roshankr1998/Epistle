@@ -31,10 +31,12 @@ public class MyRecycleAdapter extends RecyclerView.Adapter<MyRecycleAdapter.MyVi
 
     Context context;
     ArrayList<Hero> list;
+    String state1;
 
-    public MyRecycleAdapter(Context context, ArrayList<Hero> list) {
+    public MyRecycleAdapter(Context context, ArrayList<Hero> list,String state1) {
         this.context = context;
         this.list = list;
+        this.state1=state1;
     }
 
     @NonNull
@@ -76,7 +78,7 @@ public class MyRecycleAdapter extends RecyclerView.Adapter<MyRecycleAdapter.MyVi
                         //FirebaseDatabase.getInstance().getReference("bookinfo").child.removeValue();
 
 
-                        FirebaseDatabase.getInstance().getReference("bookinfo").child(list.get(position).getBookname()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        FirebaseDatabase.getInstance().getReference("bookinfo").child(state1).child(list.get(position).getBookname()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull @NotNull Task<Void> task) {
                                 if(task.isSuccessful()){

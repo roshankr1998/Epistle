@@ -5,7 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/serback"
-    tools:context=".SerErFragment">
+    tools:context=".serdonbook">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/dinateimg"
+            app:layout_constraintHeight_percent=".19"
+            android:scaleType="centerCrop"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/logdraw"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:elevation="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".88"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1">
 
 
 
@@ -30,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Search"
-        android:backgroundTint="@color/red"
+        android:background="@drawable/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
@@ -52,28 +81,17 @@
         android:divider="@color/black"
         android:dividerHeight="1dp"
         />-->
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/roundbutt"
-            android:backgroundTint="@null"
-            android:paddingLeft="15dp"
-            android:src="@drawable/returnwhite"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/serbook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/fadeblack"
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:paddingBottom="10dp"
             android:text="Search your book"
-            android:textColor="@color/white"
-            android:textSize="40dp"
+            android:textColor="@color/black"
+            android:textSize="25dp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/imageButton2"
             tools:layout_editor_absoluteX="0dp" />
@@ -101,6 +119,18 @@
             android:padding="8dp" />
 
     </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/logbtn"
+            android:paddingLeft="15dp"
+            android:src="@drawable/return1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout></androidx.constraintlayout.widget.ConstraintLayout>

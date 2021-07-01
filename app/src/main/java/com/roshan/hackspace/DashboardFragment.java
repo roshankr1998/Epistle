@@ -1,5 +1,6 @@
 package com.roshan.hackspace;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -35,10 +36,11 @@ public class DashboardFragment extends Fragment  {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fr= getParentFragmentManager();
+                /*FragmentManager fr= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,new HomeFragment()).commit();
-
+                fragmentTransaction.replace(R.id.frame,new HomeFragment()).commit();*/
+                Intent intent= new Intent(getContext(),donbook.class);
+                startActivity(intent);
 
             }
         })  ;
@@ -46,9 +48,11 @@ public class DashboardFragment extends Fragment  {
         imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fr= getParentFragmentManager();
+                /*FragmentManager fr= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,new AboutFragment()).commit();
+                fragmentTransaction.replace(R.id.frame,new AboutFragment()).commit();*/
+                Intent intent= new Intent(getContext(),forgot.class);
+                startActivity(intent);
 
 
             }
@@ -68,9 +72,11 @@ public class DashboardFragment extends Fragment  {
         imageView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fr= getParentFragmentManager();
+                /*FragmentManager fr= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,new SerErFragment()).commit();
+                fragmentTransaction.replace(R.id.frame,new SerErFragment()).commit();*/
+                Intent intent=new Intent(getContext(),serdonbook.class);
+                startActivity(intent);
 
 
             }

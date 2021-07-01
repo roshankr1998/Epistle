@@ -20,13 +20,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hackspace">
-        <activity android:name=".splash_screen"
+        <activity android:name=".uploadebook"></activity>
+        <activity android:name=".serdonbook" />
+        <activity android:name=".donbook" />
+        <activity
+            android:name=".splash_screen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+            </intent-filter>
+        </activity>
         <activity android:name=".forgot" />
         <activity
             android:name=".otpver"
@@ -45,9 +50,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

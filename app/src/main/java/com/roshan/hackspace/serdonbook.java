@@ -1,57 +1,36 @@
 package com.roshan.hackspace;
 
-
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-
-
-
-public class SerErFragment extends Fragment {
-
+public class serdonbook extends AppCompatActivity {
     //ListView listView;
     RecyclerView recyclerView;
     //DatabaseReference databaseReference;
@@ -69,18 +48,18 @@ public class SerErFragment extends Fragment {
     ArrayAdapter<String> arrayAdapter;
     String state;
     //String myKey;
-   // Button btnupdate;
-    //String[] festivals = { "Diwali", "Holi", "Christmas", "Eid", "Baisakhi", "Halloween" ,"Lohri"};
-    @Nullable
+    // Button btnupdate;
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_ser_er, container, false);
-        imageButton2=root.findViewById(R.id.imageButton2);
-        EditText search1=root.findViewById(R.id.search1);
-        progressDialog =new ProgressDialog(getContext());
-        txt_head=root.findViewById(R.id.serbook);
-        spinner=root.findViewById(R.id.spinner);
-        select_sub=root.findViewById(R.id.select_sub);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_serdonbook);
+        imageButton2=findViewById(R.id.imageButton2);
+        EditText search1=findViewById(R.id.search1);
+        progressDialog =new ProgressDialog(serdonbook.this);
+        txt_head=findViewById(R.id.serbook);
+        spinner=findViewById(R.id.spinner);
+        select_sub=findViewById(R.id.select_sub);
 
         search1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -100,15 +79,15 @@ public class SerErFragment extends Fragment {
             }
         });
 
-        recyclerView=root.findViewById(R.id.listview);
+        recyclerView=findViewById(R.id.listview);
         //databaseReference= FirebaseDatabase.getInstance().getReference("bookinfo");
         databaseReference= FirebaseDatabase.getInstance();
         recyclerView.setHasFixedSize(true);
         txt_head.setText("Select Subject");
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(serdonbook.this));
         stringArrayList=new ArrayList<String>();
         newlist=new ArrayList<String>();
-        arrayAdapter=new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item,newlist);
+        arrayAdapter=new ArrayAdapter<>(serdonbook.this,R.layout.support_simple_spinner_dropdown_item,newlist);
         spinner.setAdapter(arrayAdapter);
         recyclerView.setVisibility(View.INVISIBLE);
         search1.setVisibility(View.INVISIBLE);
@@ -120,7 +99,7 @@ public class SerErFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 state=spinner.getSelectedItem().toString();
-                Toast.makeText(getContext(), state, Toast.LENGTH_SHORT).show();
+                Toast.makeText(serdonbook.this, state, Toast.LENGTH_SHORT).show();
                 select_sub.setVisibility(View.INVISIBLE);
                 txt_head.setText("Search your book");
                 spinner.setVisibility(View.INVISIBLE);
@@ -178,9 +157,12 @@ public class SerErFragment extends Fragment {
         imageButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fr= getParentFragmentManager();
+               /* FragmentManager fr= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,new DashboardFragment()).commit();
+                fragmentTransaction.replace(R.id.frame,new DashboardFragment()).commit();*/
+                Intent intent=new Intent(serdonbook.this,home.class);
+                startActivity(intent);
+
 
 
             }
@@ -188,13 +170,13 @@ public class SerErFragment extends Fragment {
 
 
 
-        return root;
+
     }
 
     private void feed_Recycler() {
 
         list=new ArrayList<>();
-        myRecycleAdapter=new MyRecycleAdapter(getContext(),list);
+        myRecycleAdapter=new MyRecycleAdapter(serdonbook.this,list,state);
         recyclerView.setAdapter(myRecycleAdapter);
 
         databaseReference.getReference("bookinfo").child(state).addListenerForSingleValueEvent(new ValueEventListener() {
