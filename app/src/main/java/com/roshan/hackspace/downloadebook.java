@@ -1,43 +1,37 @@
+package com.roshan.hackspace;
 
-        package com.roshan.hackspace;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-        import android.app.ProgressDialog;
-        import android.os.Bundle;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
-        import androidx.annotation.NonNull;
-        import androidx.annotation.Nullable;
-        import androidx.fragment.app.Fragment;
-        import androidx.fragment.app.FragmentManager;
-        import androidx.fragment.app.FragmentTransaction;
-        import androidx.recyclerview.widget.LinearLayoutManager;
-        import androidx.recyclerview.widget.RecyclerView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-        import android.text.Editable;
-        import android.text.TextWatcher;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.ArrayAdapter;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.ImageButton;
-        import android.widget.ImageView;
-        import android.widget.Spinner;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import org.jetbrains.annotations.NotNull;
 
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
-        import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
 
-        import org.jetbrains.annotations.NotNull;
-
-        import java.util.ArrayList;
-
-
-public class DownloadFragment extends Fragment {
+public class downloadebook extends AppCompatActivity {
 
     RecyclerView recyclerView1;
     FirebaseDatabase db;
@@ -55,17 +49,17 @@ public class DownloadFragment extends Fragment {
     EditText sear;
     String state;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_download, container, false);
-        returnimage=root.findViewById(R.id.returnimage);
-         sear=root.findViewById(R.id.search2);
-        spin_sub=root.findViewById(R.id.spinnerr);
-        btn_search=root.findViewById(R.id.select_subj);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_downloadebook);
+        returnimage=findViewById(R.id.returnimage);
+        sear=findViewById(R.id.search2);
+        spin_sub=findViewById(R.id.spinnerr);
+        btn_search=findViewById(R.id.select_subj);
         //recyclerView1.setVisibility(View.INVISIBLE);
-       // search2.setVisibility(View.INVISIBLE);
-        ser_head=root.findViewById(R.id.ser_head);
+        // search2.setVisibility(View.INVISIBLE);
+        ser_head=findViewById(R.id.ser_head);
         ser_head.setText("Select Subject");
         dbref=FirebaseDatabase.getInstance().getReference("spinnerdata1");
         sear.addTextChangedListener(new TextWatcher() {
@@ -88,37 +82,39 @@ public class DownloadFragment extends Fragment {
         returnimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fr= getParentFragmentManager();
+               /* FragmentManager fr= getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fr.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,new DashboardFragment()).commit();
+                fragmentTransaction.replace(R.id.frame,new DashboardFragment()).commit();*/
+                Intent intent= new Intent(downloadebook.this,home.class);
+                startActivity(intent);
             }
         });
 
         arrayList=new ArrayList<String>();
         newlist1=new ArrayList<String>();
-        arrayAdapter=new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,newlist1);
+        arrayAdapter=new ArrayAdapter<>(downloadebook.this, android.R.layout.simple_spinner_dropdown_item,newlist1);
         spin_sub.setAdapter(arrayAdapter);
         fetchdata();
 
 
-        progressDialog1 =new ProgressDialog(getContext());
+        progressDialog1 =new ProgressDialog(downloadebook.this);
         progressDialog1.setCancelable(false);
         progressDialog1.setMessage("processing");
         progressDialog1.show();
-        recyclerView1=root.findViewById(R.id.listview1);
+        recyclerView1=findViewById(R.id.listview1);
         db= FirebaseDatabase.getInstance();
         recyclerView1.setHasFixedSize(true);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
-recyclerView1.setVisibility(View.INVISIBLE);
-sear.setVisibility(View.INVISIBLE);
+        recyclerView1.setLayoutManager(new LinearLayoutManager(downloadebook.this));
+        recyclerView1.setVisibility(View.INVISIBLE);
+        sear.setVisibility(View.INVISIBLE);
         list1=new ArrayList<>();
-        myAdapter=new MyAdapter(getContext(),list1);
+        myAdapter=new MyAdapter(downloadebook.this,list1);
         recyclerView1.setAdapter(myAdapter);
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               state=spin_sub.getSelectedItem().toString();
-                Toast.makeText(getContext(), state, Toast.LENGTH_SHORT).show();
+                state=spin_sub.getSelectedItem().toString();
+                Toast.makeText(downloadebook.this, state, Toast.LENGTH_SHORT).show();
                 btn_search.setVisibility(View.INVISIBLE);
                 ser_head.setText("Search your book");
                 spin_sub.setVisibility(View.INVISIBLE);
@@ -133,7 +129,7 @@ sear.setVisibility(View.INVISIBLE);
 
 
 
-        return root;
+
     }
 
     private void feed_Recycler() {
