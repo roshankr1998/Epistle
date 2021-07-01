@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/logdraw"
-        android:backgroundTint="#ffc0cb"
+        android:backgroundTint="#6586F0"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         android:elevation="50dp"
@@ -38,21 +38,23 @@
             android:layout_height="match_parent"
             android:scrollbarSize="0dp"
             android:layout_marginBottom="30dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="144dp"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
 
                     <ImageView
                         android:id="@+id/donimage"
@@ -106,9 +108,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
 
                     <ImageView
                         android:id="@+id/seimage"
@@ -146,14 +148,14 @@
 
                     <ImageView
                         android:id="@+id/imageView13"
-                        android:layout_width="180dp"
-                        android:layout_height="180dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         android:layout_alignTop="@+id/seimage"
                         android:layout_alignEnd="@+id/seimage"
                         android:layout_alignRight="@+id/seimage"
-                        android:layout_marginTop="-26dp"
-                        android:layout_marginEnd="194dp"
-                        android:layout_marginRight="194dp"
+                        android:layout_marginTop="-14dp"
+                        android:layout_marginEnd="192dp"
+                        android:layout_marginRight="192dp"
                         android:src="@drawable/serchbook" />
                 </RelativeLayout>
 
@@ -161,9 +163,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
 
                     <ImageView
                         android:id="@+id/uploadpdf"
@@ -223,9 +225,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
 
                     <ImageView
                         android:id="@+id/downpdf"
@@ -263,8 +265,8 @@
 
                     <ImageView
                         android:id="@+id/imageView15"
-                        android:layout_width="180dp"
-                        android:layout_height="180dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
                         android:layout_alignTop="@+id/downpdf"
                         android:layout_alignEnd="@+id/downpdf"
                         android:layout_alignRight="@+id/downpdf"
@@ -279,9 +281,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
 
                     <ImageView
                         android:id="@+id/abimage"
@@ -334,9 +336,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
 
                     <ImageView
                         android:id="@+id/proimage"
