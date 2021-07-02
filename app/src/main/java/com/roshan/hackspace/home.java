@@ -274,17 +274,18 @@ public class home extends AppCompatActivity {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-
-        }else{
         counter++;
         if(counter==1)
             Toast.makeText(this, "Press once more to exit", Toast.LENGTH_SHORT).show();
-        if(counter==2)
-            super.onBackPressed();
+        if(counter==2) {
+            Intent intent = new Intent(home.this, MainActivity.class);
+            Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+            startActivity(intent,b);
+
+
     }}
 
     public void updateusernav(){
@@ -319,6 +320,7 @@ public class home extends AppCompatActivity {
             }});
 
     }
+
 
 
 

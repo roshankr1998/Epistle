@@ -94,8 +94,23 @@
                 app:layout_constraintStart_toEndOf="@id/filename"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
                 app:tint="@color/black" />
-        </LinearLayout>
 
+        </LinearLayout>
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/image12"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="88dp"
+                android:elevation="50dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/upl"
+                app:layout_constraintBottom_toTopOf="@+id/uploadbtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.523"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search1"
+                app:layout_constraintVertical_bias="0.36"
+                tools:ignore="NotSibling" />
         <EditText
             android:id="@+id/file_name"
             android:layout_width="match_parent"

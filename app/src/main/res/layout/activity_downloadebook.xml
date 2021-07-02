@@ -31,19 +31,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1">
-    <Spinner
-        android:id="@+id/spinnerr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custinp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
 
+            <Spinner
+                android:id="@+id/spinnerr"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/custinp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.622" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/image12"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="88dp"
+                android:elevation="50dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/ser"
+                app:layout_constraintBottom_toTopOf="@+id/spinnerr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.523"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search1"
+                app:layout_constraintVertical_bias="0.36"
+                tools:ignore="NotSibling" />
     <Button
         android:id="@+id/select_subj"
         android:layout_width="wrap_content"
@@ -55,48 +71,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerr" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/ser_head"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="Search &amp; get PDF"
-            android:textColor="@color/black"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/returnimage"
-            tools:layout_editor_absoluteX="0dp" />
+                <TextView
+                    android:id="@+id/ser_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="Search &amp; get PDF"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/returnimage"
+                    tools:layout_editor_absoluteX="0dp" />
 
-        <EditText
-            android:id="@+id/search2"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/custinp"
-            android:drawableLeft="@drawable/search1"
-            android:drawablePadding="15dp"
-            android:drawableTint="@color/black"
-            android:hint="Enter book name"
-            android:paddingLeft="15dp"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/search2"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/custinp"
+                    android:drawableLeft="@drawable/search1"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/black"
+                    android:hint="Enter book name"
+                    android:paddingLeft="15dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listview1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp" />
-    </LinearLayout></androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listview1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp" />
+            </LinearLayout></androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/returnimage"

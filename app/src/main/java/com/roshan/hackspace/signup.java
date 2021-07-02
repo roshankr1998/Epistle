@@ -46,34 +46,34 @@ import java.util.Objects;
 public class signup extends AppCompatActivity {
     EditText password,repassword,name,emailid,username;
     Button  signup,browse;
-    ImageView imageView,proimage;
+    ImageView imageView,proimage,gif;
     private FirebaseAuth mAuth;
-    ProgressDialog progressDialog3;
+
     Uri pdfuri=null;
     String filepathname;
     StorageReference storageReference;
     DatabaseReference databaseReference;
     String mobile,name1,pass,repass,email;
-
+CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         mAuth = FirebaseAuth.getInstance();
-
+        gif=findViewById(R.id.gif1);
         username= findViewById(R.id.username);
 
         password=(EditText) findViewById(R.id.password);
         repassword=(EditText) findViewById(R.id.repassword);
         emailid=findViewById(R.id.emailid);
         name=findViewById(R.id.name);
-        CheckBox checkBox=(CheckBox) findViewById(R.id.checkBox);
+         checkBox=(CheckBox) findViewById(R.id.checkBox);
         signup=(Button) findViewById(R.id.signup);
         browse=(Button) findViewById(R.id.browse);
         proimage=findViewById(R.id.proimage);
     signup.setEnabled(false);
-
+gif.setVisibility(View.INVISIBLE);
 
                 browse.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -166,10 +166,15 @@ public class signup extends AppCompatActivity {
                     emailid.requestFocus();
                     return;
                 }
-                progressDialog3 =new ProgressDialog(signup.this);
-                progressDialog3.setCancelable(false);
-                progressDialog3.setMessage("Creating a Account....");
-                progressDialog3.show();
+                gif.setVisibility(View.VISIBLE);
+                signup.setVisibility(View.INVISIBLE);
+                checkBox.setVisibility(View.INVISIBLE);
+                password.setEnabled(false);
+                repassword.setEnabled(false);
+                name.setEnabled(false);
+                emailid.setEnabled(false);
+                username.setEnabled(false);
+
                     mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
@@ -178,8 +183,14 @@ public class signup extends AppCompatActivity {
 
                             }else{
                                 Toast.makeText(signup.this, "User registration Failed", Toast.LENGTH_SHORT).show();
-                                if(progressDialog3.isShowing())
-                                    progressDialog3.dismiss();
+                                gif.setVisibility(View.INVISIBLE);
+                                signup.setVisibility(View.VISIBLE);
+                                checkBox.setVisibility(View.VISIBLE);
+                                password.setEnabled(true);
+                                repassword.setEnabled(true);
+                                name.setEnabled(true);
+                                emailid.setEnabled(true);
+                                username.setEnabled(true);
 
                             }
                         }
@@ -191,7 +202,6 @@ public class signup extends AppCompatActivity {
     }
 
     private void uploaduser() {
-        progressDialog3.setMessage("Organising things for you...");
         User user= new User(name1,mobile,email,pass);
         FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -203,20 +213,24 @@ public class signup extends AppCompatActivity {
                             Intent intent=new Intent(signup.this,home.class);
                             Bundle b= ActivityOptions.makeSceneTransitionAnimation(signup.this).toBundle();
                             startActivity(intent,b);
-                            if(progressDialog3.isShowing())
-                                progressDialog3.dismiss();
+
                         }else
                         {
                             Toast.makeText(signup.this, "User registration Failed", Toast.LENGTH_SHORT).show();
-                            if(progressDialog3.isShowing())
-                                progressDialog3.dismiss();
+                            gif.setVisibility(View.INVISIBLE);
+                            signup.setVisibility(View.VISIBLE);
+                            checkBox.setVisibility(View.VISIBLE);
+                            password.setEnabled(true);
+                            repassword.setEnabled(true);
+                            name.setEnabled(true);
+                            emailid.setEnabled(true);
+                            username.setEnabled(true);
                         }
                     }
                 });
     }
 
     private void uploadpdf() {
-        progressDialog3.setMessage("Setting things up for you....");
         long timestamp=System.currentTimeMillis();
         filepathname="uploads/"+timestamp;
         storageReference = FirebaseStorage.getInstance().getReference(filepathname);
@@ -234,14 +248,21 @@ public class signup extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
                 Toast.makeText(signup.this, "Pdf upload failed due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
-
+                gif.setVisibility(View.INVISIBLE);
+                signup.setVisibility(View.VISIBLE);
+                checkBox.setVisibility(View.VISIBLE);
+                password.setEnabled(true);
+                repassword.setEnabled(true);
+                name.setEnabled(true);
+                emailid.setEnabled(true);
+                username.setEnabled(true);
             }
         });
 
     }
 
     private void uploadpdftodb(String uploadedpdfUrl) {
-        progressDialog3.setMessage("Upoading profile.....");
+
         Userprofile user= new Userprofile(uploadedpdfUrl);
         databaseReference=FirebaseDatabase.getInstance().getReference("profile");
         databaseReference.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)

@@ -20,6 +20,7 @@ public class splash_screen extends AppCompatActivity {
     Animation topanim,bottomanim;
     ImageView imageView14;
     TextView textView11,textView7;
+    ImageView gif1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +28,14 @@ public class splash_screen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
     topanim= AnimationUtils.loadAnimation(this,R.anim.top_animation);
     bottomanim= AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
-
+    gif1=findViewById(R.id.gif1);
     imageView14=findViewById(R.id.imageView14);
     textView7=findViewById(R.id.textView7);
     textView11=findViewById(R.id.textView11);
     imageView14.setAnimation(topanim);
     textView7.setAnimation(bottomanim);
     textView11.setAnimation(topanim);
+    gif1.setAnimation(bottomanim);
 
     new Handler().postDelayed(new Runnable() {
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

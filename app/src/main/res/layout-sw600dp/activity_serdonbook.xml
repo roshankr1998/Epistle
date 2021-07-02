@@ -37,88 +37,101 @@
             app:layout_constraintVertical_bias="1">
 
 
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/image12"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="88dp"
+                android:elevation="50dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/ser"
+                app:layout_constraintBottom_toTopOf="@+id/spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.523"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search1"
+                app:layout_constraintVertical_bias="0.36"
+                tools:ignore="NotSibling" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/custinp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.499" />
+
+            <Button
+                android:id="@+id/select_sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Search"
+                android:background="@drawable/button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                tools:layout_editor_absoluteY="10dp">
+                <!-- TODO: Update blank fragment layout -->
 
 
+                <!--<ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/contact_items"
+                android:divider="@color/black"
+                android:dividerHeight="1dp"
+                />-->
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custinp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+                <TextView
+                    android:id="@+id/serbook"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:text="Search your book"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+                    tools:layout_editor_absoluteX="0dp" />
 
-    <Button
-        android:id="@+id/select_sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Search"
-        android:background="@drawable/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+                <EditText
+                    android:id="@+id/search1"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/custinp"
+                    android:drawableLeft="@drawable/search1"
+                    android:drawablePadding="15dp"
+                    android:drawableTint="@color/black"
+                    android:hint="Enter book name"
+                    android:paddingLeft="15dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp" />
 
-        tools:layout_editor_absoluteY="10dp">
-        <!-- TODO: Update blank fragment layout -->
-
-
-        <!--<ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/contact_items"
-        android:divider="@color/black"
-        android:dividerHeight="1dp"
-        />-->
-
-        <TextView
-            android:id="@+id/serbook"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:gravity="center"
-            android:paddingBottom="10dp"
-            android:text="Search your book"
-            android:textColor="@color/black"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-            tools:layout_editor_absoluteX="0dp" />
-
-        <EditText
-            android:id="@+id/search1"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/custinp"
-            android:drawableLeft="@drawable/search1"
-            android:drawablePadding="15dp"
-            android:drawableTint="@color/black"
-            android:hint="Enter book name"
-            android:paddingLeft="15dp"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp" />
-
-    </LinearLayout>
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageButton

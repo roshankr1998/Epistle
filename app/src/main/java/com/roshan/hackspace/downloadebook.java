@@ -42,7 +42,7 @@ public class downloadebook extends AppCompatActivity {
     MyAdapter myAdapter;
     ArrayList<Uploadpdf> list1;
     ProgressDialog progressDialog1;
-    ImageView returnimage;
+    ImageView returnimage,gif;
     Spinner spin_sub;
     Button btn_search;
     DatabaseReference dbref;
@@ -64,6 +64,8 @@ public class downloadebook extends AppCompatActivity {
         //recyclerView1.setVisibility(View.INVISIBLE);
         // search2.setVisibility(View.INVISIBLE);
         ser_head=findViewById(R.id.ser_head);
+        gif=findViewById(R.id.image12);
+        gif.setVisibility(View.VISIBLE);
         ser_head.setText("Select Subject");
         dbref=FirebaseDatabase.getInstance().getReference("spinnerdata1");
         sear.addTextChangedListener(new TextWatcher() {
@@ -125,6 +127,7 @@ public class downloadebook extends AppCompatActivity {
                 ser_head.setText("Search your book");
                 spin_sub.setVisibility(View.INVISIBLE);
                 recyclerView1.setVisibility(View.VISIBLE);
+                gif.setVisibility(View.INVISIBLE);
                 sear.setVisibility(View.VISIBLE);
                 progressDialog1.show();
                 feed_Recycler();

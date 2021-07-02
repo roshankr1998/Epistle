@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +48,7 @@ public class serdonbook extends AppCompatActivity {
     Spinner spinner;
     TextView txt_head;
     Button select_sub;
+    ImageView gif12;
     ValueEventListener listener;
     ArrayList<String> stringArrayList,newlist;
     ArrayAdapter<String> arrayAdapter;
@@ -64,7 +66,7 @@ public class serdonbook extends AppCompatActivity {
         txt_head=findViewById(R.id.serbook);
         spinner=findViewById(R.id.spinner);
         select_sub=findViewById(R.id.select_sub);
-
+        gif12=findViewById(R.id.image12);
         search1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -97,6 +99,7 @@ public class serdonbook extends AppCompatActivity {
         search1.setVisibility(View.INVISIBLE);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("processing");
+        gif12.setVisibility(View.VISIBLE);
         progressDialog.show();
         fetchdata();
         select_sub.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +110,7 @@ public class serdonbook extends AppCompatActivity {
                 select_sub.setVisibility(View.INVISIBLE);
                 txt_head.setText("Search your book");
                 spinner.setVisibility(View.INVISIBLE);
+                gif12.setVisibility(View.INVISIBLE);
                 recyclerView.setVisibility(View.VISIBLE);
                 search1.setVisibility(View.VISIBLE);
                 progressDialog.show();

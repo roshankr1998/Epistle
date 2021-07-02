@@ -43,7 +43,7 @@ public class uploadebook extends AppCompatActivity {
     EditText pdf_subject;
     Button selectfile;
     Button btnupload;
-    ImageView returnimage;
+    ImageView returnimage,gif;
     StorageReference storageReference;
     DatabaseReference databaseReference;
     ProgressDialog pro1;
@@ -57,7 +57,7 @@ public class uploadebook extends AppCompatActivity {
         pro1=new ProgressDialog(uploadebook.this);
         pro1.setTitle("Please Wait...");
         pro1.setCanceledOnTouchOutside(false);
-
+        gif=findViewById(R.id.image12);
         pdf_subject=findViewById(R.id.file_sub);
         select = findViewById(R.id.filename);
         pdfbook = findViewById(R.id.file_name);
@@ -67,7 +67,7 @@ public class uploadebook extends AppCompatActivity {
         btnupload = findViewById(R.id.uploadbtn);
         returnimage = findViewById(R.id.returnview);
         databaseReference = FirebaseDatabase.getInstance().getReference("pdfbook");
-
+        gif.setVisibility(View.VISIBLE);
         pdfbook.setVisibility(View.INVISIBLE);
         pdfpubl.setVisibility(View.INVISIBLE);
         pdfauth.setVisibility(View.INVISIBLE);
@@ -230,6 +230,7 @@ public class uploadebook extends AppCompatActivity {
                         pdfauth.setVisibility(View.VISIBLE);
                         btnupload.setVisibility(View.VISIBLE);
                         pdf_subject.setVisibility(View.VISIBLE);
+                        gif.setVisibility(View.INVISIBLE);
 
                         btnupload.setEnabled(true);
                         select.setText(result.toString());
