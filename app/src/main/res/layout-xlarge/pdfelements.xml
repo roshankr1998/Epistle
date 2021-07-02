@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
         android:gravity="center|center_horizontal|center_vertical"
         android:orientation="vertical">
 
@@ -130,10 +129,8 @@
             android:id="@+id/btn_downloadpdf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/button"
+            android:background="@drawable/lst_btn"
             android:text="Download Book"
             android:textColor="@color/white"
             android:textStyle="bold" />

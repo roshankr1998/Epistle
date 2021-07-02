@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     tools:context=".DashboardFragment">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -23,7 +24,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/logdraw"
-
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         android:elevation="50dp"
@@ -38,7 +38,6 @@
             android:layout_height="match_parent"
             android:scrollbarSize="0dp"
             android:layout_marginBottom="70dp"
-            android:layout_marginTop="20dp"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp">
 
@@ -48,7 +47,7 @@
                 android:orientation="vertical"
                 android:layout_marginBottom="15dp">
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/rl1"
                     android:layout_width="match_parent"
                     android:layout_height="144dp"
@@ -64,16 +63,15 @@
                         android:background="@drawable/serlist"
                         android:backgroundTint="#ffdd00"
                         android:clickable="true"
-                        android:padding="15dp"
                         android:contentDescription="roshan"
                         android:tooltipText="Donate Book"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="30dp" />
+                        tools:layout_editor_absoluteX="-16dp" />
 
                     <TextView
                         android:id="@+id/tx1"
-                        android:layout_width="239dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignEnd="@+id/donimage"
                         android:layout_alignRight="@+id/donimage"
@@ -81,37 +79,33 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_gravity="bottom"
-                        android:layout_marginStart="43dp"
-                        android:layout_marginLeft="43dp"
-                        android:layout_marginEnd="81dp"
-                        android:layout_marginRight="81dp"
+                        android:layout_marginEnd="16dp"
                         android:layout_marginBottom="50dp"
                         android:fontFamily="@font/abccd"
                         android:gravity="center_vertical"
-                        android:text="Donate  Book"
+                        android:text="Donate Book"
                         android:textColor="@color/black"
-                        android:textSize="30dp"
+                        android:textSize="25dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/donimage"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.144"
-                        app:layout_constraintStart_toStartOf="@+id/donimage"
-                        app:layout_constraintTop_toTopOf="@+id/donimage" />
+                        app:layout_constraintEnd_toStartOf="@+id/im1"
+                        app:layout_constraintTop_toTopOf="@+id/donimage"
+                        app:layout_constraintVertical_bias="1.0" />
 
                     <ImageView
                         android:id="@+id/im1"
-                        android:layout_width="144dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
                         android:layout_alignTop="@+id/donimage"
                         android:layout_alignEnd="@+id/donimage"
                         android:layout_alignRight="@+id/donimage"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="-12dp"
-                        android:layout_marginRight="-12dp"
-                        android:src="@drawable/bookicon" />
-                </RelativeLayout>
+                        android:layout_marginEnd="4dp"
+                        android:src="@drawable/bookicon"
+                        app:layout_constraintEnd_toEndOf="@+id/donimage"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/rl2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -135,8 +129,8 @@
 
                     <TextView
                         android:id="@+id/tx2"
-                        android:layout_width="234dp"
-                        android:layout_height="73dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignEnd="@+id/seimage"
                         android:layout_alignRight="@+id/seimage"
                         android:layout_alignBottom="@+id/seimage"
@@ -144,38 +138,33 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_gravity="bottom"
-                        android:layout_marginStart="171dp"
-                        android:layout_marginLeft="171dp"
+                        android:layout_marginStart="12dp"
                         android:layout_marginTop="34dp"
-                        android:layout_marginEnd="-43dp"
-                        android:layout_marginRight="-43dp"
                         android:layout_marginBottom="33dp"
-                        android:fontFamily="@font/abccd"
                         android:gravity="center_vertical"
+                        android:fontFamily="@font/abccd"
                         android:text="Search Book"
                         android:textColor="@color/black"
-                        android:textSize="30dp"
+                        android:textSize="25dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/seimage"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.144"
-                        app:layout_constraintStart_toStartOf="@+id/seimage"
-                        app:layout_constraintTop_toTopOf="@+id/seimage" />
+                        app:layout_constraintStart_toEndOf="@+id/im2"
+                        app:layout_constraintTop_toTopOf="@+id/seimage"
+                        app:layout_constraintVertical_bias="0.608" />
 
                     <ImageView
                         android:id="@+id/im2"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
                         android:layout_alignTop="@+id/seimage"
                         android:layout_alignEnd="@+id/seimage"
                         android:layout_alignRight="@+id/seimage"
-                        android:layout_marginTop="-14dp"
-                        android:layout_marginEnd="192dp"
-                        android:layout_marginRight="192dp"
-                        android:src="@drawable/serchbook" />
-                </RelativeLayout>
+                        android:src="@drawable/serchbook"
+                        app:layout_constraintStart_toStartOf="@+id/seimage"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/rl3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -189,7 +178,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="140dp"
                         android:background="@drawable/serlist"
-                        android:backgroundTint="#ff7d00"
+                        android:backgroundTint="#c3c3c3"
                         android:clickable="true"
                         android:contentDescription="roshan"
                         android:scaleType="fitCenter"
@@ -199,7 +188,7 @@
 
                     <TextView
                         android:id="@+id/tx3"
-                        android:layout_width="234dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignEnd="@+id/uploadpdf"
                         android:layout_alignRight="@+id/uploadpdf"
@@ -208,23 +197,19 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:layout_gravity="bottom"
-                        android:layout_marginStart="25dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginEnd="104dp"
-                        android:layout_marginRight="104dp"
-                        android:layout_marginBottom="36dp"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="57dp"
                         android:fontFamily="@font/abccd"
                         android:gravity="center_vertical"
                         android:text="Upload E-book"
                         android:textColor="@color/black"
-                        android:textSize="30dp"
+                        android:textSize="25dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/uploadpdf"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.144"
-                        app:layout_constraintStart_toStartOf="@+id/uploadpdf"
-                        app:layout_constraintTop_toTopOf="@+id/uploadpdf" />
+                        app:layout_constraintEnd_toStartOf="@+id/im3"
+                        app:layout_constraintTop_toTopOf="@+id/uploadpdf"
+                        app:layout_constraintVertical_bias="1.0" />
 
                     <ImageView
                         android:id="@+id/im3"
@@ -233,15 +218,14 @@
                         android:layout_alignTop="@+id/uploadpdf"
                         android:layout_alignEnd="@+id/uploadpdf"
                         android:layout_alignRight="@+id/uploadpdf"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginRight="15dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/uppdf" />
+                        android:src="@drawable/uppdf"
+                        app:layout_constraintEnd_toEndOf="@+id/uploadpdf"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/rl4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -255,7 +239,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="140dp"
                         android:background="@drawable/serlist"
-                        android:backgroundTint="#ff006d"
+                        android:backgroundTint="#FF69B4"
                         android:clickable="true"
                         android:contentDescription="roshan"
                         android:scaleType="fitCenter"
@@ -265,41 +249,40 @@
 
                     <TextView
                         android:id="@+id/tx4"
-                        android:layout_width="234dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignEnd="@+id/downpdf"
                         android:layout_alignRight="@+id/downpdf"
                         android:layout_alignBottom="@+id/downpdf"
                         android:layout_gravity="bottom"
-                        android:layout_marginEnd="-22dp"
-                        android:layout_marginRight="-22dp"
                         android:layout_marginBottom="49dp"
-                        android:fontFamily="@font/abccd"
-                        android:text="Download E-book"
-                        android:textColor="@color/black"
                         android:gravity="center_vertical"
-                        android:textSize="30dp"
+                        android:paddingRight="15dp"
+                        android:text="Download E-book"
+                        android:fontFamily="@font/abccd"
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/downpdf"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.144"
-                        app:layout_constraintStart_toStartOf="@+id/downpdf"
-                        app:layout_constraintTop_toTopOf="@+id/downpdf" />
+                        app:layout_constraintEnd_toEndOf="@+id/downpdf"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/im4"
+                        app:layout_constraintTop_toTopOf="@+id/downpdf"
+                        app:layout_constraintVertical_bias="0.968" />
 
                     <ImageView
                         android:id="@+id/im4"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
                         android:layout_alignTop="@+id/downpdf"
                         android:layout_alignEnd="@+id/downpdf"
                         android:layout_alignRight="@+id/downpdf"
-                        android:layout_marginTop="-14dp"
-                        android:layout_marginEnd="195dp"
-                        android:layout_marginRight="195dp"
-                        android:src="@drawable/ebook" />
+                        android:src="@drawable/ebook"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                </RelativeLayout>
-                <RelativeLayout
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/rl6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -323,41 +306,38 @@
 
                     <TextView
                         android:id="@+id/tx6"
-                        android:layout_width="243dp"
-                        android:layout_height="73dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignEnd="@+id/proimage"
                         android:layout_alignRight="@+id/proimage"
                         android:layout_alignBottom="@+id/proimage"
                         android:layout_gravity="bottom"
-                        android:layout_marginEnd="36dp"
-                        android:layout_marginRight="36dp"
-                        android:layout_marginBottom="47dp"
-                        android:fontFamily="@font/abccd"
+                        android:layout_marginBottom="44dp"
                         android:gravity="center_vertical"
+                        android:fontFamily="@font/abccd"
                         android:text="Update Profile"
                         android:textColor="@color/black"
-                        android:textSize="30dp"
+                        android:textSize="25dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/proimage"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.144"
-                        app:layout_constraintStart_toStartOf="@+id/proimage"
-                        app:layout_constraintTop_toTopOf="@+id/proimage" />
+                        app:layout_constraintEnd_toStartOf="@+id/im6"
+                        app:layout_constraintTop_toTopOf="@+id/proimage"
+                        app:layout_constraintVertical_bias="0.913" />
 
                     <ImageView
                         android:id="@+id/im6"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
                         android:layout_alignTop="@+id/proimage"
                         android:layout_alignEnd="@+id/proimage"
                         android:layout_alignRight="@+id/proimage"
-                        android:layout_marginTop="-21dp"
-                        android:layout_marginEnd="-15dp"
-                        android:layout_marginRight="-15dp"
-                        android:src="@drawable/profileup" />
-                </RelativeLayout>
+                        android:src="@drawable/profileup"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/proimage"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/rl5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -381,39 +361,37 @@
 
                     <TextView
                         android:id="@+id/tx5"
-                        android:layout_width="234dp"
-                        android:layout_height="73dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignEnd="@+id/abimage"
                         android:layout_alignRight="@+id/abimage"
                         android:layout_alignBottom="@+id/abimage"
                         android:layout_gravity="bottom"
-                        android:layout_marginEnd="-58dp"
-                        android:layout_marginRight="-58dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginBottom="30dp"
                         android:fontFamily="@font/abccd"
                         android:gravity="center_vertical"
                         android:text="About US"
                         android:textColor="@color/black"
-                        android:textSize="30dp"
+                        android:textSize="25dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/abimage"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.144"
-                        app:layout_constraintStart_toStartOf="@+id/abimage"
-                        app:layout_constraintTop_toTopOf="@+id/abimage" />
+                        app:layout_constraintStart_toEndOf="@+id/im5"
+                        app:layout_constraintTop_toTopOf="@+id/abimage"
+                        app:layout_constraintVertical_bias="0.855" />
 
                     <ImageView
                         android:id="@+id/im5"
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
                         android:layout_alignTop="@+id/abimage"
                         android:layout_alignEnd="@+id/abimage"
                         android:layout_alignRight="@+id/abimage"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginEnd="170dp"
-                        android:layout_marginRight="170dp"
-                        android:src="@drawable/deve" />
-                </RelativeLayout>
+                        android:src="@drawable/deve"
+                        app:layout_constraintBottom_toBottomOf="@+id/abimage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
