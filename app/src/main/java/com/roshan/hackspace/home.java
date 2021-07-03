@@ -11,9 +11,11 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -110,8 +113,9 @@ public class home extends AppCompatActivity {
                 /*Intent intent=new Intent(getApplicationContext(),editprofile.class);
                 Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
                 startActivity(intent,b);*/
-                Popup popup=new Popup();
-                popup.showPopupWindow(v);
+                fragment=new BlankFragment();
+                loadFragment(fragment);
+
             }
         });
 
@@ -323,8 +327,10 @@ public class home extends AppCompatActivity {
         pro_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Popup popup=new Popup();
-                popup.showPopupWindow(v);
+                fragment=new BlankFragment();
+                loadFragment(fragment);
+
+
             }
         });
 
