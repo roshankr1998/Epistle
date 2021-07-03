@@ -107,9 +107,11 @@ public class home extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),editprofile.class);
+                /*Intent intent=new Intent(getApplicationContext(),editprofile.class);
                 Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
-                startActivity(intent,b);
+                startActivity(intent,b);*/
+                Popup popup=new Popup();
+                popup.showPopupWindow(v);
             }
         });
 
@@ -318,6 +320,13 @@ public class home extends AppCompatActivity {
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "Failed to load Profile ", Toast.LENGTH_SHORT).show();
             }});
+        pro_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Popup popup=new Popup();
+                popup.showPopupWindow(v);
+            }
+        });
 
     }
 
