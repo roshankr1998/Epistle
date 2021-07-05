@@ -18,6 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -33,6 +34,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -49,7 +51,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class map extends AppCompatActivity {
-    Spinner sptype;
+    TextInputLayout sptype;
+    AutoCompleteTextView act_maps;
     Button btfind;
 
     ImageButton imageButton11;
@@ -58,6 +61,7 @@ public class map extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         sptype = findViewById(R.id.sp_type);
+        act_maps=findViewById(R.id.act_maps);
         btfind = findViewById(R.id.bt_find);
         imageButton11=findViewById(R.id.ib2);
         imageButton11.setOnClickListener(new View.OnClickListener() {
@@ -73,14 +77,14 @@ public class map extends AppCompatActivity {
             }
         });
        
-        String[] placeNameList = {"Bookstores", "Libraries"};
-        sptype.setAdapter(new ArrayAdapter<>(map.this, android.R.layout.simple_spinner_dropdown_item, placeNameList));
+        String[] placeNameList = {"Bookstores", "Libraries","Second Hand Bookstore"};
+        act_maps.setAdapter(new ArrayAdapter<>(map.this, android.R.layout.simple_spinner_dropdown_item, placeNameList));
         
         btfind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i=sptype.getSelectedItemPosition();
-                String location=placeNameList[i];
+
+                String location=act_maps.getText().toString();
                 getnearby(location);
 
 

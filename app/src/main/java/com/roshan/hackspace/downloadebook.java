@@ -18,6 +18,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +45,8 @@ public class downloadebook extends AppCompatActivity {
     ArrayList<Uploadpdf> list1;
     ProgressDialog progressDialog1;
     ImageView returnimage,gif;
-    Spinner spin_sub;
+    AutoCompleteTextView spin_sub;
+    TextInputLayout sp_type;
     Button btn_search;
     DatabaseReference dbref;
     ValueEventListener eventListener;
@@ -61,6 +64,7 @@ public class downloadebook extends AppCompatActivity {
         sear=findViewById(R.id.search2);
         spin_sub=findViewById(R.id.spinnerr);
         btn_search=findViewById(R.id.select_subj);
+        sp_type=findViewById(R.id.sp_type);
         //recyclerView1.setVisibility(View.INVISIBLE);
         // search2.setVisibility(View.INVISIBLE);
         ser_head=findViewById(R.id.ser_head);
@@ -121,7 +125,7 @@ public class downloadebook extends AppCompatActivity {
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                state=spin_sub.getSelectedItem().toString();
+                state=spin_sub.getText().toString();
                 Toast.makeText(downloadebook.this, state, Toast.LENGTH_SHORT).show();
                 btn_search.setVisibility(View.INVISIBLE);
                 ser_head.setText("Search your book");
@@ -129,6 +133,7 @@ public class downloadebook extends AppCompatActivity {
                 recyclerView1.setVisibility(View.VISIBLE);
                 gif.setVisibility(View.INVISIBLE);
                 sear.setVisibility(View.VISIBLE);
+                sp_type.setVisibility(View.INVISIBLE);
                 progressDialog1.show();
                 feed_Recycler();
             }

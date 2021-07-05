@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.roshan.hackspace">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -27,7 +26,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hackspace">
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -36,12 +34,12 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
 
-        <activity android:name=".map" />
-        <activity android:name=".about" />
+
+        <activity android:name=".map"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".about"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".editprofile"
             android:screenOrientation="portrait" />
@@ -66,7 +64,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".forgot" />
+        <activity android:name=".forgot"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".otpver"
             android:screenOrientation="portrait" />

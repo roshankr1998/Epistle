@@ -198,7 +198,7 @@ public class home extends AppCompatActivity {
                         Intent intent9= new Intent(getApplicationContext(),map.class);
                         startActivity(intent9);
                         break;
-
+                   
 
                     case R.id.nav_logout:
                         logout(this);

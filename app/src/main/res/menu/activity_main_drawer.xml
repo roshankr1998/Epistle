@@ -34,8 +34,9 @@
             android:title="About Us" />
         <item
             android:id="@+id/nav_map"
-            android:icon="@drawable/info"
-            android:title="map" />
+            android:icon="@drawable/location"
+            android:title="Nearby Bookstores" />
+
     </group>
     <item android:title="">
         <menu>

@@ -32,18 +32,36 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1">
 
-            <Spinner
-                android:id="@+id/spinnerr"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sp_type"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/custinp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.06"
+
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.622" />
+                app:layout_constraintTop_toBottomOf="@+id/image12"
+                app:layout_constraintVertical_bias="0.119">
+                <AutoCompleteTextView
+                    android:id="@+id/spinnerr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:dropDownHeight="150dp"
+                    android:inputType="none"
+                    android:padding="10dp"
+                    android:paddingTop="20dp"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:scrollbars="vertical"
+                    android:textStyle="bold" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/image12"
@@ -53,14 +71,13 @@
                 android:elevation="50dp"
                 android:foregroundGravity="center"
                 android:src="@drawable/ser"
-                app:layout_constraintBottom_toTopOf="@+id/spinnerr"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.523"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/search1"
-                app:layout_constraintVertical_bias="0.36"
                 tools:ignore="NotSibling" />
-    <Button
+
+            <Button
         android:id="@+id/select_subj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,12 +86,13 @@
         android:background="@drawable/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerr" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_type" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
 
                 <TextView

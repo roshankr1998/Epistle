@@ -18,6 +18,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -26,6 +27,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -45,7 +47,9 @@ public class serdonbook extends AppCompatActivity {
     ArrayList<Hero> list;
     ImageButton imageButton2;
     ProgressDialog progressDialog;
-    Spinner spinner;
+    AutoCompleteTextView spin_sub;
+    TextInputLayout sp_type;
+
     TextView txt_head;
     Button select_sub;
     ImageView gif12;
@@ -64,7 +68,8 @@ public class serdonbook extends AppCompatActivity {
         EditText search1=findViewById(R.id.search1);
         progressDialog =new ProgressDialog(serdonbook.this);
         txt_head=findViewById(R.id.serbook);
-        spinner=findViewById(R.id.spinner);
+        spin_sub=findViewById(R.id.spinner);
+        sp_type=findViewById(R.id.sp_type);
         select_sub=findViewById(R.id.select_sub);
         gif12=findViewById(R.id.image12);
         search1.addTextChangedListener(new TextWatcher() {
@@ -94,7 +99,7 @@ public class serdonbook extends AppCompatActivity {
         stringArrayList=new ArrayList<String>();
         newlist=new ArrayList<String>();
         arrayAdapter=new ArrayAdapter<>(serdonbook.this,R.layout.support_simple_spinner_dropdown_item,newlist);
-        spinner.setAdapter(arrayAdapter);
+        spin_sub.setAdapter(arrayAdapter);
         recyclerView.setVisibility(View.INVISIBLE);
         search1.setVisibility(View.INVISIBLE);
         progressDialog.setCancelable(false);
@@ -105,11 +110,12 @@ public class serdonbook extends AppCompatActivity {
         select_sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                state=spinner.getSelectedItem().toString();
+                state=spin_sub.getText().toString();
                 Toast.makeText(serdonbook.this, state, Toast.LENGTH_SHORT).show();
                 select_sub.setVisibility(View.INVISIBLE);
                 txt_head.setText("Search your book");
-                spinner.setVisibility(View.INVISIBLE);
+                spin_sub.setVisibility(View.INVISIBLE);
+                sp_type.setVisibility(View.INVISIBLE);
                 gif12.setVisibility(View.INVISIBLE);
                 recyclerView.setVisibility(View.VISIBLE);
                 search1.setVisibility(View.VISIBLE);
