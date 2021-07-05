@@ -52,7 +52,7 @@ public class downloadebook extends AppCompatActivity {
     ValueEventListener eventListener;
     ArrayList<String> arrayList,newlist1;
     ArrayAdapter<String> arrayAdapter;
-    TextView ser_head;
+    TextView ser_head,textView;
     EditText sear;
     String state;
 
@@ -62,6 +62,7 @@ public class downloadebook extends AppCompatActivity {
         setContentView(R.layout.activity_downloadebook);
         returnimage=findViewById(R.id.returnimage);
         sear=findViewById(R.id.search2);
+        textView=findViewById(R.id.textView13);
         spin_sub=findViewById(R.id.spinnerr);
         btn_search=findViewById(R.id.select_subj);
         sp_type=findViewById(R.id.sp_type);
@@ -70,7 +71,7 @@ public class downloadebook extends AppCompatActivity {
         ser_head=findViewById(R.id.ser_head);
         gif=findViewById(R.id.image12);
         gif.setVisibility(View.VISIBLE);
-        ser_head.setText("Select Subject");
+
         dbref=FirebaseDatabase.getInstance().getReference("spinnerdata1");
         sear.addTextChangedListener(new TextWatcher() {
             @Override
@@ -128,7 +129,7 @@ public class downloadebook extends AppCompatActivity {
                 state=spin_sub.getText().toString();
                 Toast.makeText(downloadebook.this, state, Toast.LENGTH_SHORT).show();
                 btn_search.setVisibility(View.INVISIBLE);
-                ser_head.setText("Search your book");
+                textView.setVisibility(View.INVISIBLE);
                 spin_sub.setVisibility(View.INVISIBLE);
                 recyclerView1.setVisibility(View.VISIBLE);
                 gif.setVisibility(View.INVISIBLE);

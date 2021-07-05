@@ -3,12 +3,9 @@ package com.roshan.hackspace;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -23,7 +20,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,10 +43,10 @@ public class serdonbook extends AppCompatActivity {
     ArrayList<Hero> list;
     ImageButton imageButton2;
     ProgressDialog progressDialog;
-    AutoCompleteTextView spin_sub;
-    TextInputLayout sp_type;
+    AutoCompleteTextView spin_sub,search1;
+    TextInputLayout sp_type,sp_type1;
 
-    TextView txt_head;
+    TextView txt_head,textView13;
     Button select_sub;
     ImageView gif12;
     ValueEventListener listener;
@@ -66,6 +62,8 @@ public class serdonbook extends AppCompatActivity {
         setContentView(R.layout.activity_serdonbook);
         imageButton2=findViewById(R.id.imageButton2);
         EditText search1=findViewById(R.id.search1);
+        textView13=findViewById(R.id.textView13);
+
         progressDialog =new ProgressDialog(serdonbook.this);
         txt_head=findViewById(R.id.serbook);
         spin_sub=findViewById(R.id.spinner);
@@ -94,7 +92,6 @@ public class serdonbook extends AppCompatActivity {
         //databaseReference= FirebaseDatabase.getInstance().getReference("bookinfo");
         databaseReference= FirebaseDatabase.getInstance();
         recyclerView.setHasFixedSize(true);
-        txt_head.setText("Select Subject");
         recyclerView.setLayoutManager(new LinearLayoutManager(serdonbook.this));
         stringArrayList=new ArrayList<String>();
         newlist=new ArrayList<String>();
@@ -113,7 +110,6 @@ public class serdonbook extends AppCompatActivity {
                 state=spin_sub.getText().toString();
                 Toast.makeText(serdonbook.this, state, Toast.LENGTH_SHORT).show();
                 select_sub.setVisibility(View.INVISIBLE);
-                txt_head.setText("Search your book");
                 spin_sub.setVisibility(View.INVISIBLE);
                 sp_type.setVisibility(View.INVISIBLE);
                 gif12.setVisibility(View.INVISIBLE);
@@ -121,6 +117,7 @@ public class serdonbook extends AppCompatActivity {
                 search1.setVisibility(View.VISIBLE);
                 progressDialog.show();
                 feed_Recycler();
+                textView13.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -252,5 +249,7 @@ public class serdonbook extends AppCompatActivity {
         myRecycleAdapter.filterList(filterlist);
 
 
-    }
-}
+
+
+
+}}
