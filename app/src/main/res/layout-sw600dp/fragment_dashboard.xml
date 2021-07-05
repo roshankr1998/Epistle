@@ -125,7 +125,7 @@
                         android:scaleType="fitCenter"
                         android:tooltipText="Search Book"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="-16dp" />
+                        tools:layout_editor_absoluteX="0dp" />
 
                     <TextView
                         android:id="@+id/tx2"
@@ -283,6 +283,66 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/rl7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:id="@+id/nearby"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/serlist"
+                        android:backgroundTint="#DA5811"
+                        android:clickable="true"
+                        android:contentDescription="roshan"
+                        android:scaleType="fitCenter"
+                        android:tooltipText="Search Book"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="0dp" />
+
+                    <TextView
+                        android:id="@+id/tx5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@+id/nearby"
+                        android:layout_alignRight="@+id/nearby"
+                        android:layout_alignBottom="@+id/nearby"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="34dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="33dp"
+                        android:fontFamily="@font/abccd"
+                        android:gravity="center_vertical"
+                        android:text="Nearby Stores"
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/nearby"
+                        app:layout_constraintEnd_toStartOf="@+id/im5"
+                        app:layout_constraintTop_toTopOf="@+id/nearby"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/im5"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_alignTop="@+id/nearby"
+                        android:layout_alignEnd="@+id/nearby"
+                        android:layout_alignRight="@+id/nearby"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/near"
+                        app:layout_constraintEnd_toEndOf="@+id/nearby"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/rl6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -313,16 +373,16 @@
                         android:layout_alignBottom="@+id/proimage"
                         android:layout_gravity="bottom"
                         android:layout_marginBottom="44dp"
-                        android:gravity="center_vertical"
                         android:fontFamily="@font/abccd"
+                        android:gravity="center_vertical"
                         android:text="Update Profile"
                         android:textColor="@color/black"
                         android:textSize="25dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/proimage"
-                        app:layout_constraintEnd_toStartOf="@+id/im6"
+                        app:layout_constraintStart_toEndOf="@+id/im6"
                         app:layout_constraintTop_toTopOf="@+id/proimage"
-                        app:layout_constraintVertical_bias="0.913" />
+                        app:layout_constraintVertical_bias="0.693" />
 
                     <ImageView
                         android:id="@+id/im6"
@@ -333,7 +393,7 @@
                         android:layout_alignRight="@+id/proimage"
                         android:src="@drawable/profileup"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/proimage"
+                        app:layout_constraintStart_toStartOf="@+id/proimage"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -360,14 +420,13 @@
                         tools:layout_editor_absoluteX="0dp" />
 
                     <TextView
-                        android:id="@+id/tx5"
+                        android:id="@+id/tx7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignEnd="@+id/abimage"
                         android:layout_alignRight="@+id/abimage"
                         android:layout_alignBottom="@+id/abimage"
                         android:layout_gravity="bottom"
-                        android:layout_marginStart="16dp"
                         android:layout_marginBottom="30dp"
                         android:fontFamily="@font/abccd"
                         android:gravity="center_vertical"
@@ -376,12 +435,12 @@
                         android:textSize="25dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/abimage"
-                        app:layout_constraintStart_toEndOf="@+id/im5"
+                        app:layout_constraintEnd_toStartOf="@+id/im7"
                         app:layout_constraintTop_toTopOf="@+id/abimage"
-                        app:layout_constraintVertical_bias="0.855" />
+                        app:layout_constraintVertical_bias="0.587" />
 
                     <ImageView
-                        android:id="@+id/im5"
+                        android:id="@+id/im7"
                         android:layout_width="140dp"
                         android:layout_height="140dp"
                         android:layout_alignTop="@+id/abimage"
@@ -389,14 +448,16 @@
                         android:layout_alignRight="@+id/abimage"
                         android:src="@drawable/deve"
                         app:layout_constraintBottom_toBottomOf="@+id/abimage"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/abimage"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 
+
             </LinearLayout>
         </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

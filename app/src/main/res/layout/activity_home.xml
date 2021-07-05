@@ -27,5 +27,5 @@
         app:itemHorizontalPadding="30dp"
         app:itemTextColor="@color/black"/>
 
-    
+
 </androidx.drawerlayout.widget.DrawerLayout>

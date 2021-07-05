@@ -32,7 +32,10 @@
             android:id="@+id/nav_aboutus"
             android:icon="@drawable/info"
             android:title="About Us" />
-
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/info"
+            android:title="map" />
     </group>
     <item android:title="">
         <menu>

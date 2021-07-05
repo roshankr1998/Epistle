@@ -15,21 +15,13 @@
     <string name="close">the drawer is closed</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string-array name="Spinner_item">
-
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
 
 
-    </string-array>
     <string name="mail"><a href="mailto:roshan.kumar.rk109@gmail.com">roshan.kumar.rk109@gmail.com</a></string>
     <string name="ig"><a href="https://instagram.com/roshan_kumar_singhh?utm_medium=copy_link">roshan_kumar_singhh</a></string>
     <string name="in"><a href="https://www.linkedin.com/in/roshan-kumar-a56240206">Roshan Kumar</a></string>
     <string name="git"><a href="https://github.com/roshankr1998">roshankr1998</a></string>
+    <string name="googlemap">AIzaSyB_qsP8AOP_P0MdlPz-48TDaJYjTP3vbjo</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="google_map_key">AIzaSyBmT-vjLcK1fELuOXMyTfS9n6Az8FGPj5Y</string>
 </resources>

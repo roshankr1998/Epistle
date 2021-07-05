@@ -174,6 +174,8 @@ public class home extends AppCompatActivity {
                         startActivity(intent5);
                         break;
 
+
+
                     case R.id.nav_upload:
                         /*fragment=new UploadFragment();
                         loadFragment(fragment);
@@ -189,7 +191,13 @@ public class home extends AppCompatActivity {
                         Intent intent4= new Intent(getApplicationContext(),downloadebook.class);
                         startActivity(intent4);
                         break;
-
+                    case R.id.nav_map:
+                        /*fragment=new DownloadFragment();
+                        loadFragment(fragment);
+                       // toolbar.setTitle("Download PDF");*/
+                        Intent intent9= new Intent(getApplicationContext(),map.class);
+                        startActivity(intent9);
+                        break;
 
 
                     case R.id.nav_logout:
