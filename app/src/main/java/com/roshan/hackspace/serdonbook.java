@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -108,6 +109,12 @@ public class serdonbook extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 state=spin_sub.getText().toString();
+                if(spin_sub.getText().toString().isEmpty()){
+                    Snackbar snackBar = Snackbar .make(v, "Select a Subject from the list", Snackbar.LENGTH_LONG);
+                    snackBar.show();
+                }
+
+                else{
                 Toast.makeText(serdonbook.this, state, Toast.LENGTH_SHORT).show();
                 select_sub.setVisibility(View.INVISIBLE);
                 spin_sub.setVisibility(View.INVISIBLE);
@@ -118,7 +125,7 @@ public class serdonbook extends AppCompatActivity {
                 progressDialog.show();
                 feed_Recycler();
                 textView13.setVisibility(View.INVISIBLE);
-            }
+            }}
         });
 
             /*@Override

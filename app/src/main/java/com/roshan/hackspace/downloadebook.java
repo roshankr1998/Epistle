@@ -26,6 +26,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -123,10 +124,17 @@ public class downloadebook extends AppCompatActivity {
         list1=new ArrayList<>();
         myAdapter=new MyAdapter(downloadebook.this,list1);
         recyclerView1.setAdapter(myAdapter);
+
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 state=spin_sub.getText().toString();
+                if(spin_sub.getText().toString().isEmpty()){
+                    Snackbar snackBar = Snackbar .make(v, "Select a Subject from the list", Snackbar.LENGTH_LONG);
+                    snackBar.show();
+                }
+
+                else{
                 Toast.makeText(downloadebook.this, state, Toast.LENGTH_SHORT).show();
                 btn_search.setVisibility(View.INVISIBLE);
                 textView.setVisibility(View.INVISIBLE);
@@ -137,7 +145,7 @@ public class downloadebook extends AppCompatActivity {
                 sp_type.setVisibility(View.INVISIBLE);
                 progressDialog1.show();
                 feed_Recycler();
-            }
+            }}
         });
 
 

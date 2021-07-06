@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.jetbrains.annotations.NotNull;
@@ -85,7 +86,13 @@ public class map extends AppCompatActivity {
             public void onClick(View v) {
 
                 String location=act_maps.getText().toString();
-                getnearby(location);
+                if(act_maps.getText().toString().isEmpty()){
+                    Snackbar snackBar = Snackbar .make(v, "Select a Locality from the list", Snackbar.LENGTH_LONG);
+                    snackBar.show();
+                }
+
+                else{
+                getnearby(location);}
 
 
             }
