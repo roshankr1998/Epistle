@@ -58,6 +58,7 @@
                     android:dropDownHeight="150dp"
                     android:inputType="none"
                     android:padding="10dp"
+                    android:hint="Select Subject"
                     android:paddingTop="20dp"
                     android:scrollbarAlwaysDrawVerticalTrack="true"
                     android:scrollbars="vertical"
@@ -149,18 +150,7 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Enter Subject"
-                android:textSize="22dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/sp_type"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image12" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageButton

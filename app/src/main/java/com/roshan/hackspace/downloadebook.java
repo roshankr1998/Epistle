@@ -53,7 +53,7 @@ public class downloadebook extends AppCompatActivity {
     ValueEventListener eventListener;
     ArrayList<String> arrayList,newlist1;
     ArrayAdapter<String> arrayAdapter;
-    TextView ser_head,textView;
+    TextView ser_head;
     EditText sear;
     String state;
 
@@ -63,7 +63,6 @@ public class downloadebook extends AppCompatActivity {
         setContentView(R.layout.activity_downloadebook);
         returnimage=findViewById(R.id.returnimage);
         sear=findViewById(R.id.search2);
-        textView=findViewById(R.id.textView13);
         spin_sub=findViewById(R.id.spinnerr);
         btn_search=findViewById(R.id.select_subj);
         sp_type=findViewById(R.id.sp_type);
@@ -137,7 +136,6 @@ public class downloadebook extends AppCompatActivity {
                 else{
                 Toast.makeText(downloadebook.this, state, Toast.LENGTH_SHORT).show();
                 btn_search.setVisibility(View.INVISIBLE);
-                textView.setVisibility(View.INVISIBLE);
                 spin_sub.setVisibility(View.INVISIBLE);
                 recyclerView1.setVisibility(View.VISIBLE);
                 gif.setVisibility(View.INVISIBLE);

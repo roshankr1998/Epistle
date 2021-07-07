@@ -1,6 +1,7 @@
 package com.roshan.hackspace;
 
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ public class BlankFragment extends Fragment {
     String profile;
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference post=firebaseDatabase.getReference().child("Users");
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,6 +47,10 @@ public class BlankFragment extends Fragment {
         TextView name=root.findViewById(R.id.name);
         TextView emailid=root.findViewById(R.id.emailid);
         ImageView pop=root.findViewById(R.id.popuppic);
+        ProgressDialog progressDialog=new ProgressDialog(getContext());
+        progressDialog.setTitle("Loading...");
+        progressDialog.setMessage("Please wait loading profile...");
+        progressDialog.show();
         //Initialize the elements of our window, install the handler
 
         FirebaseDatabase.getInstance().getReference().child("profile").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -62,7 +69,8 @@ public class BlankFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
 
-
+                if(progressDialog.isShowing())
+                    progressDialog.dismiss();
                 String post = snapshot.child("fullname").getValue(String.class);
                 String post1 = snapshot.child("email").getValue(String.class);
                 String post2 = snapshot.child("mobile").getValue(String.class);
@@ -75,7 +83,8 @@ public class BlankFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
+                if(progressDialog.isShowing())
+                    progressDialog.dismiss();
 
 
             }

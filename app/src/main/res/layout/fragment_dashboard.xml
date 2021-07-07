@@ -4,460 +4,386 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="#191927"
     tools:context=".DashboardFragment">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:src="#191927"
-        app:layout_constraintHeight_percent=".5"
-        android:scaleType="centerCrop"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/logdraw"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:elevation="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1">
-
-        <ScrollView
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbarSize="0dp"
-            android:layout_marginBottom="70dp"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp">
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginBottom="15dp">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/rl1"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="144dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_height="165dp"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/donimage"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/serlist"
-                        android:backgroundTint="#ffdd00"
-                        android:clickable="true"
-                        android:contentDescription="roshan"
-                        android:tooltipText="Donate Book"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="-16dp" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp">
 
-                    <TextView
-                        android:id="@+id/tx1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/donimage"
-                        android:layout_alignRight="@+id/donimage"
-                        android:layout_alignBottom="@+id/donimage"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_gravity="bottom"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="50dp"
-                        android:fontFamily="@font/abccd"
-                        android:gravity="center_vertical"
-                        android:text="Donate Book"
-                        android:textColor="@color/black"
-                        android:textSize="25dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/donimage"
-                        app:layout_constraintEnd_toStartOf="@+id/im1"
-                        app:layout_constraintTop_toTopOf="@+id/donimage"
-                        app:layout_constraintVertical_bias="1.0" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/im1"
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
-                        android:layout_alignTop="@+id/donimage"
-                        android:layout_alignEnd="@+id/donimage"
-                        android:layout_alignRight="@+id/donimage"
-                        android:layout_marginEnd="4dp"
-                        android:src="@drawable/bookicon"
-                        app:layout_constraintEnd_toEndOf="@+id/donimage"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                            <ImageView
+                                android:id="@+id/profile"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/bookicon"></ImageView>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/rl2"
+                            <TextView
+                                android:id="@+id/txtprofile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/profile"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Donate Book"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold"></TextView>
+
+                            <Button
+                                android:id="@+id/btndon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"></Button>
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/rute"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/serchbook"></ImageView>
+
+                            <TextView
+                                android:id="@+id/txtrute"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/rute"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Search Book"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold"></TextView>
+
+                            <Button
+                                android:id="@+id/btnser"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"></Button>
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_height="165dp"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/seimage"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/serlist"
-                        android:backgroundTint="#01befe"
-                        android:clickable="true"
-                        android:contentDescription="roshan"
-                        android:scaleType="fitCenter"
-                        android:tooltipText="Search Book"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp">
 
-                    <TextView
-                        android:id="@+id/tx2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/seimage"
-                        android:layout_alignRight="@+id/seimage"
-                        android:layout_alignBottom="@+id/seimage"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_gravity="bottom"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="34dp"
-                        android:layout_marginBottom="33dp"
-                        android:gravity="center_vertical"
-                        android:fontFamily="@font/abccd"
-                        android:text="Search Book"
-                        android:textColor="@color/black"
-                        android:textSize="25dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/seimage"
-                        app:layout_constraintStart_toEndOf="@+id/im2"
-                        app:layout_constraintTop_toTopOf="@+id/seimage"
-                        app:layout_constraintVertical_bias="0.608" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/im2"
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
-                        android:layout_alignTop="@+id/seimage"
-                        android:layout_alignEnd="@+id/seimage"
-                        android:layout_alignRight="@+id/seimage"
-                        android:src="@drawable/serchbook"
-                        app:layout_constraintStart_toStartOf="@+id/seimage"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                            <ImageView
+                                android:id="@+id/history"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/uppdf"></ImageView>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/rl3"
+                            <TextView
+                                android:id="@+id/txthistory"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/history"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Upload Ebook"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold"></TextView>
+
+                            <Button
+                                android:id="@+id/btnupload"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                ></Button>
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/feedback"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ebook"></ImageView>
+
+                            <TextView
+                                android:id="@+id/txtfeedback"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/feedback"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Download Ebook"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold"></TextView>
+
+                            <Button
+                                android:id="@+id/btndown"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                ></Button>
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_height="165dp"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/uploadpdf"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/serlist"
-                        android:backgroundTint="#c3c3c3"
-                        android:clickable="true"
-                        android:contentDescription="roshan"
-                        android:scaleType="fitCenter"
-                        android:tooltipText="Upload PDF"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="-16dp" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp">
 
-                    <TextView
-                        android:id="@+id/tx3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/uploadpdf"
-                        android:layout_alignRight="@+id/uploadpdf"
-                        android:layout_alignBottom="@+id/uploadpdf"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_gravity="bottom"
-                        android:layout_marginTop="11dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="57dp"
-                        android:fontFamily="@font/abccd"
-                        android:gravity="center_vertical"
-                        android:text="Upload E-book"
-                        android:textColor="@color/black"
-                        android:textSize="25dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/uploadpdf"
-                        app:layout_constraintEnd_toStartOf="@+id/im3"
-                        app:layout_constraintTop_toTopOf="@+id/uploadpdf"
-                        app:layout_constraintVertical_bias="1.0" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/im3"
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
-                        android:layout_alignTop="@+id/uploadpdf"
-                        android:layout_alignEnd="@+id/uploadpdf"
-                        android:layout_alignRight="@+id/uploadpdf"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/uppdf"
-                        app:layout_constraintEnd_toEndOf="@+id/uploadpdf"
-                        app:layout_constraintTop_toTopOf="parent" />
+                            <ImageView
+                                android:id="@+id/near"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/near"></ImageView>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                            <TextView
+                                android:id="@+id/txtnear"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/near"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Nearby Stores"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold"></TextView>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/rl4"
+                            <Button
+                                android:id="@+id/nearbtn"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                ></Button>
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/setting"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/profileup"></ImageView>
+
+                            <TextView
+                                android:id="@+id/txtsetting"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/setting"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Update Profile"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold"></TextView>
+
+                            <Button
+                                android:id="@+id/btn_profile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                ></Button>
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
-
-                    <ImageView
-                        android:id="@+id/downpdf"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/serlist"
-                        android:backgroundTint="#FF69B4"
-                        android:clickable="true"
-                        android:contentDescription="roshan"
-                        android:scaleType="fitCenter"
-                        android:tooltipText="Download PDF"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="-16dp" />
-
-                    <TextView
-                        android:id="@+id/tx4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignEnd="@+id/downpdf"
-                        android:layout_alignRight="@+id/downpdf"
-                        android:layout_alignBottom="@+id/downpdf"
-                        android:layout_gravity="bottom"
-                        android:layout_marginBottom="49dp"
-                        android:gravity="center_vertical"
-                        android:paddingRight="15dp"
-                        android:text="Download E-book"
-                        android:fontFamily="@font/abccd"
-                        android:textColor="@color/black"
-                        android:textSize="25dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/downpdf"
-                        app:layout_constraintEnd_toEndOf="@+id/downpdf"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/im4"
-                        app:layout_constraintTop_toTopOf="@+id/downpdf"
-                        app:layout_constraintVertical_bias="0.968" />
-
-                    <ImageView
-                        android:id="@+id/im4"
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
-                        android:layout_alignTop="@+id/downpdf"
-                        android:layout_alignEnd="@+id/downpdf"
-                        android:layout_alignRight="@+id/downpdf"
-                        android:src="@drawable/ebook"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/rl7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
-
-                    <ImageView
-                        android:id="@+id/nearby"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@drawable/serlist"
-                        android:backgroundTint="#DA5811"
-                        android:clickable="true"
-                        android:contentDescription="roshan"
-                        android:scaleType="fitCenter"
-                        android:tooltipText="Search Book"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-
-                    <TextView
-                        android:id="@+id/tx5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/nearby"
-                        android:layout_alignRight="@+id/nearby"
-                        android:layout_alignBottom="@+id/nearby"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_gravity="bottom"
-                        android:layout_marginTop="34dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="33dp"
-                        android:fontFamily="@font/abccd"
-                        android:gravity="center_vertical"
-                        android:text="Nearby Stores"
-                        android:textColor="@color/black"
-                        android:textSize="25dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/nearby"
-                        app:layout_constraintEnd_toStartOf="@+id/im5"
-                        app:layout_constraintTop_toTopOf="@+id/nearby"
-                        app:layout_constraintVertical_bias="0.0" />
-
-                    <ImageView
-                        android:id="@+id/im5"
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
-                        android:layout_alignTop="@+id/nearby"
-                        android:layout_alignEnd="@+id/nearby"
-                        android:layout_alignRight="@+id/nearby"
-                        android:layout_marginEnd="16dp"
-                        android:src="@drawable/near"
-                        app:layout_constraintEnd_toEndOf="@+id/nearby"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/rl6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
-
-                    <ImageView
-                        android:id="@+id/proimage"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/serlist"
-                        android:backgroundTint="#adff0d"
-                        android:clickable="true"
-                        android:contentDescription="roshan"
-                        android:scaleType="fitCenter"
-                        android:tooltipText="Update Profile"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-
-                    <TextView
-                        android:id="@+id/tx6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/proimage"
-                        android:layout_alignRight="@+id/proimage"
-                        android:layout_alignBottom="@+id/proimage"
-                        android:layout_gravity="bottom"
-                        android:layout_marginBottom="44dp"
-                        android:fontFamily="@font/abccd"
-                        android:gravity="center_vertical"
-                        android:text="Update Profile"
-                        android:textColor="@color/black"
-                        android:textSize="25dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/proimage"
-                        app:layout_constraintStart_toEndOf="@+id/im6"
-                        app:layout_constraintTop_toTopOf="@+id/proimage"
-                        app:layout_constraintVertical_bias="0.693" />
-
-                    <ImageView
-                        android:id="@+id/im6"
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
-                        android:layout_alignTop="@+id/proimage"
-                        android:layout_alignEnd="@+id/proimage"
-                        android:layout_alignRight="@+id/proimage"
-                        android:src="@drawable/profileup"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/proimage"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/rl5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
-
-                    <ImageView
-                        android:id="@+id/abimage"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/serlist"
-                        android:backgroundTint="@color/teal_200"
-                        android:clickable="true"
-                        android:contentDescription="roshan"
-                        android:scaleType="fitCenter"
-                        android:tooltipText="About"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-
-                    <TextView
-                        android:id="@+id/tx7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/abimage"
-                        android:layout_alignRight="@+id/abimage"
-                        android:layout_alignBottom="@+id/abimage"
-                        android:layout_gravity="bottom"
-                        android:layout_marginBottom="30dp"
-                        android:fontFamily="@font/abccd"
-                        android:gravity="center_vertical"
-                        android:text="About US"
-                        android:textColor="@color/black"
-                        android:textSize="25dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/abimage"
-                        app:layout_constraintEnd_toStartOf="@+id/im7"
-                        app:layout_constraintTop_toTopOf="@+id/abimage"
-                        app:layout_constraintVertical_bias="0.587" />
-
-                    <ImageView
-                        android:id="@+id/im7"
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
-                        android:layout_alignTop="@+id/abimage"
-                        android:layout_alignEnd="@+id/abimage"
-                        android:layout_alignRight="@+id/abimage"
-                        android:src="@drawable/deve"
-                        app:layout_constraintBottom_toBottomOf="@+id/abimage"
-                        app:layout_constraintEnd_toEndOf="@+id/abimage"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:layout_height="165dp"
+                    android:orientation="horizontal">
 
 
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp">
 
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/support"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/support"></ImageView>
+
+                            <TextView
+                                android:id="@+id/txtsupport"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/support"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Support"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold"></TextView>
+
+                            <Button
+                                android:id="@+id/btnsupport"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                ></Button>
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="20dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/log1"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/ic_logout"></ImageView>
+
+                            <TextView
+                                android:id="@+id/txtlog"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/log1"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Logout"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold"></TextView>
+
+                            <Button
+                                android:id="@+id/btnlog"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                ></Button>
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
 
 
             </LinearLayout>
+
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+

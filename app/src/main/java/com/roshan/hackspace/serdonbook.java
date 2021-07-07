@@ -47,7 +47,7 @@ public class serdonbook extends AppCompatActivity {
     AutoCompleteTextView spin_sub,search1;
     TextInputLayout sp_type,sp_type1;
 
-    TextView txt_head,textView13;
+    TextView txt_head;
     Button select_sub;
     ImageView gif12;
     ValueEventListener listener;
@@ -63,7 +63,7 @@ public class serdonbook extends AppCompatActivity {
         setContentView(R.layout.activity_serdonbook);
         imageButton2=findViewById(R.id.imageButton2);
         EditText search1=findViewById(R.id.search1);
-        textView13=findViewById(R.id.textView13);
+
 
         progressDialog =new ProgressDialog(serdonbook.this);
         txt_head=findViewById(R.id.serbook);
@@ -124,7 +124,7 @@ public class serdonbook extends AppCompatActivity {
                 search1.setVisibility(View.VISIBLE);
                 progressDialog.show();
                 feed_Recycler();
-                textView13.setVisibility(View.INVISIBLE);
+
             }}
         });
 

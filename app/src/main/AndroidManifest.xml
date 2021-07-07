@@ -34,12 +34,12 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-
-
-        <activity android:name=".map"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".about"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".map"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".about"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".editprofile"
             android:screenOrientation="portrait" />
@@ -64,8 +64,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".forgot"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".forgot"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".otpver"
             android:screenOrientation="portrait" />

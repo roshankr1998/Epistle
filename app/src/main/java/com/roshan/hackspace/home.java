@@ -66,7 +66,7 @@ public class home extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference post=firebaseDatabase.getReference().child("Users");
     DatabaseReference post1=firebaseDatabase.getReference().child("profile");
-    TextView userdata;
+
 
 
     @Override
@@ -80,19 +80,9 @@ public class home extends AppCompatActivity {
         e=getIntent().getStringExtra("email");
         p=getIntent().getStringExtra("pass");
         no=getIntent().getStringExtra("mobile");
-        userdata=findViewById(R.id.userdata);
         user_image=findViewById(R.id.user_image);
 
-        post.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
 
-                String username1 = snapshot.child("fullname").getValue(String.class);
-                userdata.setText(username1);
-            }@Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(), "Failed to load Profile ", Toast.LENGTH_SHORT).show();
-            }});
 
         post1.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -306,7 +296,6 @@ public class home extends AppCompatActivity {
         NavigationView navigationView=(NavigationView)findViewById(R.id.nav_view);
         View headerview=navigationView.getHeaderView(0);
         TextView email=headerview.findViewById(R.id.email);
-        TextView userdata=headerview.findViewById(R.id.userdata);
         TextView name=headerview.findViewById(R.id.name);
         ImageView pro_image=headerview.findViewById(R.id.user_image);
         email.setText(user.getEmail());
