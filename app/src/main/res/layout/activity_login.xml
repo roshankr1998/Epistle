@@ -104,7 +104,6 @@
             android:textColor="@color/white"
             android:background="@drawable/button"
             android:textSize="52px"
-            app:backgroundTint="#1D303C"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

@@ -7,7 +7,7 @@
     </style>
     <style name="AppTheme.popUpOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="color">#ae000000</item>
+        <item name="color">#ffffff</item>
     </style>
     <style name="NavigationDrawerStyle">
 
