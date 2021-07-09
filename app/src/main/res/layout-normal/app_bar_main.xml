@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,8 +23,9 @@
             android:background="@drawable/appbar"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             android:id="@+id/collapse">
+
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dashboard"
                 android:layout_gravity="bottom"
@@ -39,6 +41,8 @@
                 android:src="@drawable/iconbook"
                 android:layout_marginBottom="?attr/actionBarSize"
                 android:scaleType="centerInside"/>
+
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolBar"
                 android:layout_width="match_parent"
@@ -51,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/user_image"
+
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginRight="8dp"
@@ -60,7 +64,9 @@
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>  </androidx.appcompat.widget.Toolbar>
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -69,5 +75,16 @@
         android:background="@drawable/logdraw"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
-
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/drawer"
+        app:layout_anchor="@id/collapse"
+        android:background="@drawable/input_propic"
+        android:padding="3dp"
+        android:elevation="100dp"
+        android:outlineAmbientShadowColor="@color/green"
+        app:layout_anchorGravity="bottom|end"
+        android:layout_marginRight="20dp"
+        android:id="@+id/user_image"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

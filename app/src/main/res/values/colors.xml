@@ -21,6 +21,7 @@
     <color name="fadeabc">#D3084304</color>
     <color name="fadeser">#8B382517</color>
     <color name="grad">#6f0000</color>
+    <color name="transparent">#00000000</color>
 
 
 </resources>

@@ -99,28 +99,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
-                android:text="Download Link:"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/bookdownload"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="Hero Team"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-        </LinearLayout>
+            android:orientation="horizontal"/>
 
 
 
@@ -132,6 +111,8 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/lst_btn"
             android:text="Download Book"
+            android:layout_margin="4dp"
+            android:elevation="100dp"
             android:textColor="@color/white"
             android:textStyle="bold" />
 

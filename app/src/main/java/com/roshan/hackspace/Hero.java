@@ -7,9 +7,6 @@ public class Hero{
         return bookname;
     }
 
-
-
-
     public String getAuthor() {
         return author;
     }

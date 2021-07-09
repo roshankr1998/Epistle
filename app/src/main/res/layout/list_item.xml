@@ -19,8 +19,10 @@
 
         <ImageView
             android:id="@+id/imageView10"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/book1"
             android:textColor="@color/black" />
 
@@ -31,7 +33,7 @@
 
             <TextView
 
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:text="Book name:"
@@ -57,7 +59,7 @@
 
             <TextView
 
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
 
@@ -84,7 +86,7 @@
 
             <TextView
 
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:text="Publication:"
@@ -110,7 +112,7 @@
 
             <TextView
 
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:text="Donor Name:"
@@ -136,7 +138,7 @@
 
             <TextView
 
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:text="Donor Adress:"
@@ -162,7 +164,7 @@
 
             <TextView
 
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:text="Donor Mobile:"

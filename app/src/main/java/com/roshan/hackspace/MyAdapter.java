@@ -45,7 +45,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.pdfbookname.setText(uploadpdf.getPdfbookname());
         holder.pdfbookauth.setText(uploadpdf.getPdfauthor());
         holder.pdfbookpubl.setText(uploadpdf.getPdfpublication());
-        holder.bookdownload.setText(uploadpdf.getUrl());
         holder.btn_downloadpdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +80,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             pdfbookname=itemView.findViewById(R.id.pdfbookname);
             pdfbookauth=itemView.findViewById(R.id.pdfbookauth);
             pdfbookpubl=itemView.findViewById(R.id.pdfbookpubl);
-            bookdownload=itemView.findViewById(R.id.bookdownload);
             btn_downloadpdf=itemView.findViewById(R.id.btn_downloadpdf);
 
     }}

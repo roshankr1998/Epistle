@@ -62,7 +62,7 @@ public class home extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
     String n,e,p,no;
-    String profile;
+    String profile,post0,post11,post12;
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference post=firebaseDatabase.getReference().child("Users");
     DatabaseReference post1=firebaseDatabase.getReference().child("profile");
@@ -83,6 +83,23 @@ public class home extends AppCompatActivity {
         user_image=findViewById(R.id.user_image);
 
 
+        post.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+
+                post0 = snapshot.child("fullname").getValue(String.class);
+                post11 = snapshot.child("email").getValue(String.class);
+                post12 = snapshot.child("mobile").getValue(String.class);
+
+
+            }@Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+
+
+            }
+        });
+
 
         post1.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -96,6 +113,40 @@ public class home extends AppCompatActivity {
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "Failed to load Profile ", Toast.LENGTH_SHORT).show();
             }});
+
+        user_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            BottomSheetDialog bottomSheetDialog=new BottomSheetDialog(home.this,R.style.BottomSheetDialogTheme);
+            View bottomsheet=LayoutInflater.from(getApplicationContext()).inflate(R.layout.bottomshow,(LinearLayout)findViewById(R.id.nav_host_fragment_container));
+            bottomsheet.findViewById(R.id.messageButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    bottomSheetDialog.dismiss();
+                }
+            });
+                bottomsheet.findViewById(R.id.messageButton1).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent= new Intent(getApplicationContext(),editprofile.class);
+                        startActivity(intent);
+                    }
+                });
+                TextView txt1=bottomsheet.findViewById(R.id.name);
+                TextView txt2=bottomsheet.findViewById(R.id.number);
+                TextView txt3=bottomsheet.findViewById(R.id.emailid);
+                ImageView img=bottomsheet.findViewById(R.id.popuppic);
+                txt1.setText(post12);
+                txt2.setText(post11);
+                txt3.setText(post0);
+                Glide.with(getApplicationContext()).load(profile).into(img);
+
+            bottomSheetDialog.setContentView(bottomsheet);
+            bottomSheetDialog.show();
+            }
+        });
+
 
 
         auth=FirebaseAuth.getInstance();
@@ -303,7 +354,7 @@ public class home extends AppCompatActivity {
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
 
                  profile = snapshot.child("url").getValue(String.class);
-                Glide.with(getApplicationContext()).load(snapshot.child("url").getValue(String.class)).into(pro_image);
+                Glide.with(getApplicationContext()).load(profile).into(pro_image);
 
 
             }@Override

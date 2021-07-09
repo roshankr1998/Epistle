@@ -1,5 +1,8 @@
 package com.roshan.hackspace;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +13,7 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -21,7 +25,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +36,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,13 +46,18 @@ import java.util.Objects;
 
 public class editprofile extends AppCompatActivity {
     EditText number,password,repassword,name,emailid;
-    Button signup1;
+    Button signup1,bro;
     TextView textView;
     ImageView imageButton1;
     ProgressBar progress;
     ProgressDialog progressDialog;
+    ImageView proup;
+    String filepathname;
+    StorageReference storageReference;
+    Uri pdfuri=null;
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference post=firebaseDatabase.getReference().child("Users");
+    DatabaseReference post1=firebaseDatabase.getReference().child("profile");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +77,30 @@ public class editprofile extends AppCompatActivity {
         textView=findViewById(R.id.textView);
         signup1=findViewById(R.id.signup1);
         progress=findViewById(R.id.progress);
+        proup=findViewById(R.id.pro);
+        bro=findViewById(R.id.bro);
+        post1.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+
+
+                Glide.with(getApplicationContext()).load(snapshot.child("url").getValue(String.class)).into(proup);
+            }@Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), "Failed to load Profile ", Toast.LENGTH_SHORT).show();
+            }});
+        bro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGetContent.launch("image/*");
+            }
+        });
+       /* proup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // mGetContent.launch("image/*");
+            }
+        });*/
         post.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -152,12 +191,8 @@ public class editprofile extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull @NotNull Task<Void> task) {
                                 if(task.isSuccessful()){
-                                    Toast.makeText(editprofile.this, "User profile update Successfull", Toast.LENGTH_SHORT).show();
-                                    progress.setVisibility(View.GONE);
-                                    signup1.setVisibility(View.VISIBLE);
-                                    Intent intent=new Intent(editprofile.this,home.class);
-                                    Bundle b= ActivityOptions.makeSceneTransitionAnimation(editprofile.this).toBundle();
-                                    startActivity(intent,b);
+                                    uploadpdf();
+
                                 }else
                                 {
                                     Toast.makeText(editprofile.this, "User Updation Failed", Toast.LENGTH_SHORT).show();
@@ -262,5 +297,70 @@ public class editprofile extends AppCompatActivity {
         });
 
     }
+    private void uploadpdf() {
+        long timestamp=System.currentTimeMillis();
+        filepathname="uploads/"+timestamp;
+        storageReference = FirebaseStorage.getInstance().getReference(filepathname);
 
+        storageReference.putFile(pdfuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(editprofile.this, "pic upload Successfull ", Toast.LENGTH_SHORT).show();
+                Task<Uri> uriTask=taskSnapshot.getStorage().getDownloadUrl();
+                while (!uriTask.isSuccessful());
+                String uploadedpdfUrl=""+uriTask.getResult();
+                uploadpdftodb(uploadedpdfUrl);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Toast.makeText(editprofile.this, "Pdf upload failed due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+
+    private void uploadpdftodb(String uploadedpdfUrl) {
+
+        Userprofile user= new Userprofile(uploadedpdfUrl);
+        DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("profile");
+        databaseReference.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            updateuser();
+                            Toast.makeText(editprofile.this, "Image Upload Successfull", Toast.LENGTH_SHORT).show();
+
+                        }else
+                        {
+                            Toast.makeText(editprofile.this, "Image upload Failed", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+    }
+    ActivityResultLauncher<String> mGetContent= registerForActivityResult(new ActivityResultContracts.GetContent(),
+            new ActivityResultCallback<Uri>() {
+                @Override
+                public void onActivityResult(Uri result) {
+                    if(result!=null){
+                        pdfuri=result;
+                        proup.setImageURI(result);
+                        Toast.makeText(editprofile.this, "Image Selected Succesfully", Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        Toast.makeText(editprofile.this, "Image selection Cancelled", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+private void updateuser(){
+    Toast.makeText(editprofile.this, "User profile update Successfull", Toast.LENGTH_SHORT).show();
+    progress.setVisibility(View.GONE);
+    signup1.setVisibility(View.VISIBLE);
+    Intent intent=new Intent(editprofile.this,home.class);
+    startActivity(intent);
+}
 }
