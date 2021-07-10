@@ -30,9 +30,9 @@
                 android:text="Dashboard"
                 android:layout_gravity="bottom"
                 android:textStyle="bold"
-                android:textSize="30dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginBottom="8dp"
+                android:textSize="27dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginBottom="13dp"
                 android:textColor="@color/white"/>
             <ImageView
                 android:layout_width="match_parent"
@@ -75,16 +75,16 @@
         android:background="@drawable/logdraw"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
-<de.hdodenhof.circleimageview.CircleImageView
-    android:layout_width="80dp"
-    android:layout_height="80dp"
-    android:src="@drawable/drawer"
-    app:layout_anchor="@id/collapse"
-    android:background="@drawable/input_propic"
-    android:padding="3dp"
-    android:elevation="100dp"
-    android:outlineAmbientShadowColor="@color/green"
-    app:layout_anchorGravity="bottom|end"
-    android:layout_marginRight="20dp"
-    android:id="@+id/user_image"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@color/white"
+        app:layout_anchor="@id/collapse"
+        android:background="@drawable/input_propic"
+        android:padding="3dp"
+        android:elevation="100dp"
+        android:outlineAmbientShadowColor="@color/green"
+        app:layout_anchorGravity="bottom|end"
+        android:layout_marginRight="20dp"
+        android:id="@+id/user_image"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

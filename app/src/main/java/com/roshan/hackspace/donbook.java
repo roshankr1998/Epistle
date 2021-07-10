@@ -93,6 +93,7 @@ public class donbook extends AppCompatActivity {
                         subname.requestFocus();
                         return;
                     }
+                    imageButton1.setVisibility(View.INVISIBLE);
                     subname.setVisibility(View.INVISIBLE);
                     bookname.setVisibility(View.VISIBLE);
                     author.setVisibility(View.VISIBLE);
@@ -227,6 +228,7 @@ public class donbook extends AppCompatActivity {
                                                                    subname.setVisibility(View.VISIBLE);
                                                                    image.setVisibility(View.VISIBLE);
                                                                    button2.setVisibility(View.VISIBLE);
+                                                                   imageButton1.setVisibility(View.VISIBLE);
                                                                    bookname.setText(null);
                                                                    author.setText(null);
                                                                    publication.setText(null);

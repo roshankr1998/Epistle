@@ -30,9 +30,9 @@
                 android:text="Dashboard"
                 android:layout_gravity="bottom"
                 android:textStyle="bold"
-                android:textSize="30dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginBottom="8dp"
+                android:textSize="27dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginBottom="13dp"
                 android:textColor="@color/white"/>
             <ImageView
                 android:layout_width="match_parent"
@@ -78,7 +78,7 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/drawer"
+        android:backgroundTint="@color/white"
         app:layout_anchor="@id/collapse"
         android:background="@drawable/input_propic"
         android:padding="3dp"

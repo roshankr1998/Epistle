@@ -2,9 +2,10 @@
     <!-- Base application theme. -->
     <style name="Theme.Hackspace" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/grad</item>
-        <item name="colorPrimaryVariant">@color/grad</item>
+        <item name="colorPrimary">#09203f</item>
+        <item name="colorPrimaryVariant">#09203f</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="drawerArrowStyle">@style/DrawerIcon</item>
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -13,6 +14,9 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
+    </style>
+    <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/white</item>
     </style>
 
     <style name="Theme.Hackspace.NoActionBar">
