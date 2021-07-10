@@ -10,19 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-
         <ImageView
-            android:id="@+id/imageView12"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:scaleType="centerCrop"
             android:src="@drawable/dinateimg"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent=".19"
-            app:layout_constraintStart_toStartOf="parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -37,30 +35,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1">
-
             <LinearLayout
-                android:id="@+id/ll"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/ll"
                 android:gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.105"
-                tools:layout_editor_absoluteX="-16dp">
-
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/textView"
+                app:layout_constraintBottom_toTopOf="@+id/number">
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/pro"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_marginRight="10dp"
+                    android:id="@+id/pro"
+                    android:padding="3dp"
                     android:background="@drawable/input_propic"
-                    android:padding="3dp" />
-
+                    android:layout_marginRight="10dp"/>
                 <Button
-                    android:id="@+id/bro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Browse" />
+                    android:text="Browse"
+                    android:id="@+id/bro"/>
             </LinearLayout>
 
             <EditText
@@ -105,6 +99,22 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/repass" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Update Profile"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.026" />
 
             <EditText
                 android:id="@+id/emailid"
@@ -156,7 +166,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/number" />
 
-
             <EditText
                 android:id="@+id/pass"
                 android:layout_width="match_parent"
@@ -200,18 +209,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/pass" />
 
-            <ImageView
-                android:id="@+id/imageButton2"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/logbtn"
-                android:padding="5dp"
-                android:elevation="50dp"
-                android:src="@drawable/ic_baseline_home_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signup1" />
             <ProgressBar
                 android:id="@+id/progress"
                 android:layout_width="50dp"
@@ -223,26 +220,17 @@
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Update Profile"
-            android:textColor="@color/white"
-            android:background="@color/fadeblack"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/imageButton2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/roundbutt"
+            android:paddingLeft="15dp"
+            android:src="@drawable/return1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.146" >
-
-        </TextView>
-
-
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

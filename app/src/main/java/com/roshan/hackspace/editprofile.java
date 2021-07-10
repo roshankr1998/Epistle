@@ -54,7 +54,9 @@ public class editprofile extends AppCompatActivity {
     ImageView proup;
     String filepathname;
     StorageReference storageReference;
+    String pathname;
     Uri pdfuri=null;
+    int counter=0;
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference post=firebaseDatabase.getReference().child("Users");
     DatabaseReference post1=firebaseDatabase.getReference().child("profile");
@@ -83,7 +85,7 @@ public class editprofile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
 
-
+                pathname=snapshot.child("url").getValue(String.class);
                 Glide.with(getApplicationContext()).load(snapshot.child("url").getValue(String.class)).into(proup);
             }@Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
@@ -91,7 +93,9 @@ public class editprofile extends AppCompatActivity {
             }});
         bro.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
+                counter++;
                 mGetContent.launch("image/*");
             }
         });
@@ -191,7 +195,10 @@ public class editprofile extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull @NotNull Task<Void> task) {
                                 if(task.isSuccessful()){
-                                    uploadpdf();
+                                    if(counter==1)uploadpdf();
+                                    else{
+                                        uploadpdftodb(pathname);
+                                    }
 
                                 }else
                                 {
