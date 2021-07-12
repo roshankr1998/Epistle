@@ -27,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import org.jetbrains.annotations.NotNull;
 
 import static android.text.InputType.TYPE_NULL;
+import static android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD;
 
 
 public class login extends AppCompatActivity {
@@ -120,8 +121,13 @@ public class login extends AppCompatActivity {
                 signin1.setVisibility(View.INVISIBLE);
                 forgotpass.setVisibility(View.INVISIBLE);
                 newuser.setVisibility(View.INVISIBLE);
-               username1.setEnabled(false);
-               password1.setEnabled(false);
+               //username1.setEnabled(false);
+               username1.clearFocus();
+               username1.setInputType(TYPE_NULL);
+               //password1.setInputType(TYPE_NULL&TYPE_TEXT_VARIATION_PASSWORD);
+
+               //password1.setEnabled(false);
+               password1.clearFocus();
                 mAuth.signInWithEmailAndPassword(user,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

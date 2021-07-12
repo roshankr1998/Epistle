@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Hackspace" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Hackspace" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#09203f</item>
         <item name="colorPrimaryVariant">#09203f</item>

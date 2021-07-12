@@ -19,6 +19,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
 android:background="@drawable/input_propic1"
+            android:scaleType="centerCrop"
             android:padding="10dp"
             android:layout_marginLeft="1dp"
             android:layout_marginTop="20dp"

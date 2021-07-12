@@ -6,6 +6,7 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -62,7 +63,7 @@ public class home extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
     String n,e,p,no;
-    String profile,post0,post11,post12;
+    String profile,postname,postnum,postemail;
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference post=firebaseDatabase.getReference().child("Users");
     DatabaseReference post1=firebaseDatabase.getReference().child("profile");
@@ -87,9 +88,9 @@ public class home extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
 
-                post0 = snapshot.child("fullname").getValue(String.class);
-                post11 = snapshot.child("email").getValue(String.class);
-                post12 = snapshot.child("mobile").getValue(String.class);
+                postname = snapshot.child("fullname").getValue(String.class);
+                postemail = snapshot.child("email").getValue(String.class);
+                postnum = snapshot.child("mobile").getValue(String.class);
 
 
             }@Override
@@ -133,13 +134,13 @@ public class home extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-                TextView txt1=bottomsheet.findViewById(R.id.name);
-                TextView txt2=bottomsheet.findViewById(R.id.number);
-                TextView txt3=bottomsheet.findViewById(R.id.emailid);
+                TextView txtname=bottomsheet.findViewById(R.id.name);
+                TextView txtnum=bottomsheet.findViewById(R.id.number);
+                TextView txtemail=bottomsheet.findViewById(R.id.emailid);
                 ImageView img=bottomsheet.findViewById(R.id.popuppic);
-                txt1.setText(post12);
-                txt2.setText(post11);
-                txt3.setText(post0);
+                txtname.setText(postname);
+                txtnum.setText(postnum);
+                txtemail.setText(postemail);
                 Glide.with(getApplicationContext()).load(profile).into(img);
 
             bottomSheetDialog.setContentView(bottomsheet);
@@ -228,7 +229,6 @@ public class home extends AppCompatActivity {
                         Intent intent9= new Intent(getApplicationContext(),map.class);
                         startActivity(intent9);
                         break;
-                   
 
                     case R.id.nav_logout:
                         logout(this);

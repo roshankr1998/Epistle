@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/donbookback"
     tools:context=".donbook">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +43,7 @@
                 android:gravity="center"
                 android:text="Enter Book Details"
                 android:textColor="@color/black"
-                android:textSize="25dp"
+                android:textSize="30dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/bookname"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -186,7 +185,7 @@
                 android:background="@drawable/custinp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="enter Subject name"
+                android:hint="Enter Subject "
                 android:inputType="textPersonName"
                 android:textColorHint="@color/gray"
                 android:textSize="18sp"

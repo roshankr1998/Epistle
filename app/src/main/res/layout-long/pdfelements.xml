@@ -111,7 +111,6 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/lst_btn"
             android:text="Download Book"
-            android:layout_margin="4dp"
             android:elevation="100dp"
             android:textColor="@color/white"
             android:textStyle="bold" />

@@ -192,7 +192,7 @@ public class donbook extends AppCompatActivity {
                                                                    author.setVisibility(View.INVISIBLE);
                                                                    publication.setVisibility(View.INVISIBLE);
                                                                    imageButton.setVisibility(View.INVISIBLE);
-                                                                   textView.setVisibility(View.INVISIBLE);
+                                                                   textView.setText("Enter Subject Details");
                                                                    button6.setVisibility(View.INVISIBLE);
                                                                    donormob.setVisibility(View.INVISIBLE);
                                                                    donorname.setVisibility(View.INVISIBLE);
@@ -208,6 +208,7 @@ public class donbook extends AppCompatActivity {
                                                                    donorname.setText(null);
                                                                    donormob.setText(null);
                                                                    subname.setText(null);
+                                                                   imageButton1.setVisibility(View.VISIBLE);
 
                                                                }
                                                            }).addOnFailureListener(new OnFailureListener() {
@@ -220,7 +221,6 @@ public class donbook extends AppCompatActivity {
                                                                    author.setVisibility(View.INVISIBLE);
                                                                    publication.setVisibility(View.INVISIBLE);
                                                                    imageButton.setVisibility(View.INVISIBLE);
-                                                                   textView.setVisibility(View.INVISIBLE);
                                                                    button6.setVisibility(View.INVISIBLE);
                                                                    donormob.setVisibility(View.INVISIBLE);
                                                                    donorname.setVisibility(View.INVISIBLE);
@@ -236,6 +236,8 @@ public class donbook extends AppCompatActivity {
                                                                    donorname.setText(null);
                                                                    donormob.setText(null);
                                                                    subname.setText(null);
+                                                                   imageButton1.setVisibility(View.VISIBLE);
+                                                                   textView.setText("Enter Subject Name");
                                                                }
                                                            });
 
