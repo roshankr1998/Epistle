@@ -222,13 +222,13 @@ public class serdonbook extends AppCompatActivity {
     }
 
     private void fetchdata() {
-        listener= (ValueEventListener) databaseReference.getReference("spinnerdata").addValueEventListener(new ValueEventListener() {
+        listener= (ValueEventListener) databaseReference.getReference("bookinfo").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if(progressDialog.isShowing())
                     progressDialog.dismiss();
                 for(DataSnapshot mydata:snapshot.getChildren()){
-                    stringArrayList.add(mydata.getValue().toString());
+                    stringArrayList.add(mydata.getKey().toString());
                     for(String element:stringArrayList){
                         if(!newlist.contains(element)){
                             newlist.add(element);

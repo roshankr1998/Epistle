@@ -182,12 +182,6 @@ public class donbook extends AppCompatActivity {
                                                                public void onSuccess(Void unused) {
                                                                    Toast.makeText(donbook.this, "book donation successfull", Toast.LENGTH_SHORT).show();
 
-                                                                   FirebaseDatabase.getInstance().getReference("spinnerdata").push().setValue(subject[0]).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                                       @Override
-                                                                       public void onComplete(@NonNull @NotNull Task<Void> task) {
-                                                                           Toast.makeText(donbook.this, "Success", Toast.LENGTH_SHORT).show();
-                                                                       }
-                                                                   });
                                                                    bookname.setVisibility(View.INVISIBLE);
                                                                    author.setVisibility(View.INVISIBLE);
                                                                    publication.setVisibility(View.INVISIBLE);

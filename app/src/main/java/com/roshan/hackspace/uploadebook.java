@@ -174,7 +174,6 @@ public class uploadebook extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            uploadspinner();
                             if(pro1.isShowing())
                                 pro1.dismiss();
                             pdfbook.setVisibility(View.INVISIBLE);
@@ -209,14 +208,7 @@ public class uploadebook extends AppCompatActivity {
                 });
     }
 
-    private void uploadspinner() {
-        FirebaseDatabase.getInstance().getReference("spinnerdata1").push().setValue(pdf_subject.getText().toString().toLowerCase().replaceAll(" ","")).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<Void> task) {
-                Toast.makeText(uploadebook.this, "Success", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+
 
 
     ActivityResultLauncher<String> mGetContent= registerForActivityResult(new ActivityResultContracts.GetContent(),

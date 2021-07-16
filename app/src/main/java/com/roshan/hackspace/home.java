@@ -182,8 +182,6 @@ public class home extends AppCompatActivity {
                         break;
 
                     case R.id.nav_dash:
-                        fragment=new DashboardFragment();
-                        loadFragment(fragment);
                       //  toolbar.setTitle("Dashboard");
                         break;
 

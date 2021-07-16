@@ -37,7 +37,7 @@ public class login extends AppCompatActivity {
     ImageView imageView,gif1;
     TextView forgotpass,newuser;
     int counter=0;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;ProgressDialog progressDialog;
 
 
 
@@ -46,6 +46,7 @@ public class login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        progressDialog=new ProgressDialog(login.this);
         gif1=findViewById(R.id.gif1);
         forgotpass=findViewById(R.id.forgotpass);
         newuser=findViewById(R.id.newuser);
@@ -72,6 +73,10 @@ public class login extends AppCompatActivity {
             @Override
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             public void onClick(View v) {
+                progressDialog.setTitle("Hang on...");
+                progressDialog.setMessage("Redirecting it to signup page.");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
                 Intent intent = new Intent(login.this,otp.class);
                 Bundle b= ActivityOptions.makeSceneTransitionAnimation(login.this).toBundle();
                 startActivity(intent,b);
@@ -81,6 +86,10 @@ public class login extends AppCompatActivity {
             @Override
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             public void onClick(View v) {
+                progressDialog.setTitle("Hang on...");
+                progressDialog.setMessage("Redirecting it to forgot password page.");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
                 Intent intent = new Intent(login.this,forgot.class);
                 Bundle b= ActivityOptions.makeSceneTransitionAnimation(login.this).toBundle();
                 startActivity(intent,b);

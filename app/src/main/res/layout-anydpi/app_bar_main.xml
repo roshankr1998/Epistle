@@ -78,8 +78,9 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="#DDCFA5"
         app:layout_anchor="@id/collapse"
+        android:src="@drawable/user"
         android:background="@drawable/input_propic"
         android:padding="3dp"
         android:elevation="100dp"

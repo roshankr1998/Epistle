@@ -72,7 +72,7 @@ public class downloadebook extends AppCompatActivity {
         gif=findViewById(R.id.image12);
         gif.setVisibility(View.VISIBLE);
 
-        dbref=FirebaseDatabase.getInstance().getReference("spinnerdata1");
+        dbref=FirebaseDatabase.getInstance().getReference("pdfbook");
         sear.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -183,7 +183,7 @@ public class downloadebook extends AppCompatActivity {
                 if(progressDialog1.isShowing())
                     progressDialog1.dismiss();
                 for(DataSnapshot mydata: snapshot.getChildren()){
-                    arrayList.add(mydata.getValue().toString());
+                    arrayList.add(mydata.getKey().toString());
                     for(String element:arrayList){
                         if(!newlist1.contains(element)){
                             newlist1.add(element);
