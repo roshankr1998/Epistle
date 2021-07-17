@@ -42,7 +42,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_listname"
+                android:id="@+id/txt_listbname"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
@@ -69,7 +69,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_listteam"
+                android:id="@+id/txt_listaname"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
@@ -95,7 +95,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_listname1"
+                android:id="@+id/txt_listpub"
                 android:layout_width="170dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
@@ -121,7 +121,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_listteam1"
+                android:id="@+id/txt_listadress"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
@@ -173,7 +173,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_listteam2"
+                android:id="@+id/txt_listmob"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"

@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="450dp"
         android:background="@drawable/splash"
         android:elevation="60dp"
         android:outlineAmbientShadowColor="@color/fadeblack"
@@ -26,17 +26,16 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="36dp"
         android:elevation="100dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/abccd"
         android:shadowColor="@color/teal_200"
         android:text="Epistle"
-        android:textColor="@color/teal_200"
-        android:textSize="70dp"
-        android:textStyle="bold"
+        android:textColor="#ffff00"
+        android:textSize="80dp"
+
         app:layout_constraintBottom_toBottomOf="@id/imageView14"
         app:layout_constraintEnd_toEndOf="@+id/imageView14"
-        app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -44,14 +43,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="88dp"
         android:layout_marginRight="25dp"
+        android:elevation="60dp"
         android:fontFamily="serif"
         android:gravity="center"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:shadowColor="@color/black"
-        android:elevation="60dp"
         android:text="Have a book and hold your dream."
         android:textColor="@color/black"
         android:textSize="22dp"
@@ -63,12 +62,13 @@
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gif1"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/loading"
+        android:layout_height="100dp"
+        android:src="@drawable/loading1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.356" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

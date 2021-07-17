@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,15 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class MyRecycleAdapter extends RecyclerView.Adapter<MyRecycleAdapter.MyViewHolder>
 {
@@ -86,7 +81,7 @@ public class MyRecycleAdapter extends RecyclerView.Adapter<MyRecycleAdapter.MyVi
                                     notifyItemRemoved(position);
                                     notifyDataSetChanged();
                                     Toast.makeText(context, "The Book is being Wrapped you may contact the donor", Toast.LENGTH_SHORT).show();
-                                    
+
                                 }
                             }
                         });
@@ -117,12 +112,12 @@ public class MyRecycleAdapter extends RecyclerView.Adapter<MyRecycleAdapter.MyVi
         Button getbook;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            txt_listname=itemView.findViewById(R.id.txt_listname);
-            txt_listname1=itemView.findViewById(R.id.txt_listname1);
+            txt_listname=itemView.findViewById(R.id.txt_listbname);
+            txt_listname1=itemView.findViewById(R.id.txt_listpub);
             txt_listname2=itemView.findViewById(R.id.txt_listname2);
-            txt_listteam=itemView.findViewById(R.id.txt_listteam);
-            txt_listteam1=itemView.findViewById(R.id.txt_listteam1);
-            txt_listteam2=itemView.findViewById(R.id.txt_listteam2);
+            txt_listteam=itemView.findViewById(R.id.txt_listaname);
+            txt_listteam1=itemView.findViewById(R.id.txt_listadress);
+            txt_listteam2=itemView.findViewById(R.id.txt_listmob);
             getbook=itemView.findViewById(R.id.getbook);
         }
     }

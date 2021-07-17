@@ -20,6 +20,6 @@
     <string name="mail"><a href="mailto:roshan.kumar.rk109@gmail.com">roshan.kumar.rk109@gmail.com</a></string>
     <string name="in"><a href="https://www.linkedin.com/in/roshan-kumar-a56240206">Roshan Kumar</a></string>
     <string name="git"><a href="https://github.com/roshankr1998">roshankr1998</a></string>
-       <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
