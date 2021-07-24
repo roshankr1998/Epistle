@@ -82,14 +82,15 @@ public class home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         drawerLayout=findViewById(R.id.drawer);
         toolbar=findViewById(R.id.toolBar);
-
-        ProgressDialog pro1=new ProgressDialog(home.this);
-        pro1.setTitle("Loading..");
-
-
+        navigationView=findViewById(R.id.nav_view);
         setSupportActionBar(toolbar);
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+
+
         n=getIntent().getStringExtra("name");
         e=getIntent().getStringExtra("email");
         p=getIntent().getStringExtra("pass");
@@ -228,8 +229,7 @@ public class home extends AppCompatActivity {
 
                 profile = snapshot.child("url").getValue(String.class);
                 Glide.with(getApplicationContext()).load(snapshot.child("url").getValue(String.class)).into(user_image);
-                pro1.isShowing();
-                pro1.dismiss();
+
 
 
 
@@ -279,45 +279,46 @@ public class home extends AppCompatActivity {
         toggle=new ActionBarDrawerToggle(home.this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView=findViewById(R.id.nav_view);
         updateusernav();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-
-
-
-
                 switch(item.getItemId()){
                     case R.id.nav_search:
                         Intent intent1=new Intent(getApplicationContext(),serdonbook.class);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        startActivity(intent1);
+                        intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                        startActivity(intent1,b);
 
                         break;
 
                     case R.id.nav_home:
                         Intent intent=new Intent(getApplicationContext(),donbook.class);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        startActivity(intent);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                        startActivity(intent,b);
                         break;
 
                     case R.id.nav_dash:
+                        drawerLayout.closeDrawers();
                         break;
 
 
                     case R.id.nav_profile:
 
                         Intent intent6= new Intent(getApplicationContext(),editprofile.class);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        startActivity(intent6);
+                        intent6.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                         b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                        startActivity(intent6,b);
                         break;
 
 
                     case R.id.nav_aboutus:
                         Intent intent5= new Intent(getApplicationContext(),about.class);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        startActivity(intent5);
+                        intent5.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                        startActivity(intent5,b);
                         break;
 
 
@@ -325,18 +326,22 @@ public class home extends AppCompatActivity {
                     case R.id.nav_upload:
                         Intent intent3= new Intent(getApplicationContext(),uploadebook.class);
                         intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent3);
+                         b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                        startActivity(intent3,b);
                         break;
 
                     case R.id.nav_download:
                         Intent intent4= new Intent(getApplicationContext(),downloadebook.class);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        startActivity(intent4);
+                        intent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                         b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                        startActivity(intent4,b);
+
                         break;
                     case R.id.nav_map:
                         Intent intent9= new Intent(getApplicationContext(),map.class);
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        startActivity(intent9);
+                        intent9.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                        startActivity(intent9,b);
                         break;
 
                     case R.id.nav_logout:
@@ -350,11 +355,8 @@ public class home extends AppCompatActivity {
                         exit(this);
                         break;
 
-                    default:
-                        return true;
 
                 }
-                drawerLayout.closeDrawers();
                 return true;
             }
 
