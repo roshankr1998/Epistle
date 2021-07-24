@@ -3,6 +3,7 @@ package com.roshan.hackspace;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,8 +16,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,14 +56,15 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static java.security.AccessController.getContext;
+
 public class home extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
     NavigationView navigationView;
-    ImageView imageView4,user_image;
+    ImageView user_image;
     int counter=0;
-    Fragment fragment=null;
     FirebaseAuth auth;
     FirebaseUser user;
     String n,e,p,no;
@@ -67,6 +72,9 @@ public class home extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
     DatabaseReference post=firebaseDatabase.getReference().child("Users");
     DatabaseReference post1=firebaseDatabase.getReference().child("profile");
+
+    Button imageView,imageView1,imageView2,imageView3,imageView4,imageView5,imageView6,imageView7;
+
 
 
 
@@ -76,12 +84,124 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         drawerLayout=findViewById(R.id.drawer);
         toolbar=findViewById(R.id.toolBar);
+
+        ProgressDialog pro1=new ProgressDialog(home.this);
+        pro1.setTitle("Loading..");
+
+
         setSupportActionBar(toolbar);
         n=getIntent().getStringExtra("name");
         e=getIntent().getStringExtra("email");
         p=getIntent().getStringExtra("pass");
         no=getIntent().getStringExtra("mobile");
         user_image=findViewById(R.id.user_image);
+        imageView=findViewById(R.id.btndon);
+        imageView1=findViewById(R.id.btnser);
+        imageView2=findViewById(R.id.btnupload);
+        imageView3=findViewById(R.id.btndown);
+        imageView4=findViewById(R.id.nearbtn);
+        imageView5=findViewById(R.id.btn_profile);
+        imageView6=findViewById(R.id.btnsupport);
+        imageView7=findViewById(R.id.btnlog);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(home.this,donbook.class);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                startActivity(intent,b);
+
+            }
+        })  ;
+
+        imageView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            public void onClick(View v) {
+
+                Intent intent= new Intent(home.this,serdonbook.class);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                startActivity(intent,b);
+
+
+            }
+        })  ;
+
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            public void onClick(View v) {
+
+                Intent intent= new Intent(home.this,uploadebook.class);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                startActivity(intent,b);
+            }
+        })  ;
+
+        imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            public void onClick(View v) {
+
+                Intent intent=new Intent(home.this,downloadebook.class);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                startActivity(intent,b);
+
+            }
+        })  ;
+        imageView4.setOnClickListener(new View.OnClickListener() {
+            @Override@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            public void onClick(View v) {
+
+                Intent intent=new Intent(home.this,map.class);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                startActivity(intent,b);
+
+
+            }
+        })  ;
+        imageView5.setOnClickListener(new View.OnClickListener() {
+            @Override@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            public void onClick(View v) {
+
+                Intent intent= new Intent(home.this,editprofile.class);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                startActivity(intent,b);
+
+            }
+        })  ;
+        imageView6.setOnClickListener(new View.OnClickListener() {
+            @Override@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            public void onClick(View v) {
+
+                Intent intent= new Intent(home.this,about.class);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                startActivity(intent,b);
+
+            }
+        })  ;
+        imageView7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(home.this);
+                builder.setTitle("Logout");
+                builder.setMessage("Are you sure you want Logout?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent= new Intent(home.this,login.class);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
+            }
+        });
 
 
         post.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -108,6 +228,10 @@ public class home extends AppCompatActivity {
 
                 profile = snapshot.child("url").getValue(String.class);
                 Glide.with(getApplicationContext()).load(snapshot.child("url").getValue(String.class)).into(user_image);
+                pro1.isShowing();
+                pro1.dismiss();
+
+
 
 
             }@Override
@@ -152,88 +276,77 @@ public class home extends AppCompatActivity {
 
         auth=FirebaseAuth.getInstance();
         user= auth.getCurrentUser();
-        toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
+        toggle=new ActionBarDrawerToggle(home.this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView=findViewById(R.id.nav_view);
         updateusernav();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame,new DashboardFragment()).commit();
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
 
 
-                int id=item.getItemId();
 
-                switch(id){
+
+                switch(item.getItemId()){
                     case R.id.nav_search:
-                        /*fragment=new SerErFragment();
-                        loadFragment(fragment);
-                       //toolbar.setTitle("Search and get book");*/
                         Intent intent1=new Intent(getApplicationContext(),serdonbook.class);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         startActivity(intent1);
+
                         break;
 
                     case R.id.nav_home:
                         Intent intent=new Intent(getApplicationContext(),donbook.class);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         startActivity(intent);
-                      //  toolbar.setTitle("Donate Book");
                         break;
 
                     case R.id.nav_dash:
-                      //  toolbar.setTitle("Dashboard");
                         break;
 
 
                     case R.id.nav_profile:
-                        /*fragment=new ProfileFragment();
-                        loadFragment(fragment);
-                      //  toolbar.setTitle("Update Profile");*/
+
                         Intent intent6= new Intent(getApplicationContext(),editprofile.class);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         startActivity(intent6);
                         break;
 
 
                     case R.id.nav_aboutus:
-                       /* fragment=new AboutFragment();
-                        loadFragment(fragment);
-                       // toolbar.setTitle("About Us");*/
                         Intent intent5= new Intent(getApplicationContext(),about.class);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         startActivity(intent5);
                         break;
 
 
 
                     case R.id.nav_upload:
-                        /*fragment=new UploadFragment();
-                        loadFragment(fragment);
-                      // toolbar.setTitle("Upload PDF");*/
                         Intent intent3= new Intent(getApplicationContext(),uploadebook.class);
+                        intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent3);
                         break;
 
                     case R.id.nav_download:
-                        /*fragment=new DownloadFragment();
-                        loadFragment(fragment);
-                       // toolbar.setTitle("Download PDF");*/
                         Intent intent4= new Intent(getApplicationContext(),downloadebook.class);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         startActivity(intent4);
                         break;
                     case R.id.nav_map:
-                        /*fragment=new DownloadFragment();
-                        loadFragment(fragment);
-                       // toolbar.setTitle("Download PDF");*/
                         Intent intent9= new Intent(getApplicationContext(),map.class);
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         startActivity(intent9);
                         break;
 
                     case R.id.nav_logout:
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         logout(this);
                         break;
 
 
                     case R.id.nav_exit:
+                        drawerLayout.closeDrawer(GravityCompat.START);
                         exit(this);
                         break;
 
@@ -241,9 +354,10 @@ public class home extends AppCompatActivity {
                         return true;
 
                 }
-                drawerLayout.closeDrawer(GravityCompat.START);
+                drawerLayout.closeDrawers();
                 return true;
             }
+
         });
 
 
@@ -302,19 +416,6 @@ public class home extends AppCompatActivity {
         });
         builder.show();
     }
-
-
-
-    public void loadFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame, fragment).commit();
-        drawerLayout.closeDrawer(GravityCompat.START);
-        fragmentTransaction.addToBackStack(null);
-
-    }
-
-
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override

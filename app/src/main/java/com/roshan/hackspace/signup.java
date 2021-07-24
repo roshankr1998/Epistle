@@ -48,7 +48,7 @@ public class signup extends AppCompatActivity {
     Button  signup,browse;
     ImageView imageView,proimage,gif;
     private FirebaseAuth mAuth;
-
+    int count=0;
     Uri pdfuri=null;
     String filepathname;
     StorageReference storageReference;
@@ -85,10 +85,14 @@ gif.setVisibility(View.INVISIBLE);
            @Override
            public void onClick(View v) {
                if(checkBox.isChecked()){
-                   signup.setEnabled(true);
+                   if(count==1){
+                   signup.setEnabled(true);}
+                   else{
+                       Toast.makeText(signup.this, "Please select a profile photo", Toast.LENGTH_SHORT).show();
+                   }
                }else
                {signup.setEnabled(false);
-                   Toast.makeText(signup.this,"please enable the checkbox",Toast.LENGTH_SHORT).show();
+
                }
 
            }
@@ -175,48 +179,15 @@ gif.setVisibility(View.INVISIBLE);
                 emailid.setEnabled(false);
                 username.setEnabled(false);
 
-                    mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    mAuth.createUserWithEmailAndPassword(email,pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                uploadpdf();
-
-                            }else{
-                                Toast.makeText(signup.this, "User registration Failed", Toast.LENGTH_SHORT).show();
-                                gif.setVisibility(View.INVISIBLE);
-                                signup.setVisibility(View.VISIBLE);
-                                checkBox.setVisibility(View.VISIBLE);
-                                password.setEnabled(true);
-                                repassword.setEnabled(true);
-                                name.setEnabled(true);
-                                emailid.setEnabled(true);
-                                username.setEnabled(true);
-
-                            }
+                        public void onSuccess(AuthResult authResult) {
+                            uploadpdf();
                         }
-                    });
-        }});
-
-
-
-    }
-
-    private void uploaduser() {
-        User user= new User(name1,mobile,email,pass);
-        FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(signup.this, "User registration Successfull", Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(signup.this,home.class);
-                            Bundle b= ActivityOptions.makeSceneTransitionAnimation(signup.this).toBundle();
-                            startActivity(intent,b);
-
-                        }else
-                        {
-                            Toast.makeText(signup.this, "User registration Failed", Toast.LENGTH_SHORT).show();
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull @NotNull Exception e) {
+                            Toast.makeText(signup.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             gif.setVisibility(View.INVISIBLE);
                             signup.setVisibility(View.VISIBLE);
                             checkBox.setVisibility(View.VISIBLE);
@@ -226,8 +197,41 @@ gif.setVisibility(View.INVISIBLE);
                             emailid.setEnabled(true);
                             username.setEnabled(true);
                         }
-                    }
-                });
+                    });
+
+
+
+
+    }});}
+
+    private void uploaduser() {
+        User user= new User(name1,mobile,email,pass);
+        FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(signup.this, "User registration Successfull", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(signup.this,home.class);
+                        Bundle b= ActivityOptions.makeSceneTransitionAnimation(signup.this).toBundle();
+                        startActivity(intent,b);}
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull @NotNull Exception e) {
+                Toast.makeText(signup.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                gif.setVisibility(View.INVISIBLE);
+                signup.setVisibility(View.VISIBLE);
+                checkBox.setVisibility(View.VISIBLE);
+                password.setEnabled(true);
+                repassword.setEnabled(true);
+                name.setEnabled(true);
+                emailid.setEnabled(true);
+                username.setEnabled(true);
+            }
+        });
+
+
+
     }
 
     private void uploadpdf() {
@@ -247,7 +251,7 @@ gif.setVisibility(View.INVISIBLE);
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
-                Toast.makeText(signup.this, "Pdf upload failed due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(signup.this, "Pic upload failed due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
                 gif.setVisibility(View.INVISIBLE);
                 signup.setVisibility(View.VISIBLE);
                 checkBox.setVisibility(View.VISIBLE);
@@ -291,9 +295,11 @@ gif.setVisibility(View.INVISIBLE);
                         pdfuri=result;
                         proimage.setImageURI(result);
                         Toast.makeText(signup.this, "Image Selected Succesfully", Toast.LENGTH_SHORT).show();
+                        checkBox.setChecked(false);
+                        count=1;
 
                     }else{
-                        Toast.makeText(signup.this, "Image selection Cancelled", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(signup.this, "Please select a profile photo to proceed", Toast.LENGTH_SHORT).show();
                     }
                 }
             });}

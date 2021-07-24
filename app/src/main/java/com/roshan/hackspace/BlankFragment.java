@@ -92,11 +92,12 @@ public class BlankFragment extends Fragment {
 
         Button buttonEdit = root.findViewById(R.id.messageButton);
         buttonEdit.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-                FragmentManager fr= getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fr.beginTransaction();
-                fragmentTransaction.replace(R.id.frame,new DashboardFragment()).commit();
+                Intent intent = new Intent(getContext(), home.class);
+                Bundle b= ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle();
+                startActivity(intent,b);
 
             }
         }); Button buttonEdit1 = root.findViewById(R.id.messageButton1);

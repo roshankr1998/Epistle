@@ -87,6 +87,7 @@
                 android:drawableLeft="@drawable/email"
                 android:drawablePadding="15dp"
                 android:drawableTint="@color/black"
+                android:maxLines="1"
                 android:ems="10"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
