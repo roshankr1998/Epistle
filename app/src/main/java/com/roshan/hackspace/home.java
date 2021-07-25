@@ -248,7 +248,8 @@ public class home extends AppCompatActivity {
             bottomsheet.findViewById(R.id.messageButton).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    bottomSheetDialog.dismiss();
+                    Intent intent= new Intent(getApplicationContext(),mydonations.class);
+                    startActivity(intent);
                 }
             });
                 bottomsheet.findViewById(R.id.messageButton1).setOnClickListener(new View.OnClickListener() {
@@ -301,6 +302,10 @@ public class home extends AppCompatActivity {
                         break;
 
                     case R.id.nav_dash:
+                        Intent intent0=new Intent(getApplicationContext(),mydonations.class);
+                        intent0.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                        startActivity(intent0,b);
                         drawerLayout.closeDrawers();
                         break;
 
@@ -319,6 +324,12 @@ public class home extends AppCompatActivity {
                         intent5.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
                         startActivity(intent5,b);
+                        break;
+                    case R.id.nav_mydon:
+                        Intent intent15= new Intent(getApplicationContext(),mydonations.class);
+                        intent15.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        b= ActivityOptions.makeSceneTransitionAnimation(home.this).toBundle();
+                        startActivity(intent15,b);
                         break;
 
 

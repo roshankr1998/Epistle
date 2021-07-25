@@ -48,19 +48,13 @@ public class donbook extends AppCompatActivity {
         ImageView image,imageButton1;
         DatabaseReference mfire,data1;
         ProgressBar progdon;
-        Users users;
-        FirebaseAuth mAuth1;
         String uid;
         DatabaseReference fire= FirebaseDatabase.getInstance().getReference("bookinfo");
+        DatabaseReference fire1= FirebaseDatabase.getInstance().getReference("mybooks");
         final String[] subject = new String[1];
 
 
-
-
-            mfire= FirebaseDatabase.getInstance().getReference().child("bookinfo");
-            users=new Users();
-            mAuth1 = FirebaseAuth.getInstance();
-            uid=mAuth1.getUid();
+            uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
             bookname =findViewById(R.id.bookname);
             author =findViewById(R.id.author);
             publication =findViewById(R.id.publication);
@@ -167,7 +161,6 @@ public class donbook extends AppCompatActivity {
                                                            }
                                                            progdon.setVisibility(View.VISIBLE);
                                                            button6.setVisibility(View.INVISIBLE);
-
                                                            Map<String,String> usermap= new HashMap<>();
                                                            usermap.put("bookname",book);
                                                            usermap.put("author",auth);
@@ -177,12 +170,74 @@ public class donbook extends AppCompatActivity {
                                                            usermap.put("donormobile",dmob);
 
 
+                                                           Map<String,String> usermap1= new HashMap<>();
+                                                           usermap1.put("bookname",book);
+                                                           usermap1.put("author",auth);
+                                                           usermap1.put("publication",publ);
+                                                           usermap1.put("subject",subject[0]);
+
                                                            fire.child(subject[0]).child(book).setValue(usermap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                                @Override
                                                                public void onSuccess(Void unused) {
-                                                                   Toast.makeText(donbook.this, "book donation successfull", Toast.LENGTH_SHORT).show();
+                                                                   //Toast.makeText(donbook.this, "book donation successfull", Toast.LENGTH_SHORT).show();
+                                                                   fire1.child(uid).child(book).setValue(usermap1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                       @Override
+                                                                       public void onSuccess(Void unused) {
+                                                                           Toast.makeText(donbook.this, "book donation successfull", Toast.LENGTH_SHORT).show();
 
-                                                                   bookname.setVisibility(View.INVISIBLE);
+                                                                           bookname.setVisibility(View.INVISIBLE);
+                                                                           author.setVisibility(View.INVISIBLE);
+                                                                           publication.setVisibility(View.INVISIBLE);
+                                                                           imageButton.setVisibility(View.INVISIBLE);
+                                                                           textView.setText("Enter Subject Details");
+                                                                           button6.setVisibility(View.INVISIBLE);
+                                                                           donormob.setVisibility(View.INVISIBLE);
+                                                                           donorname.setVisibility(View.INVISIBLE);
+                                                                           donoradress.setVisibility(View.INVISIBLE);
+                                                                           progdon.setVisibility(View.INVISIBLE);
+                                                                           image.setVisibility(View.VISIBLE);
+                                                                           button2.setVisibility(View.VISIBLE);
+                                                                           subname.setVisibility(View.VISIBLE);
+                                                                           bookname.setText(null);
+                                                                           author.setText(null);
+                                                                           publication.setText(null);
+                                                                           donoradress.setText(null);
+                                                                           donorname.setText(null);
+                                                                           donormob.setText(null);
+                                                                           subname.setText(null);
+                                                                           imageButton1.setVisibility(View.VISIBLE);
+
+                                                                       }
+                                                                   }).addOnFailureListener(new OnFailureListener() {
+                                                                       @Override
+                                                                       public void onFailure(@NonNull @NotNull Exception e) {
+
+                                                                           String excep = e.getMessage();
+                                                                           Toast.makeText(donbook.this, excep, Toast.LENGTH_SHORT).show();
+                                                                           bookname.setVisibility(View.INVISIBLE);
+                                                                           author.setVisibility(View.INVISIBLE);
+                                                                           publication.setVisibility(View.INVISIBLE);
+                                                                           imageButton.setVisibility(View.INVISIBLE);
+                                                                           button6.setVisibility(View.INVISIBLE);
+                                                                           donormob.setVisibility(View.INVISIBLE);
+                                                                           donorname.setVisibility(View.INVISIBLE);
+                                                                           donoradress.setVisibility(View.INVISIBLE);
+                                                                           subname.setVisibility(View.VISIBLE);
+                                                                           image.setVisibility(View.VISIBLE);
+                                                                           button2.setVisibility(View.VISIBLE);
+                                                                           imageButton1.setVisibility(View.VISIBLE);
+                                                                           bookname.setText(null);
+                                                                           author.setText(null);
+                                                                           publication.setText(null);
+                                                                           donoradress.setText(null);
+                                                                           donorname.setText(null);
+                                                                           donormob.setText(null);
+                                                                           subname.setText(null);
+                                                                           imageButton1.setVisibility(View.VISIBLE);
+                                                                           textView.setText("Enter Subject Name");
+                                                                       }
+                                                                   });
+                                                                /*   bookname.setVisibility(View.INVISIBLE);
                                                                    author.setVisibility(View.INVISIBLE);
                                                                    publication.setVisibility(View.INVISIBLE);
                                                                    imageButton.setVisibility(View.INVISIBLE);
@@ -202,7 +257,7 @@ public class donbook extends AppCompatActivity {
                                                                    donorname.setText(null);
                                                                    donormob.setText(null);
                                                                    subname.setText(null);
-                                                                   imageButton1.setVisibility(View.VISIBLE);
+                                                                   imageButton1.setVisibility(View.VISIBLE);*/
 
                                                                }
                                                            }).addOnFailureListener(new OnFailureListener() {

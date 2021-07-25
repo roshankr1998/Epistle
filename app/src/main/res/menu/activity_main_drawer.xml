@@ -12,6 +12,7 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/home"
             android:title="Donate Book" />
+
         <item
             android:id="@+id/nav_dash"
             android:icon="@drawable/dash"
@@ -28,6 +29,10 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/profile"
             android:title="Profile" />
+        <item
+            android:id="@+id/nav_mydon"
+            android:icon="@drawable/home"
+            android:title="My donations" />
         <item
             android:id="@+id/nav_aboutus"
             android:icon="@drawable/info"
